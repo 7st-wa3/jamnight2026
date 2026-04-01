@@ -1,0 +1,346 @@
+//- テンプレート読み込み
+extend ../inc/_layout
+
+//-　ページ独自の設定
+append pagedata
+  - var pageTitle= "flex-system 2026";
+  - var pageDescription= "ページの説明";
+
+  - var ogType = "article"
+  //- website: WebサイトのTOPページ
+  //- blog: ブログのトップページ
+  //- article: 記事ページなど、WebサイトのTOP以外のページ
+  //- product: 製品の紹介ページ
+
+//- ページ独自のcss
+append pagecss
+  link(rel="stylesheet" href="./css/cont.css")
+  //- link(rel="stylesheet" href="./slick/slick.css")
+  //- link(rel="stylesheet" href="./slick/slick-theme.css")
+
+//- ページ独自のjs
+append pagejs
+  //- script(src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8")
+
+//- ページのコンテンツ
+block main
+
+  //- コンテンツヘッダ
+  section.contHead
+    .inner
+      h1.h1 汎用FlexSystem v2026
+      //- p.bdr.bg コンテンツエリアの基本的な設定は /cont/_contHead.scss にあります
+
+
+  nav#pnkz
+    .inner
+      span
+        a(href="index.html") TOP
+      span
+        a(href="temp.html") テンプレート
+      span 汎用FlexSystem v2026
+
+  main#mainCont.pt1em.pb1em
+    .inner
+
+      h2 汎用FlexSystem v2026
+      p 最終更新日：#{dateNowLoc}
+      p.bdr.bg 汎用クラスのflexの設定は /utilities/_flex.scss にあります
+
+      nav.ancLinksBase.auto
+        .inner.ancLinks
+
+
+      h2.ancLink 基本
+
+      h3 まずは何も考えずに親要素に「.flex」をつけるとこからスタート。
+      p いちばん単純な使い方。gapはサイト全体の変数 --gap を使います。折り返しません。横に並びます。
+        br
+        | 幅の指定はしていないので各要素は「flex-grow: 1;」「flex-shrink: 1;」のルールに従います。
+      h4 div.flexの中にdivタグ2つ
+      .flex
+        div.testwaku div1
+        div.testwaku div2
+
+      h4 div.flexの中にdivタグ6つ
+      .flex
+        div.testwaku div1
+        div.testwaku div2
+        div.testwaku div3
+        div.testwaku div4
+        div.testwaku div5
+        div.testwaku div6
+
+      h4 div.flexの中にdivタグ3つそれぞれの中にimg（画像のサイズバラバラ）
+      .flex
+        div: img(src="./img/dummy/w450.webp" alt="")
+        div: img(src="./img/dummy/interview01.webp" alt="")
+        div: img(src="./img/dummy/inu.webp" alt="")
+
+      h2.ancLink 縦flexテスト
+      p flex-direction:column で flex-wrap:wrap のテスト
+      .flex.fd-col(style="height:300px; flex-wrap:wrap;")
+        div.testwaku div1
+        div.testwaku div2
+        div.testwaku div3
+        div.testwaku div4
+        div.testwaku div5
+        div.testwaku div6
+
+      h2.ancLink .flexの付加クラス
+
+      h4 中央揃えにする場合は「.ai-CEN」クラスで align-items:center になる。
+      .flex.ai-CEN
+        div: img(src="./img/dummy/w450.webp" alt="")
+        div: img(src="./img/dummy/interview01.webp" alt="")
+        div: img(src="./img/dummy/inu.webp" alt="")
+
+      h4 底辺揃えにする場合は「.ai-END」クラスで align-items:flex-end になる。
+      .flex.ai-END
+        div: img(src="./img/dummy/w450.webp" alt="")
+        div: img(src="./img/dummy/interview01.webp" alt="")
+        div: img(src="./img/dummy/inu.webp" alt="")
+
+      h4 こういうクラスは他にもこれだけある。すべて「.flex」と同時使用してください。
+      p また、それぞれに「.ai-CEN-Nt」「.ai-CEN-Tb」「.ai-CEN-Sp」のようにサフィックスを後ろにつけると各ブレイクポイントでの切り替えも指定できます。
+      .flex.fWrap
+
+        .fCol2.fCol1Sp
+          h5 flex-direction系
+          table
+            tr
+              th .fd-row
+              td flex-direction: row;
+            tr
+              th .fd-col
+              td flex-direction: column;
+            tr
+              th .fd-row-rev
+              td flex-direction: row-reverse;
+            tr
+              th .fd-col-rev
+              td flex-direction: col-reverse;
+
+        .fCol2.fCol1Sp
+          h5 align-items系
+          table
+            tr
+              th .ai-CEN
+              td align-items: center;
+            tr
+              th .ai-STA
+              td align-items: flex-start;
+            tr
+              th .ai-END
+              td align-items: flex-end;
+            tr
+              th .ai-STR
+              td align-items: stretch;
+            tr
+              th .ai-BL
+              td align-items: maseline;
+
+        .fCol2.fCol1Sp
+          h5 justify-content系
+          table
+            tr
+              th .jc-CEN
+              td justify-content: center;
+            tr
+              th .jc-STA
+              td justify-content: flex-start;
+            tr
+              th .jc-END
+              td justify-content: flex-end;
+            tr
+              th .jc-SPB
+              td justify-content: space-between;
+            tr
+              th .jc-SPA
+              td justify-content: space-around;
+            tr
+              th .jc-SPE
+              td justify-content: space-evenly;
+
+        .fCol2.fCol1Sp
+          h5 align-content系
+          table
+            tr
+              th .ac-CEN
+              td align-content: center;
+            tr
+              th .ac-STA
+              td align-content: flex-start;
+            tr
+              th .ac-END
+              td align-content: flex-end;
+            tr
+              th .ac-SPB
+              td align-content: space-between;
+            tr
+              th .ac-SPA
+              td align-content: space-around;
+            tr
+              th .ac-STR
+              td align-content: stretch;
+
+        .fCol2.fCol1Sp
+          h5 こんなのもあります
+          table
+            tr
+              th .gap0
+              td ギャップをなし（0）にします
+
+        .fCol2.fCol1Sp
+          h5 サフィックスをつけてブレイクポイントで変更
+          table
+            tr
+              th .（クラス）-Nt
+              td NotePC以下で適用
+            tr
+              th .（クラス）-Tb
+              td タブレット以下で適用
+            tr
+              th .（クラス）-Sp
+              td スマホ以下で適用
+
+
+
+      h2.ancLink divの幅を固定しよう
+
+      h4 div.flexの中にdivタグ6つそれぞれの中にimg（画像のサイズバラバラ）
+      p まだ幅の固定はしてないよ
+      .flex
+        div: img(src="./img/dummy/w450.webp" alt="")
+        div: img(src="./img/dummy/interview01.webp" alt="")
+        div: img(src="./img/dummy/inu.webp" alt="")
+        div: img(src="./img/dummy/w750.webp" alt="")
+        div: img(src="./img/dummy/aozora.webp" alt="")
+        div: img(src="./img/dummy/interview04.webp" alt="")
+
+      h4 1/3サイズである「.fCol3」をdivにつける
+      p .fCol3を入れましたが、6枚画像があって、nowrapなのではみ出しちゃってます。（ヘルパークラス「.of-x-auto」をつけているのでスクロールします。）
+      p .fCol1〜6まで用意しています。
+      .flex.of-x-auto
+        div.fCol3: img(src="./img/dummy/w450.webp" alt="")
+        div.fCol3: img(src="./img/dummy/interview01.webp" alt="")
+        div.fCol3: img(src="./img/dummy/inu.webp" alt="")
+        div.fCol3: img(src="./img/dummy/w750.webp" alt="")
+        div.fCol3: img(src="./img/dummy/aozora.webp" alt="")
+        div.fCol3: img(src="./img/dummy/interview04.webp" alt="")
+
+      h4 ↑を折り返すようにしてみよう（「.flex」に「.fWrap」を追加）
+      p 折り返しましたが、画像のサイズがバラバラなので縦幅バラバラ。
+      .flex.fWrap
+        div.fCol3: img(src="./img/dummy/w450.webp" alt="")
+        div.fCol3: img(src="./img/dummy/interview01.webp" alt="")
+        div.fCol3: img(src="./img/dummy/inu.webp" alt="")
+        div.fCol3: img(src="./img/dummy/w750.webp" alt="")
+        div.fCol3: img(src="./img/dummy/aozora.webp" alt="")
+        div.fCol3: img(src="./img/dummy/interview04.webp" alt="")
+
+      h3 ↑の画像のアスペクト比を共通化してobject-fitするようにしてみよう
+      h4 imgに「.aspRatio.objFit」を追加
+      p .aspectRatioはデフォルトで16：9になります。
+      .flex.fWrap
+        div.fCol3: img.aspRatio.objFit(src="./img/dummy/w450.webp" alt="")
+        div.fCol3: img.aspRatio.objFit(src="./img/dummy/interview01.webp" alt="")
+        div.fCol3: img.aspRatio.objFit(src="./img/dummy/inu.webp" alt="")
+        div.fCol3: img.aspRatio.objFit(src="./img/dummy/w750.webp" alt="")
+        div.fCol3: img.aspRatio.objFit(src="./img/dummy/aozora.webp" alt="")
+        div.fCol3: img.aspRatio.objFit(src="./img/dummy/interview04.webp" alt="")
+
+      h4 ↑の画像のアスペクト比を4：3にしてみよう（「.aspRatio.objFit」に「.asp4x3」を追加）
+      p .aspectRatio.asp4x3は4：3になります。
+      .flex.fWrap
+        div.fCol3: img.aspRatio.objFit.asp4x3(src="./img/dummy/w450.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp4x3(src="./img/dummy/interview01.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp4x3(src="./img/dummy/inu.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp4x3(src="./img/dummy/w750.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp4x3(src="./img/dummy/aozora.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp4x3(src="./img/dummy/interview04.webp" alt="")
+
+      h4 ↑の画像のアスペクト比を1：1にしてみよう（「.aspRatio.objFit」に「.asp1x1」を追加）
+      p .aspectRatio.asp1x1は1：1になります。
+      .flex.fWrap
+        div.fCol3: img.aspRatio.objFit.asp1x1(src="./img/dummy/w450.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp1x1(src="./img/dummy/interview01.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp1x1(src="./img/dummy/inu.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp1x1(src="./img/dummy/w750.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp1x1(src="./img/dummy/aozora.webp" alt="")
+        div.fCol3: img.aspRatio.objFit.asp1x1(src="./img/dummy/interview04.webp" alt="")
+
+      h2.ancLink ブレイクポイントごとの設定
+
+      h3 ブレイクポイントごとに設定するときは
+      p 以下のクラスを「.fCol（数字）」と同時につけよう
+      ul
+        li .fCol(数字)Nt : NotePC以下の場合
+        li .fCol(数字)Tb : タブレット以下の場合
+        li .fCol(数字)Sp : スマホ以下の場合
+
+      .flex.fWrap
+        .fCol4.fCol3Nt.fCol2Tb.fCol1Sp: img.max(src="./img/dummy/w450.webp" alt="")
+        .fCol4.fCol3Nt.fCol2Tb.fCol1Sp: img.max(src="./img/dummy/w450.webp" alt="")
+        .fCol4.fCol3Nt.fCol2Tb.fCol1Sp: img.max(src="./img/dummy/w450.webp" alt="")
+        .fCol4.fCol3Nt.fCol2Tb.fCol1Sp: img.max(src="./img/dummy/w450.webp" alt="")
+      p ↑ぜんぶ「.fCol4.fCol3Nt.fCol2Tb.fCol1Sp」に設定しているよ。
+
+
+      h2.ancLink 子要素用のヘルパークラス
+      p 例えば.flexの子要素にはすべて「flex-grow:1」「flex-shrink:1」がつくようになっていますが、場合によってはこれが邪魔になる場合もあります。そんなときは、以下の2つのヘルパークラスを子要素につけてください。
+
+      ul
+        li 「.flxG0」 → flex-grow:0; を設定します。
+        li 「.flxS0」 → flex-shrink:0; を設定します。
+
+
+
+      h2.ancLink レイアウト例
+
+      h3 フロートっぽいことをさせる（厳密にはfloatではない）（flex版）
+      h5.h5 1：1
+      p 画像側と文章側に.fCol2
+      .flex
+        .fCol2
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+        .fCol2
+          p 本文：この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+
+      h5.h5 1：2
+      p fCol（数字）を指定しなかった場合、flex-growとflex-shrinkが効くので、画像側にfCol3、文章側はノークラスのdivでOK
+      .flex
+        .fCol3
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+        div
+          p 本文：この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+
+      h5.h5 1：3
+      p fCol（数字）を指定しなかった場合、flex-growとflex-shrinkが効くので、画像側にfCol4、文章側はノークラスのdivでOK
+      .flex
+        .fCol4
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+        div
+          p 本文：この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+
+      h5.h5 1：2：1
+      p fCol（数字）を指定しなかった場合、flex-growとflex-shrinkが効くので、画像側2つにfCol4、文章側はノークラスのdivでOK
+      .flex
+        .fCol4
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+        div
+          p 本文：この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+        .fCol4
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+
+      h5.h5 1：1：2
+      p fCol（数字）を指定しなかった場合、flex-growとflex-shrinkが効くので、画像側2つにfCol4、文章側はノークラスのdivでOK
+      .flex
+        .fCol4
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+        .fCol4
+          figure: img.max(src="./img/dummy/w450.webp" alt="")
+        div
+          p 本文：この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
+
+

@@ -1,0 +1,11 @@
+Thumbs.db
+.Ds_Store
+.sass-cache/
+.history/
+dist/
+*.css.map
+*.sass.map
+*.scss.map
+*.ai
+*.psd
+node_modules/

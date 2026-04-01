@@ -1,0 +1,91 @@
+section#contact {
+  display: flex;
+  // height: 625px;
+  padding: var(--spacing-xl, 64px) 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+
+  background: var(--btn_general-def-bg, #2e2674);
+
+  .frame {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    h2 {
+      color: var(--basic-white, #fff);
+      text-align: center;
+      font-family: var(--JP, "Noto Sans JP");
+      font-size: var(--h2_top, 52px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+    }
+    p {
+      color: var(--basic-white, #fff);
+      text-align: center;
+      @include typoH6();
+    }
+    .contBtns {
+      display: flex;
+      @include propVW(width, 1640, 728, 335, n);
+      justify-content: center;
+      align-items: center;
+      @include propVW(gap, 24, 24, 24, n);
+      @include tbStyle() {
+        flex-direction: column;
+      }
+      a.contBtn {
+        text-decoration: none;
+
+        background-color: var(--basic-white);
+
+        display: flex;
+        @include propVW(width, 440, "80%", "100%", n);
+        padding: var(--spacing-m, 24px);
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+
+        border-radius: var(--rounded-m, 20px);
+        background: var(--basic-white, #fff);
+        .icon {
+          aspect-ratio: 1 / 1;
+          @include propVW(width, 60, 50, 50, n);
+        }
+        .text {
+          color: var(--basic-black, #333);
+          text-align: center;
+          @include typoH4();
+          @include propVW(font-size, 24, 20, 20, n);
+        }
+        .arrow {
+          @include btnArrowMarkWaku();
+          @include propVW(width, 40, 40, 30, n);
+          // flex-shrink: 0;
+          &:before {
+            @include btnArrowMark();
+            translate: 10% 0;
+            @include propVW(width, 14, 14, 12, n);
+          }
+        }
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--primary-light);
+            .arrow {
+              background-color: var(--primary-dark);
+              text-decoration: none !important;
+              &:before,
+              &:after {
+                background-color: var(--basic-white);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,160 @@
+@use "../abstracts/mixins" as mx;
+
+//==============================
+// 基本骨格スタイル
+// ★基本的にこのファイルは触らない！！
+//==============================
+@layer layout {
+  body {
+    overflow-x: clip;
+    font-size: var(--txt);
+
+    // モーダルオープン時に後ろをスクロールをさせないようにする
+    &.fixed {
+      position: fixed;
+      // @include mx.rectPc(100%,100%);
+      left: 0;
+    }
+
+    background-color: var(--basic-white);
+  }
+
+  img {
+    max-width: 100%;
+    /* 1 */
+    height: auto;
+    /* 1 */
+    vertical-align: middle;
+    /* 2 */
+    font-style: italic;
+    /* 3 */
+    background-repeat: no-repeat;
+    /* 4 */
+    background-size: cover;
+    /* 4 */
+    shape-margin: 0.75rem;
+    /* 5 */
+  }
+
+  // 1 width/height属性によってコントロールされるアスペクト比を維持しつつ、画像のサイズを流動的に変更できるようにします。
+  // 2 画像の下にできる余白を取り除きます。
+  // 3 altテキストを斜体にして、周囲のテキストから視覚的に相殺します。
+  // 4 オプション: LQIP(Low-Quality Image Placeholders)用に背景を設定。
+  // 5 オプション: 回り込みシェイプ用にshape-outsideのmarginを設定。
+
+  // --------------------------------
+  // .global-layout　超重要骨格組織
+  // --------------------------------
+  // 大外
+  .global-layout {
+    display: grid;
+    grid-template: "header" auto "contents" 1fr "footer" auto/100%;
+    min-height: 100vh;
+  }
+
+  // ヘッダー
+  .global-layout__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    grid-area: header;
+    // @include mx.rectPc(100%);
+  }
+
+  // メインコンテンツ
+  .global-layout__contents {
+    grid-area: contents;
+    width: 100%;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  // フッター（画面下配置）
+  .global-layout__footer {
+    grid-area: footer;
+  }
+
+  // --------------------------------
+  // BlackBG
+  // --------------------------------
+  #blackBg {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: var(--basic-white);
+    // background: rgba(0, 0, 0, 0.4);
+    z-index: 9;
+    transition: all 0.3s ease-out;
+    // backdrop-filter: blur(25px);
+  }
+
+  // --------------------------------
+  // object-fit
+  // --------------------------------
+  .objFit {
+    width: 100%;
+    height: 100%;
+
+    &.contain {
+      object-fit: contain;
+    }
+
+    &.cover {
+      object-fit: cover;
+    }
+  }
+
+  // --------------------------------
+  // cookie-consent
+  // --------------------------------
+  .cookie-consent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    // @include mx.rectPc(100%);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.2em;
+    box-sizing: border-box;
+    visibility: hidden;
+    z-index: 9999;
+
+    &.is-show {
+      visibility: visible;
+    }
+
+    a {
+      color: #fff !important;
+    }
+  }
+
+  .cookie-agree {
+    color: #fff;
+    background: dodgerblue;
+    padding: 0.5em 1.5em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // メディアクエリ
+  @include mx.spStyle() {
+    .cookie-consent {
+      flex-direction: column;
+    }
+
+    .cookie-text {
+      margin-bottom: 1em;
+    }
+  }
+}

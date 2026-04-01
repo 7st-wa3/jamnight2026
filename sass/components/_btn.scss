@@ -1,0 +1,175 @@
+// --------------------------------
+// ボタン設定
+// --------------------------------
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  @scope (a.btn[role="button"]) {
+    @layer btnBasic, btnDir, btnUtil;
+    :scope {
+      @layer btnBasic {
+        // --------------------------------
+        // ボタンの基本設定
+        // --------------------------------
+        --btn-display: inline-flex;
+        --btn-margin: 16px;
+        --btn-padding: 16px 32px;
+        --btn-min_width: 240px;
+        --btn-bdr_radius: var(--rounded-s);
+        --btn-bdr: 3px solid var(--primary-dark, #2e2674);
+        --btn-background: var(--basic-white);
+        --btn-font-color: var(--basic-black);
+        --btn-font-weight: 700;
+        --btn-transition: all 0.2s ease-out;
+        @include mx.spStyle() {
+          --btn-display: flex;
+        }
+      }
+      @layer btnDir {
+        // --------------------------------
+        // dispB
+        // --------------------------------
+        &.dispB {
+          --btn-display: flex;
+        }
+      }
+      @layer btnUtil {
+        // --------------------------------
+        // ホバー時設定
+        // --------------------------------
+        &:hover {
+          @media (hover: hover) {
+            --btn-background: var(--primary-dark);
+            --btn-font-color: var(--basic-white);
+          }
+        }
+      }
+
+      @layer btnBasic {
+        // --------------------------------
+        // 実装
+        // --------------------------------
+        // .flows .flow .flowInner .txtArea .btn,
+        // .smf-button-control .smf-button-control__control,
+        // .mfp_buttons .mfp_element_button,
+        // .mfp_buttons .mfp_element_submit,
+        // input.wpcf7-form-control.wpcf7-submit,
+
+        display: var(--btn-display);
+        padding: var(--btn-padding);
+        margin: var(--btn-margin);
+        min-width: var(--btn-min_width);
+        border-radius: var(--btn-bdr_radius);
+        border: var(--btn-bdr);
+        background: var(--btn-background);
+        color: var(--btn-font-color);
+        font-weight: var(--btn-font-weight);
+        transition: var(--btn-transition);
+
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+
+        text-decoration: none;
+        text-shadow: none;
+
+        // --------------------------------
+        // 矢印
+        // --------------------------------
+        &:after {
+          font-family: "Font Awesome 6 Free";
+          content: "\f0da";
+          font-weight: 600;
+          font-size: 1.2em;
+        }
+      }
+      @layer btnDir {
+        // --------------------------------
+        // revクラス
+        // --------------------------------
+        &.rev {
+          --btn-background: #f0f0f0;
+          &:after {
+            content: "\f0d9";
+            order: -1;
+          }
+        }
+        // --------------------------------
+        // アイコン自動付与
+        // --------------------------------
+        &[target="_blank"] {
+          @include mx.svgAutoIconSetting(
+            "after",
+            "../img/icon/icon_outer_link.svg",
+            1em,
+            var(--primary-dark),
+            var(--basic-white),
+            0
+          );
+        }
+        // PDF
+        &[href$=".pdf"] {
+          @include mx.svgAutoIconSetting(
+            "after",
+            "../img/icon/icon_pdf_link.svg",
+            1em,
+            var(--link-pdf),
+            var(--basic-white),
+            0
+          );
+        }
+        // xls系
+        &[href$=".xlsm"],
+        &[href$=".xls"],
+        &[href$=".xlsx"] {
+          @include mx.svgAutoIconSetting(
+            "after",
+            "../img/icon/icon_excel_link.svg",
+            1em,
+            var(--link-Excel),
+            var(--basic-white),
+            0
+          );
+        }
+        // doc系
+        &[href$=".doc"],
+        &[href$=".docx"] {
+          @include mx.svgAutoIconSetting(
+            "after",
+            "../img/icon/icon_word_link.svg",
+            1em,
+            var(--link-Word),
+            var(--basic-white),
+            0
+          );
+        }
+      }
+      @layer btnUtil {
+        &.noArrow {
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // --------------------------------
+  // lazy blocks
+  // --------------------------------
+  .wp-block-lazyblock-spj-btn {
+    display: inline-block;
+  }
+
+  .wp-block-column.is-layout-flow.wp-block-column-is-layout-flow {
+    .wp-block-lazyblock-spj-btn {
+      display: block;
+    }
+  }
+
+  .wp-block-columns.gapSmall {
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}

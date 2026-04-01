@@ -1,0 +1,48 @@
+section#about {
+  display: flex;
+  @include propVW(height, 625, 425, 390, n);
+  padding: var(--spacing-xl, 64px) var(--main-margin, 140px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+
+  background-image: url(../img/top/img_top_aboutschool.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include spStyle() {
+    @include propVW(--Xpdg, n, n, 15, n);
+    padding: var(--spacing-l) var(--Xpdg);
+    background-image: url(../img/top/img_top_aboutschool-sp.webp);
+  }
+
+  .frame {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+    h2 {
+      color: var(--basic-white, #fff);
+      text-align: center;
+      font-family: var(--JP, "Noto Sans JP");
+      font-size: var(--h2_top, 52px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+    }
+    p {
+      color: var(--basic-white, #fff);
+      text-align: center;
+      @include typoH6();
+    }
+  }
+  .inlineC {
+    .btn {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

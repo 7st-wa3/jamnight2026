@@ -1,0 +1,94 @@
+// --------------------------------
+// ふわっと
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer utilities {
+  .fuwat:not(#recruit) {
+    $move: 80; //移動量
+    $time: 0.8s; //移動時間
+    $moveSP: 50; //移動量SP
+    $timeSP: 0.6s; //移動時間SP
+    opacity: 0;
+    visibility: hidden;
+    position: relative;
+    translate: 0 $move * 1px;
+
+    &.blur {
+      filter: blur(10px);
+    }
+    &.r-x {
+      transform: rotateX(180deg);
+    }
+    &.r-y {
+      transform: rotateY(180deg);
+    }
+    &.r-cw {
+      transform: rotate(-170deg);
+    }
+    &.r-ccw {
+      transform: rotate(170deg);
+    }
+
+    &.left {
+      translate:
+        $move * -1px,
+        0;
+    }
+
+    &.right {
+      translate:
+        $move * 1px,
+        0;
+    }
+
+    &.top {
+      translate: 0 $move * -1px;
+    }
+
+    @include mx.spStyle() {
+      translate: 0 $moveSP * 1px;
+
+      &.left {
+        translate:
+          $moveSP * -1px,
+          0;
+      }
+
+      &.right {
+        translate:
+          $moveSP * 1px,
+          0;
+      }
+
+      &.top {
+        translate: 0 $moveSP * -1px;
+      }
+
+      &.active {
+        transition: all $timeSP ease-out;
+      }
+    }
+
+    &.active {
+      transition: all $time ease-out;
+      opacity: 1;
+      visibility: visible;
+      translate: 0 0;
+      &.blur {
+        filter: blur(0);
+      }
+      &.r-x {
+        transform: rotateX(0deg);
+      }
+      &.r-y {
+        transform: rotateY(0deg);
+      }
+      &.r-cw,
+      &.r-ccw {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}

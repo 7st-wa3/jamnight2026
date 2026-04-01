@@ -1,0 +1,222 @@
+// --------------------------------
+// フロー
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .flows {
+    counter-reset: number 0;
+    margin-top: var(--spacing-xl);
+
+    .flow {
+      counter-increment: number 1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .flowInner {
+        display: flex;
+        width: 100%;
+        padding: var(--spacing-m, 24px);
+        align-items: stretch;
+        gap: var(--gap, 40px);
+
+        // background: var(--grey-light, #f9f9f9);
+
+        border-radius: var(--rounded-s, 10px);
+        border: 4px solid var(--primary-base, #5b66c2);
+        background: var(--basic-white, #fff);
+
+        @include mx.tbStyle() {
+          padding: var(--spacing-s);
+          flex-direction: column;
+        }
+
+        .txtArea {
+          flex: 1;
+
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          gap: var(--spacing-s);
+
+          color: var(--basic-black, #333);
+
+          // border-left: 1px solid var(--basic-black);
+          // $arr: (
+          //   padding-left: (
+          //     "20px",
+          //     0,
+          //     0,
+          //     20,
+          //   ),
+          //   padding-right: (
+          //     "20px",
+          //     0,
+          //     0,
+          //     20,
+          //   ),
+          //   padding-top: (
+          //     0,
+          //     20,
+          //     20,
+          //     0,
+          //   ),
+          //   padding-bottom: (
+          //     0,
+          //     20,
+          //     20,
+          //     0,
+          //   ),
+          // );
+          // @include mx.propArrVW($arr);
+
+          // @include mx.tbStyle() {
+          //   border-left: none;
+          //   border-top: 1px solid var(--basic-black);
+          // }
+
+          @include mx.typoTXT();
+
+          // color: var(--basic-black, #121b3c);
+          // font-family: var(--UD-Gothic, "BIZ UDGothic");
+          // font-size: var(--txt);
+          // font-style: normal;
+          // font-weight: 400;
+          // line-height: 180%;
+
+          .mds {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--spacing-s, 16px);
+
+            color: var(--basic-black, #333);
+
+            @include mx.typoH5();
+
+            word-break: auto-phrase;
+
+            &:before {
+              // content: counter(number, decimal-leading-zero);
+              content: counter(number);
+              // color: var(--basic-black, #121b3c);
+              // font-family: "Noto Serif JP";
+
+              color: var(--primary-base, #5b66c2);
+              font-family: var(--ENG_Num, Inter);
+              font-size: var(--h4, 24px);
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+
+              display: flex;
+              width: 55px;
+              height: 55px;
+              padding: 10px;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+              aspect-ratio: 1/1;
+
+              border-radius: var(--rounded-l, 40px);
+              background: var(--grey-light, #f0f0f0);
+            }
+          }
+
+          @include mx.spStyle() {
+            flex: unset;
+            width: 100%;
+
+            p {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        .imgArea {
+          @include mx.propVW(width, 380, "100%", "100%", n);
+          margin-bottom: 0 !important;
+
+          border-radius: var(--rounded-s, 10px);
+          overflow: hidden;
+
+          @include mx.tbStyle() {
+            // order: -1;
+            align-self: center;
+          }
+        }
+
+        // .step {
+        //   display: flex;
+        //   justify-content: center;
+        //   align-items: center;
+        //   gap: 10px;
+
+        //   $arr: (
+        //     align-self: (
+        //       "center",
+        //       "flex-start",
+        //       "flex-start",
+        //       n,
+        //     ),
+        //     margin-right: (
+        //       "20px",
+        //       0,
+        //       0,
+        //       20,
+        //     ),
+        //     margin-bottom: (
+        //       n,
+        //       20,
+        //       20,
+        //       n,
+        //     ),
+        //     font-size: (
+        //       "16px",
+        //       16,
+        //       16,
+        //       16,
+        //     ),
+        //   );
+        //   @include mx.propArrVW($arr);
+
+        //   color: var(--basic-black, #121b3c);
+        //   font-family: "Noto Serif JP";
+        //   font-style: normal;
+        //   font-weight: 700;
+        //   line-height: normal;
+
+        //   .in {
+        //     border-bottom: 1px solid var(--basic-black, #121b3c);
+        //   }
+
+        // }
+      }
+
+      &:after {
+        // @include mx.awesomeStyle("\f107", 600, 1.8em);
+        // color: var(--primary-base);
+        content: "";
+        display: inline-block;
+        aspect-ratio: 61 / 24;
+        @include mx.propVW(width, "61px", 61, 61, 61);
+        @include mx.maskImg("../img/icon/flowArrow.svg");
+        background-color: var(--primary-base);
+        // transition: all 0.2s ease-out;
+
+        margin: 0 auto var(--spacing-m);
+      }
+
+      &:last-of-type {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}

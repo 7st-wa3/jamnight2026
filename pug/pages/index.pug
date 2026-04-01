@@ -1,0 +1,69 @@
+//- テンプレート読み込み
+extend ../inc/_layout
+
+//-　ページ独自の設定
+append pagedata
+  - var pageTitle= "インデックス";
+  - var pageDescription= "ページの説明";
+
+  - var ogType = "website"
+  //- - var outerClass = "blackMode"
+  //- website: WebサイトのTOPページ
+  //- blog: ブログのトップページ
+  //- article: 記事ページなど、WebサイトのTOP以外のページ
+  //- product: 製品の紹介ページ
+
+//- ページ独自のcss
+append pagecss
+  link(rel="stylesheet" href="./css/cont.css?"+dateNow)
+
+//- ページ独自のjs
+append pagejs
+  //- script(src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8")
+
+//- ページのコンテンツ
+block main
+
+  //- コンテンツヘッダ
+  section.contHead
+    .inner
+      h1 HGT-SYSTEM v2026.6
+
+  nav#pnkz
+    .inner
+      span
+        a(href="index.html") TOP
+      span このページ
+
+  main#mainCont
+    .inner
+
+      section.flb
+
+        article
+          h3 プレコメニュー
+          p 最終更新日：#{dateNowLoc}
+          ol
+            li
+              a(href="temp.html") テンプレートデザイン
+              ul
+                li
+                  a(href="temp-flex.html") 汎用FlexSystem v2026
+                li
+                  a(href="temp-cc.html") コンテナクエリのテスト
+            //- li
+            //-   a(href="top.html") トップページ
+            //- li
+            //-   a(href="mailform.html") メールフォーム
+            //- li
+            //-   a(href="contIndex.html") コンテンツインデックス
+            //- li
+            //-   a(href="newsIndex.html") ニュースインデックス
+            //- li
+            //-   a(href="newsEntry.html") ニュース記事
+            //- li
+            //-   a(href="gakka.html") 学科紹介
+            //- li
+            //-   a(href="gakkaSingle.html") 学科紹介詳細
+            //- li
+            //-   a(href="schedule.html") キャンパス年間スケジュール

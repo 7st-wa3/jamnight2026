@@ -1,0 +1,105 @@
+p ※プログレスバーはプラグイン依存のスタイリングになるため、実装後調整します。
+
+form#snow-monkey-form-406.snow-monkey-form(method="post", action="", enctype="multipart/form-data", data-screen="input")
+  .smf-focus-point(aria-hidden="true")
+  ol.smf-progress-tracker(aria-label="プログレストラッカー")
+    li(class="smf-progress-tracker__item smf-progress-tracker__item--input", aria-current="true")
+      div(class="smf-progress-tracker__item__number")
+        | 1
+      div(class="smf-progress-tracker__item__text")
+        | 入力画面
+        span.screen-reader-text(aria-hidden="true") 現在表示されている画面です。
+    li(class="smf-progress-tracker__item smf-progress-tracker__item--confirm", aria-current="false")
+      div(class="smf-progress-tracker__item__number")
+        | 2
+      div(class="smf-progress-tracker__item__text")
+        | 確認画面
+        span.screen-reader-text(aria-hidden="true") 現在表示されている画面です。
+    li(class="smf-progress-tracker__item smf-progress-tracker__item--complete", aria-current="false")
+      div(class="smf-progress-tracker__item__number")
+        | 3
+      div(class="smf-progress-tracker__item__text")
+        | 完了画面
+        span.screen-reader-text(aria-hidden="true") 現在表示されている画面です。
+  .smf-form.formArea
+    p.caution 宮崎ビジネス公務員専門学校に関しますお問い合わせは、下記メールフォームから、当校の個人情報保護方針をご確認のうえ、お問い合わせください。
+      br
+      | [必須]の部分は必須項目となっていますので、必ずご入力をお願いたします。
+      br
+      br
+      | 早急にご対応をさせていただきますが、土日祝祭日のお申し込み・お問い合わせについては、月曜日または休日明けのご対応となりますので、何卒ご了承下さい。
+      br
+      | 尚、お急ぎのお問い合わせの場合、お電話でも受け付けておりますのでお気軽にご連絡下さい。
+      br
+      br
+      | 電話番号：0985-22-6887
+      br
+      | 平日：9:00～17時
+      br
+      | 土曜日：9時～13時
+      br
+      |※日・祝日はお休みとなっております。
+    .wp-block-snow-monkey-forms-item.smf-item.hissu
+      div(class="smf-item__col smf-item__col--label")
+        div(class="smf-item__label")
+          span(class="smf-item__label__text") お名前
+      div(class="smf-item__col smf-item__col--controls")
+        div(class="smf-item__controls")
+          .smf-placeholder(data-name="fullname")
+            .smf-text-control
+              input(type="text", name="fullname", value="", class="smf-text-control__control", data-validations="required")
+    .wp-block-snow-monkey-forms-item.smf-item
+      div(class="smf-item__col smf-item__col--label")
+        div(class="smf-item__label")
+          span(class="smf-item__label__text") ふりがな
+      div(class="smf-item__col smf-item__col--controls")
+        div(class="smf-item__controls")
+          .smf-placeholder(data-name="furigana")
+            .smf-text-control
+              input(type="text", name="furigana", value="", class="smf-text-control__control")
+    .wp-block-snow-monkey-forms-item.smf-item
+      div(class="smf-item__col smf-item__col--label")
+        div(class="smf-item__label")
+          span(class="smf-item__label__text") ご住所
+      div(class="smf-item__col smf-item__col--controls")
+        div(class="smf-item__controls")
+          .smf-placeholder(data-name="address")
+            .smf-text-control
+              input(type="text", name="address", value="", class="smf-text-control__control")
+    .wp-block-snow-monkey-forms-item.smf-item.hissu
+      div(class="smf-item__col smf-item__col--label")
+        div(class="smf-item__label")
+          span(class="smf-item__label__text") Eメール
+      div(class="smf-item__col smf-item__col--controls")
+        div(class="smf-item__controls")
+          .smf-placeholder(data-name="email")
+            .smf-text-control
+              input(type="email", autocomplete="email", name="email", value="", class="smf-text-control__control", data-validations="email required")
+    .wp-block-snow-monkey-forms-item.smf-item
+      div(class="smf-item__col smf-item__col--label")
+        div(class="smf-item__label")
+          span(class="smf-item__label__text") 電話番号
+      div(class="smf-item__col smf-item__col--controls")
+        div(class="smf-item__controls")
+          .smf-placeholder(data-name="telno")
+            .smf-text-control
+              input(type="tel", name="telno", value="", autocomplete="tel-national", class="smf-text-control__control")
+    .wp-block-snow-monkey-forms-item.smf-item.hissu
+      div(class="smf-item__col smf-item__col--label")
+        div(class="smf-item__label")
+          span(class="smf-item__label__text") お問い合わせ内容
+      div(class="smf-item__col smf-item__col--controls")
+        div(class="smf-item__controls")
+          .smf-placeholder(data-name="message")
+            .smf-textarea-control
+              textarea(name="message", rows="5", class="smf-textarea-control__control", data-validations="required")
+  .smf-action
+    input(type="hidden", name="snow-monkey-forms-meta[token]", value="cc4d32378054e850aa947a48aa5151cc76e746ef77711416e87889d2fe074f72")
+    span.smf-button-control
+      button(type="submit", class="smf-button-control__control", data-action="confirm") 内容を確認する
+        span.smf-sending(aria-hidden="true")
+    input(type="hidden", name="snow-monkey-forms-meta[method]", value="confirm")
+  .smf-system-error-content-ready
+    | 予期しない問題が発生しました。 後でもう一度やり直すか、他の方法で管理者に連絡してください。
+  input(type="hidden", name="snow-monkey-forms-meta[formid]", value="406")
+  input(type="hidden", name="smf-recaptcha-response", value="", disabled="disabled")

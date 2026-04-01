@@ -1,0 +1,74 @@
+@use "../abstracts/mixins" as mx;
+
+// --------------------------------
+// cookie-consent
+// --------------------------------
+@layer layout {
+  .cookie-consent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    // @include mx.rectPc(100vw);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.2em;
+    box-sizing: border-box;
+    visibility: hidden;
+    z-index: 9999;
+
+    &.is-show {
+      visibility: visible;
+    }
+
+    a {
+      color: #fff !important;
+    }
+  }
+
+  .cookie-agree {
+    color: #fff;
+    background: dodgerblue;
+    padding: 0.5em 1.5em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // メディアクエリ
+  // @media screen and (max-width: 600px) {
+  @include mx.spStyle() {
+    .cookie-consent {
+      flex-direction: column;
+    }
+
+    .cookie-text {
+      margin-bottom: 1em;
+    }
+  }
+
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  // パッと消える
+  .cc-hide1 {
+    display: none;
+  }
+
+  // ゆっくり消える
+  .cc-hide2 {
+    animation: hide 0.5s linear 0s;
+    animation-fill-mode: forwards;
+  }
+}

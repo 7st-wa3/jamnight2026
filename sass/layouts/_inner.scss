@@ -1,0 +1,12 @@
+// --------------------------------
+// .inner共通スタイル　スコープ無しなので全体的にかかる
+// --------------------------------
+@layer layout {
+  .inner {
+    border: 1px dashed #f00; //確認用
+
+    width: 100%;
+    max-width: var(--contents);
+    padding: var(--contents-padding);
+  }
+}

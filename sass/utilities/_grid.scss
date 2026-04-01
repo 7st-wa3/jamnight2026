@@ -1,0 +1,85 @@
+// --------------------------------
+// grid system
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer utilities {
+  .gridSys {
+    // width: 100%;
+    // // --grid-gap: 20px ;
+    // --margin-bottom: 20px;
+    // --------------------------------
+    display: grid;
+    width: 100%;
+    margin-bottom: var(--spacing-m);
+    // gap: var(--spacing-m) var(--spacing-s);
+    gap: var(--gap);
+    grid-auto-flow: row;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include mx.spStyle() {
+      gap: var(--spacing-xs) var(--spacing-xs);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    &.center {
+      place-content: center;
+      place-items: center;
+    }
+  }
+
+  @for $i from 2 through 12 {
+    .col-#{$i} {
+      grid-area: auto / auto / auto / span $i;
+    }
+  }
+
+  @include mx.pcxStyle() {
+    @for $i from 2 through 12 {
+      .col-#{$i}Pcx {
+        grid-area: auto / auto / auto / span $i;
+      }
+    }
+  }
+
+  @include mx.pcStyle() {
+    @for $i from 2 through 12 {
+      .col-#{$i}Pc {
+        grid-area: auto / auto / auto / span $i;
+      }
+    }
+  }
+
+  @include mx.ntStyle() {
+    @for $i from 2 through 12 {
+      .col-#{$i}Nt {
+        grid-area: auto / auto / auto / span $i;
+      }
+    }
+  }
+
+  @include mx.tbStyle() {
+    @for $i from 2 through 12 {
+      .col-#{$i}Tb {
+        grid-area: auto / auto / auto / span $i;
+      }
+    }
+  }
+
+  @include mx.spStyle() {
+    @for $i from 2 through 12 {
+      .col-#{$i}Sp {
+        grid-area: auto / auto / auto / span $i;
+      }
+    }
+  }
+
+  @include mx.spxStyle() {
+    @for $i from 2 through 12 {
+      .col-#{$i}Spx {
+        grid-area: auto / auto / auto / span $i;
+      }
+    }
+  }
+}

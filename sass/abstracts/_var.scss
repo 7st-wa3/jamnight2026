@@ -1,0 +1,292 @@
+@use "variables" as var;
+@use "mixins" as mx;
+
+// layer順番を宣言：後に書いたレイヤーが強い
+@layer reset, base, layout, components, utilities;
+
+// --------------------------------
+// 変数設定
+// --------------------------------
+:root {
+  --vw: 1vw;
+  --font-size-ratio: 1; // フォントの倍率
+
+  // --------------------------------
+  // コンテンツ幅など
+  // --------------------------------
+  --contents: #{(var.$contentWidth + (var.$contentPaddPC * 2)) * 1px};
+  --contents-padding: 0 #{var.$contentPaddPC * 1px};
+
+  @include mx.tbStyle() {
+    --contents-padding: 0 #{var.$contentPaddTB * 1px};
+  }
+
+  @include mx.spStyle() {
+    --contents-padding: 0 #{var.$contentPaddSP * 1px};
+  }
+
+  // --------------------------------
+  // フォントサイズ
+  // --------------------------------
+  // --------------------------------
+  // spacing
+  // --------------------------------
+  $arr: (
+    --h1: (
+      "52px",
+      "40px",
+      "32px",
+      n,
+    ),
+    --h2: (
+      "40px",
+      "32px",
+      "28px",
+      n,
+    ),
+    --h2_top: (
+      "52px",
+      "40px",
+      "32px",
+      n,
+    ),
+    --h3: (
+      "32px",
+      "24px",
+      "24px",
+      n,
+    ),
+    --h4: (
+      "24px",
+      "20px",
+      "20px",
+      n,
+    ),
+    --h5: (
+      "20px",
+      "18px",
+      "18px",
+      n,
+    ),
+    --h6: (
+      "18px",
+      "16px",
+      "16px",
+      n,
+    ),
+    --txt: (
+      "16px",
+      n,
+      n,
+      n,
+    ),
+    // --txt_big: (
+    //   20,
+    //   18,
+    //   16,
+    //   18,
+    // ),
+    --txt_min: (
+        "14px",
+        "12px",
+        n,
+        n,
+      ),
+    --spacing-xxs: (
+      "4px",
+      n,
+      n,
+      n,
+    ),
+    --spacing-xs: (
+      "8px",
+      n,
+      n,
+      n,
+    ),
+    --spacing-s: (
+      "16px",
+      n,
+      n,
+      n,
+    ),
+    --spacing-m: (
+      "24px",
+      n,
+      n,
+      n,
+    ),
+    --spacing-l: (
+      "32px",
+      n,
+      n,
+      n,
+    ),
+    --spacing-xl: (
+      "64px",
+      n,
+      n,
+      n,
+    ),
+    --spacing-xxl: (
+      "96px",
+      n,
+      n,
+      n,
+    ),
+    --gap: (
+      "40px",
+      "20px",
+      "15px",
+      n,
+    ),
+    --main-margin: (
+      "140px",
+      "76px",
+      "60px",
+      n,
+    ),
+    --contents-margin-default: (
+      "var(--spacing-xxl)",
+      "var(--spacing-xl)",
+      "var(--spacing-xl)",
+      "var(--spacing-xxl)",
+    ),
+    --contents-margin-section_inner: (
+      "var(--spacing-xl)",
+      "var(--spacing-l)",
+      "var(--spacing-l)",
+      "var(--spacing-xl)",
+    ),
+    --btn-padding-vertical: (
+      "var(--spacing-m)",
+      "var(--spacing-s)",
+      "var(--spacing-s)",
+      "var(--spacing-m)",
+    ),
+    --btn-padding-horizonal: (
+      "var(--spacing-s)",
+      n,
+      n,
+      n,
+    ),
+    --display: (
+      1920,
+      768,
+      375,
+      1280,
+    ),
+    --display_100vh: (
+      1080,
+      1024,
+      667,
+      900,
+    ),
+    // --contents: (
+    //   1100,
+    //   728,
+    //   335,
+    //   1100,
+     // ),
+  );
+  @include mx.propArrVW($arr);
+
+  // --------------------------------
+  // rounded
+  // --------------------------------
+  //   --rounded-xs: 5px;
+  --rounded-s: 10px;
+  --rounded-m: 20px;
+  --rounded-l: 40px;
+  --rounded-full: 10000px;
+  // pc,tab,sp全部同じ
+
+  // --------------------------------
+  // カラー設定
+  // --------------------------------
+
+  --basic-black: #333333;
+  --basic-white: #ffffff;
+  // --basic-text: #333333;
+
+  --primary-light: #d0ccf6;
+  --primary-base: #5b66c2;
+  --primary-dark: #2e2674;
+
+  --primary-COURSE-honka: #0c5998;
+  --primary-COURSE-senkou: #ff57b3;
+  --primary-COURSE-jokyu: #3ec094;
+  --primary-COURSE-shingaku: #ff6c0a;
+  --primary-COURSE-business: #954aa6;
+
+  --secondary-light: #d5edda;
+  --secondary-base: #0d8725;
+  --secondary-dark: #04462d;
+
+  --accent-light: #fff5e5;
+  --accent-base: #f29600;
+  --accent-dark: #4f3100;
+
+  --grey-light: #f0f0f0;
+  --grey-base: #b3b3b3;
+  --grey-dark: #4d4747;
+
+  --red-light: #ffe8e8;
+  --red-base: #c70000;
+  --red-dark: #750000;
+
+  --link-pdf: #8e0002;
+  --link-Excel: #007850;
+  --link-Word: #00218e;
+  --link-link: var(--primary-base);
+
+  --contHead-Bg: #{rgba(#d0d0d0, 0.2)};
+
+  // --------------------------------
+  // カラーパーツ
+  // --------------------------------
+  //   --btn_general-def-bg: var(--primary-dark);
+  //   --btn_general-def-txt: var(--basic-white);
+  //   --btn_general-def-border: var(--primary-dark);
+
+  //   --btn_general-rev-bg: var(--basic-white);
+  //   --btn_general-rev-txt: var(--basic-black);
+  //   --btn_general-rev-border: var(--basic-black);
+
+  //   --btn_anchor-bg: var(--basic-white);
+  //   --btn_anchor-txt: var(--basic-black);
+  //   --btn_anchor-border: var(--grey-base);
+
+  //   --btn_tab-bg: var(--basic-white);
+  //   --btn_tab-txt: var(--grey-base);
+  //   --btn_tab-border: var(--grey-base);
+
+  //   --parts_pulldown-bg: var(--basic-white);
+  //   --parts_pulldown-txt: var(--basic-black);
+
+  //   *:hover {@media (hover: hover) {
+  //     --btn_general-def-bg: var(--primary-dark);
+  //     --btn_general-def-txt: var(--basic-white);
+  //     --btn_general-def-border: var(--primary-dark);
+
+  //     --btn_general-rev-bg: var(--basic-white);
+  //     --btn_general-rev-txt: var(--basic-black);
+  //     --btn_general-rev-border: var(--basic-black);
+
+  //     --btn_anchor-bg: var(--basic-white);
+  //     --btn_anchor-txt: var(--basic-black);
+  //     --btn_anchor-border: var(--grey-base);
+
+  //     --btn_tab-bg: var(--basic-white);
+  //     --btn_tab-txt: var(--grey-base);
+  //     --btn_tab-border: var(--grey-base);
+
+  //     --parts_pulldown-bg: var(--basic-white);
+  //     --parts_pulldown-txt: var(--basic-black);
+  //   }}
+
+  // --------------------------------
+  // noimg
+  // --------------------------------
+  // --no-image-file: url("../img/noimg.jpg");
+}

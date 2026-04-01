@@ -1,0 +1,112 @@
+// --------------------------------
+// ポイント要素
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .points {
+    // --------------------------------
+    // 変数
+    // --------------------------------
+    $arr: (
+      --point-width: (
+        "calc((99.99% - (var(--column-gap) * 2)) / 3)",
+        "calc((99.99% - (var(--column-gap) * 1)) / 2)",
+        "100%",
+        n,
+      ),
+      --row-gap: (
+        "50px",
+        40,
+        30,
+        50,
+      ),
+      --column-gap: (
+        "40px",
+        30,
+        20,
+        40,
+      ),
+    );
+    @include mx.propArrVW($arr);
+    // --------------------------------
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin: 0;
+    counter-reset: number 0;
+
+    row-gap: var(--row-gap);
+    column-gap: var(--column-gap);
+  }
+
+  @scope (.points) {
+    .point {
+      width: var(--point-width);
+
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0;
+
+      border-radius: var(--rounded-s, 10px);
+      border: 1px solid var(--primary-base, #5b66c2);
+      overflow: hidden;
+
+      position: relative;
+
+      &:before {
+        counter-increment: number 1;
+        content: counter(number, decimal-leading-zero);
+
+        display: flex;
+        @include mx.propVW(width, "70px", "60px", "50px", n);
+        flex-shrink: 0;
+        padding: var(--spacing-m, 24px) var(--spacing-xs, 8px);
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+
+        background-image: repeating-linear-gradient(
+          -45deg,
+          #717ac5,
+          #717ac5 10px,
+          #515bb8 10px,
+          #515bb8 20px
+        );
+
+        color: var(--basic-white, #fff);
+        font-family: var(--ENG_Num, Inter);
+        font-size: var(--h2, 40px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .text {
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-m);
+        align-items: flex-start;
+        gap: 10px;
+        flex: 1 0 0;
+      }
+
+      .mds {
+        color: var(--primary-dark, #2e2674);
+        @include mx.typoH4();
+
+        word-break: auto-phrase;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

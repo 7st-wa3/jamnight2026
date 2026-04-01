@@ -1,0 +1,292 @@
+// --------------------------------
+// タイポグラフィ設定
+// --------------------------------
+@use "../abstracts/mixins" as mx;
+// --------------------------------
+// WEBフォントの読み込みなどは別ファイルに
+// --------------------------------
+@use "./font";
+
+@layer base {
+  //------------------------------------------------------
+  // h2〜h6
+  //------------------------------------------------------
+
+  h2:not(.nonStyle),
+  .h2 {
+    display: flex;
+    // width: var(--contents, 1640px);
+    padding: var(--spacing-xs, 8px) var(--spacing-xs, 8px)
+      var(--spacing-xs, 8px) var(--spacing-s, 16px);
+    align-items: center;
+    gap: 10px;
+
+    border-left: 4px solid var(--primary-base, #5b66c2);
+    // background: #f0f0f0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      #f0f0f0,
+      #f0f0f0 10px,
+      transparent 10px,
+      transparent 20px
+    );
+
+    margin-top: var(--main-margin);
+    margin-bottom: var(--spacing-m);
+    @include mx.typoH2();
+    color: var(--basic-black);
+  }
+
+  h3:not(.nonStyle),
+  .h3 {
+    display: flex;
+    // width: var(--contents, 1640px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-s, 16px);
+
+    color: var(--basic-black);
+    @include mx.typoH3();
+
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-m);
+
+    &:after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary-base);
+    }
+  }
+
+  h4:not(.nonStyle),
+  .h4 {
+    color: var(--primary-dark);
+    @include mx.typoH4();
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-l);
+
+    // position: relative;
+
+    display: flex;
+    gap: 10px;
+  }
+
+  h5:not(.nonStyle),
+  .h5 {
+    color: var(--basic-black);
+    @include mx.typoH5();
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-l);
+
+    display: flex;
+    gap: 10px;
+
+    &:before {
+      content: "−";
+    }
+  }
+
+  h6:not(.nonStyle),
+  .h6 {
+    color: var(--primary-dark, #07543b);
+    @include mx.typoH6();
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-l);
+  }
+
+  // --------------------------------
+  // タイポグラフィ汎用クラス(figmaのフォント設定に準拠)
+  // --------------------------------
+  .typo-H1 {
+    @include mx.typoH1();
+  }
+
+  .typo-H2 {
+    @include mx.typoH2();
+  }
+
+  .typo-H3 {
+    @include mx.typoH3();
+  }
+
+  .typo-H4 {
+    @include mx.typoH4();
+  }
+
+  .typo-H5 {
+    @include mx.typoH5();
+  }
+
+  .typo-H6 {
+    @include mx.typoH6();
+  }
+
+  .typo-TXT {
+    @include mx.typoTXT();
+  }
+
+  // --------------------------------
+  // p の設定
+  // --------------------------------
+  p {
+    color: var(--basic-black);
+    @include mx.typoTXT();
+
+    // margin-top: var(--spacing-s);
+    margin-bottom: 1em;
+  }
+
+  // --------------------------------
+  // 装飾関係
+  // --------------------------------
+  strong {
+    font-weight: 700;
+    color: var(--red-base);
+  }
+
+  // --------------------------------
+  // 特殊
+  // --------------------------------
+  .caution {
+    color: var(--red-base);
+    font-weight: 700;
+  }
+
+  .red {
+    color: var(--red-base, #c70000);
+    // font-family: var(--JP, "Noto Sans JP");
+    font-size: var(--txt, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 30px */
+  }
+
+  // --------------------------------
+  // 日本語のフレーズで自動的に折り返し
+  // --------------------------------
+  // h1,h2,h3,h4,h5,h6,p,li,th,td
+  // {
+  //     &:not(.noBreak) {
+
+  //         word-break: auto-phrase;
+
+  //         // 尻を揃えるなら下も有効に
+  //         text-align: justify;
+  //         text-justify: inter-ideograph; /* Edge */
+
+  //     }
+  // }
+
+  // --------------------------------
+  // 役所とかの文書原稿でよく見るアレ
+  // 日本語文字の均等割付「会　　社　　名」とかのやつ。
+  // --------------------------------
+  .t-a-justify {
+    text-align: justify;
+    text-justify: inter-ideograph;
+    /* Edge */
+    line-break: strict;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    text-align-last: justify;
+    /* 最後の行でもやる */
+  }
+
+  // --------------------------------
+  // リクルート版
+  // --------------------------------
+  body.recruit {
+    //------------------------------------------------------
+    // h2〜h6
+    //------------------------------------------------------
+
+    h2:not(.nonStyle),
+    .h2 {
+      align-items: flex-start;
+      color: var(--basic-black);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+
+      font-family: "Zen Maru Gothic", sans-serif;
+
+      border-bottom: 2px solid var(--primary-base, #0072ff);
+    }
+
+    h3:not(.nonStyle),
+    .h3 {
+      color: var(--basic-black);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      border-left: 10px solid var(--primary-base, #0072ff);
+      font-family: "Zen Maru Gothic", sans-serif;
+    }
+
+    h4:not(.nonStyle),
+    .h4 {
+      color: var(--primary-dark);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      font-family: "Zen Maru Gothic", sans-serif;
+
+      &:after {
+        background: var(--primary-base, #0072ff);
+      }
+    }
+
+    h5:not(.nonStyle),
+    .h5 {
+      color: var(--basic-black);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      border-bottom: none;
+
+      flex-direction: row;
+      align-items: center;
+
+      gap: var(--spacing-xs);
+
+      word-break: auto-phrase;
+      text-align: left;
+      font-family: "Zen Maru Gothic", sans-serif;
+
+      &:before {
+        content: "";
+        $arr: (
+          width: (
+            10,
+            10,
+            10,
+            10,
+          ),
+          height: (
+            "2px",
+            n,
+            n,
+            n,
+          ),
+        );
+        @include mx.propArrVW($arr);
+
+        background-color: var(--primary-base);
+      }
+    }
+
+    h6:not(.nonStyle),
+    .h6 {
+      color: var(--primary-base);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      font-family: "Zen Maru Gothic", sans-serif;
+    }
+  }
+}

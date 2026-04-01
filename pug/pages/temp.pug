@@ -1,0 +1,247 @@
+//- テンプレート読み込み
+extend ../inc/_layout
+
+//-　ページ独自の設定
+append pagedata
+  - var pageTitle= "テンプレート";
+  - var pageDescription= "ページの説明";
+
+  - var ogType = "article"
+  //- website: WebサイトのTOPページ
+  //- blog: ブログのトップページ
+  //- article: 記事ページなど、WebサイトのTOP以外のページ
+  //- product: 製品の紹介ページ
+
+//- ページ独自のcss
+append pagecss
+  link(rel="stylesheet" href="./css/cont.css")
+  //- link(rel="stylesheet" href="./slick/slick.css")
+  //- link(rel="stylesheet" href="./slick/slick-theme.css")
+
+//- ページ独自のjs
+append pagejs
+  //- script(src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8")
+
+//- ページのコンテンツ
+block main
+
+  //- コンテンツヘッダ
+  section.contHead
+    .inner
+      h1.h1 コンテンツヘッダエリア
+
+
+  nav#pnkz
+    .inner
+      span
+        a(href="index.html") TOP
+      span
+        a(href="#") Level02
+      span
+        a(href="#") Level03
+      span
+        a(href="#") Level04
+      span テンプレートデザイン
+
+  main#mainCont.pt1em.pb1em
+    .inner
+      section.flb
+
+        article
+          h2 テンプレートデザイン
+          p 最終更新日：#{dateNowLoc}
+
+        article
+          h2 自動アンカーリンク
+          p.bdr.bg エリア指定ができ、複数設置できるようになりました。
+          h4 以下のように書けば、「#mainCont」内の「.ancLink」を拾って自動アンカーリンクを作ります。
+          pre
+            code.prettyprint.linenums
+              :escape-html
+                <nav class="ancLinksBase auto">
+                  <div class="ancLinks"></div>
+                </nav>
+
+          //- h4 以下のように書けば、「#mainCont」内の「.hoge」クラスを持つ要素内の「.ancLink」を拾って自動アンカーリンクを作ります。
+          //- pre
+          //-   code.prettyprint.linenums
+          //-     :escape-html
+          //-       <nav class="ancLinksBase auto">
+          //-         <div class="ancLinks" area="hoge"></div>
+          //-       </nav>
+
+          h3 エリア属性なし
+          nav.ancLinksBase.auto
+            .ancLinks
+
+          //- h3 エリア属性指定（.hogeクラス内を指定）
+          //- nav.ancLinksBase.auto
+          //-   .ancLinks(area="hoge")
+
+        //- 見出し系
+        article
+          h2.ancLink 見出し系
+          include ../inc/pugparts/_mds
+
+
+        //- 画像系
+        article
+          h2.ancLink 画像系
+          include ../inc/pugparts/_image
+
+        //- 汎用FlexSystem v2026
+        article
+          h2.ancLink 汎用FlexSystem v2026
+          p
+            a.btn(href="temp-flex.html" role="button") 内容が膨大になったのでこちらに詳細を移しました。
+
+        //- 汎用GridSystem
+        article
+          h2.ancLink 汎用GridSystem
+          include ../inc/pugparts/_grid
+
+
+        //- ボーダー系
+        article
+          h2.ancLink ボーダー系
+          p.bdr.bg ボーダー系の設定は /components/_border.scss で設定します。
+          include ../inc/pugparts/_border
+
+        //- カード要素
+        article
+          h2.ancLink カード要素
+          include ../inc/pugparts/_cards
+
+        //- ポイント要素
+        article
+          h2.ancLink ポイント要素
+          include ../inc/pugparts/_points
+
+        //- テーブル
+        article
+          h2.ancLink テーブル v2026
+          p.bdr.bg 設計を見直しました。
+          include ../inc/pugparts/_table
+
+        //- リンク系
+        article
+          h2.ancLink リンク系
+          include ../inc/pugparts/_aTag
+
+        //- リスト系
+        article
+          h2.ancLink リスト系
+          include ../inc/pugparts/_list
+
+        //- ボタン
+        article
+          h2.ancLink ボタン
+          include ../inc/pugparts/_btn
+
+        article
+          h2.ancLink ページャー
+
+          //- wp-pagenavi準拠
+          h3 wp-pagenavi（WP）準拠
+          include ../inc/pugparts/_wp-pagenavi
+
+          //- pagebute（MT）準拠
+          h3 pagebute（MT）準拠
+          include ../inc/pugparts/_pagebute
+
+        //- アンカーリンク
+        article
+          h2.ancLink アンカーリンク
+          include ../inc/pugparts/_anc
+
+        //- タブ
+        article
+          h2.ancLink タブ
+          include ../inc/pugparts/_tabmenu
+
+
+        //- アコーディオン
+        article
+          h2.ancLink アコーディオン
+          include ../inc/pugparts/_acdjs
+
+        //- 新着情報
+        article
+          h2.ancLink お知らせ
+          include ../inc/pugparts/_newslist
+
+
+        //- ボタン風チェックボックスとラジオボタン（OPTION）
+        //- include ../inc/pugparts/_likeAbtn
+
+        //- フロー
+        article
+          h2.ancLink フロー
+          include ../inc/pugparts/_flow
+
+        //- カード
+        article
+          h2.ancLink カード
+          include ../inc/pugparts/_cards
+
+
+        //- コンテンツインデックス
+        article
+          h2.ancLink コンテンツインデックス
+          include ../inc/pugparts/_contindex
+
+        //- kill系
+        article
+          h2.ancLink kill系（onlyは廃止）
+          p 長年ご愛顧いただいておりましたヘルパークラス「.pcOnly」や「.spOnly」は、昨今のブレイクポイント増加に伴い廃止します。今後は代わりに以下の「kill系」クラスを併用してください。
+          ul
+            li .pcKill：pcサイズでは非表示にします。
+            li .ntKill：ノートpcサイズでは非表示にします。
+            li .tbKill：タブレットサイズでは非表示にします。
+            li .spKill：スマホサイズでは非表示にします。
+          h3 killサンプル
+          p.bdr.bg.pcKill .pcKill：pcサイズでは非表示にします。
+          p.bdr.bg.ntKill .ntKill：ノートpcサイズでは非表示にします。
+          p.bdr.bg.tbKill .tbKill：タブレットサイズでは非表示にします。
+          p.bdr.bg.spKill .spKill：スマホサイズでは非表示にします。
+
+          h3 only的な使い方サンプル
+          p 各killを併用して代用します。
+          p.bdr.bg.ntKill.tbKill.spKill .ntKill.tbKill.spKill：pcサイズでのみ表示します。
+          p.bdr.bg.pcKill.tbKill.spKill .pcKill.tbKill.spKill：ノートpcサイズでのみ表示します。
+          p.bdr.bg.pcKill.ntKill.spKill .pcKill.ntKill.spKill：タブレットサイズでのみ表示します。
+          p.bdr.bg.pcKill.ntKill.tbKill .pcKill.ntKill.tbKill：スマホサイズでのみ表示します。
+
+
+          //- 縦長横長判定
+          h3 縦長横長判定
+          p 「.portKill」で縦長画面の場合非表示。「.landKill」で横長画面の場合非表示になります。（正方形なら横長判定のようです。）
+          p.bdr.bg.portKill .portKill：縦長サイズでは非表示にします。
+          p.bdr.bg.landKill .landKill：横長（あるいは正方形）では非表示にします。
+          p.bdr.bg.pcKill.ntKill.landKill .pcKill.ntKill.landKill：タブレット以下サイズで縦長画面のみ表示します。
+          p.bdr.bg.pcKill.ntKill.portKill .pcKill.ntKill.portKill：タブレット以下サイズで横長画面のみ表示します。
+
+        article
+          include ../inc/pugparts/_fuwat
+
+        article
+          include ../inc/pugparts/_ruby
+
+        article
+          h2 404
+
+          .e404
+            .txt
+              .en 404 Not Found
+              .jp お探しのページは
+                br.spOnly
+                | 見つかりませんでした
+              p URLが変更されたか、ページが
+                br.spOnly
+                | 削除された可能性があります
+            //- figure
+            //-   img.lazy.lazyload.spKill(data-src="./img/e404.svg", alt="")
+            //-   img.lazy.lazyload.spOnly(data-src="./img/e404Sp.svg", alt="")
+          .inlineC
+            a.btn.rev(href="#" role="button") TOPへ戻る
+

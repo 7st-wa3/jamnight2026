@@ -1,0 +1,20 @@
+// --------------------------------
+// コンテンツマージン
+// var(--contents-margin-default)分、上下左右にマージン
+// --------------------------------
+
+.cm-t {
+  margin-top: var(--contents-margin-default);
+}
+
+.cm-r {
+  margin-right: var(--contents-margin-default);
+}
+
+.cm-b {
+  margin-bottom: var(--contents-margin-default);
+}
+
+.cm-l {
+  margin-left: var(--contents-margin-default);
+}

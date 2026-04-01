@@ -1,0 +1,209 @@
+// --------------------------------
+// tabMenu
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .tabMenuLike,
+  .tabMenu {
+    margin-bottom: var(--spacing-m);
+
+    // ノーマルタイプ
+    &.typeN {
+      display: flex;
+      width: 100%;
+      align-items: flex-start;
+
+      @include mx.propVW(--gap, "20px", 10, 10, 20);
+
+      gap: var(--gap);
+
+      flex-wrap: wrap;
+
+      .menu {
+        @include mx.flexLayoutBox(20px, column, center, center, nowrap, flex);
+
+        padding: var(--spacing-s) var(--spacing-l);
+
+        @include mx.spStyle() {
+          padding: var(--spacing-xs) var(--spacing-s);
+        }
+
+        border-radius: var(--rounded-full);
+        border: 1px solid var(--grey-dark);
+
+        color: var(--basic-black);
+        text-align: center;
+        font-family: var(--UD-Gothic, "BIZ UDGothic");
+        @include mx.propVW(font-size, "18px", 18, 16, 18);
+
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+          @media (hover: hover) {
+            color: var(--basic-white);
+            background: var(--basic-black);
+          }
+        }
+
+        &.active {
+          color: var(--basic-white);
+          background: var(--basic-black);
+        }
+
+        @include mx.spStyle() {
+          width: calc((99.99% - (var(--gap) * 1)) / 2);
+        }
+      }
+    }
+
+    // タブタイプ
+    &.typeT {
+      display: flex;
+      gap: 0;
+
+      border-radius: var(--rounded-m, 20px);
+      border: 1px solid var(--grey-base, #d0d0d0);
+      background: var(--grey-light, #f9f9f9);
+
+      // border-bottom: 5px solid var(--btn_tab-border, #f0f0f0);
+      margin: var(--spacing-m) 0;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      // @include mx.tbStyle() {
+      //   gap: 10px 0;
+      // }
+
+      .menu {
+        display: flex;
+        padding: var(--btn-padding-vertical, 24px) var(--spacing-l, 32px);
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-s, 16px);
+
+        border-radius: var(--rounded-m, 20px);
+
+        // flex: 1 0 0;
+        width: calc((99.99% - (var(--gap) * 0)) / 3);
+        @include mx.spStyle() {
+          width: calc((99.99% - (var(--gap) * 0)) / 2);
+        }
+
+        // border-bottom: 5px solid var(--btn_tab-border, #f0f0f0);
+
+        color: var(--basic-black);
+        text-align: center;
+        font-family: var(--JP, "BIZ UDPGothic");
+        font-size: var(--h6, 22px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+
+        cursor: pointer;
+
+        transition: all 0.3s ease-out;
+        // @include mx.translate(0, 5px);
+
+        &.active {
+          &:before {
+            content: "";
+            $arr: (
+              width: (
+                "10px",
+                10,
+                10,
+                10,
+              ),
+              height: (
+                "10px",
+                10,
+                10,
+                10,
+              ),
+            );
+            flex-shrink: 0;
+            @include mx.propArrVW($arr);
+            background-color: var(--primary-base);
+            border-radius: 100%;
+          }
+        }
+
+        &:hover:not(.active) {
+          // border-bottom: 5px solid var(--btn_tab-border-hv, #6f9fed);
+          // background: var(--btn_tab-bg-hv, #6F9FED);
+
+          // border-radius: var(--rounded-s, 10px) var(--rounded-s, 10px) 0px 0px;
+          // border-bottom: 5px solid var(--primary-base, #0072ff);
+          background: var(--basic-white);
+
+          color: var(--primary-base);
+        }
+
+        &.active {
+          background-color: var(--primary-light);
+          &:before {
+            background-color: var(--basic-black);
+          }
+          // border-bottom: 5px solid var(--btn_tab-border-hv, #6f9fed);
+        }
+
+        @include mx.spStyle() {
+          display: flex;
+          // height: 46px;
+          padding: var(--spacing-s, 16px) var(--spacing-xs, 8px);
+          align-items: center;
+          gap: var(--spacing-s, 16px);
+        }
+      }
+    }
+  }
+
+  // --------------------------------
+  // タブの中身表示の枠
+  // --------------------------------
+  .tabBoxes {
+    // border: 1px solid #5d5d5d;
+    display: flex;
+    padding: 0;
+    margin-bottom: var(--contents-margin-default);
+
+    .boxes {
+      display: none;
+      // padding: 1em;
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  // --------------------------------
+  // 派生：タグリスト
+  // --------------------------------
+  // .tagList {
+  // 	@include mx.flexLayoutBox(0, row, flex-start, stretch, wrap, flex);
+  // 	gap: var(--spacing-s);
+
+  // 	.tag {
+  // 		border-radius: var(--rounded-full);
+  // 		border: 1px solid var(--grey-dark);
+
+  // 		color: var(--basic-black);
+  // 		text-align: center;
+  // 		font-family: var(--UD-Gothic, "BIZ UDGothic");
+  //		@include mx.propVW(font-size, "16px", 16, 16, 16);
+  // 		font-style: normal;
+  // 		font-weight: 500;
+  // 		line-height: normal;
+
+  // 		padding: var(--spacing-s);
+
+  // 	}
+  // }
+}

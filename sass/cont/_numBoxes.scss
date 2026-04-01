@@ -1,0 +1,123 @@
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .wp-block-lazyblock-numboxes {
+    display: flex;
+
+    @include mx.tbStyle() {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .dataFrame {
+    display: flex;
+    // width: 1040px;
+    align-items: flex-start;
+    align-content: flex-start;
+    @include mx.propVW(--gap, 30, 20, 10, 20);
+    gap: var(--gap);
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include mx.tbStyle() {
+      align-items: stretch;
+      max-width: 446px;
+    }
+
+    .data {
+      width: calc((99.99% - (var(--gap) * 1)) / 2);
+      display: flex;
+      $arr: (
+        padding: (
+          "var(--spacing-m)",
+          10,
+          10,
+          n,
+        ),
+        gap: (
+          20,
+          20,
+          10,
+          n,
+        ),
+      );
+      @include mx.propArrVW($arr);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+
+      border: 1px solid var(--grey-dark, #717278);
+      background: #fff;
+
+      @include mx.tbStyle() {
+        // width: calc((99.99% - (var(--gap) * 1)) / 2);
+        width: 100%;
+      }
+
+      .title {
+        color: var(--basic-black, #121b3c);
+        font-family: "BIZ UDGothic";
+        @include mx.propVW(font-size, 30, 26, 20, n);
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .genzai {
+        color: var(--basic-black, #121b3c);
+        text-align: center;
+        font-family: "BIZ UDGothic";
+        @include mx.propVW(font-size, 18, 18, 18, n);
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .graph {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include mx.propVW(gap, 40, 10, 10, n);
+
+        .icon {
+          img {
+            $arr: (
+              width: (
+                80,
+                50,
+                50,
+                n,
+              ),
+              height: (
+                80,
+                50,
+                50,
+                n,
+              ),
+            );
+            @include mx.propArrVW($arr);
+          }
+        }
+
+        .num {
+          color: #de3105;
+          font-family: "BIZ UDGothic";
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+
+          .animeNum {
+            @include mx.propVW(font-size, 65, 55, 35, n);
+          }
+
+          .unit {
+            @include mx.propVW(font-size, 32, 28, 20, n);
+          }
+        }
+      }
+    }
+  }
+}

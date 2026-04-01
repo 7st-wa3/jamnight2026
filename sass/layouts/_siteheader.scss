@@ -1,0 +1,61 @@
+//---------------------------
+// siteheaderクラス
+// サイトのヘッダ部分のスタイル
+//---------------------------
+@layer layout {
+  // --------------------------------
+  // 設定値
+  // --------------------------------
+  $fixedFlag: false;
+
+  // --------------------------------
+  // 変数
+  // --------------------------------
+  :root {
+    --header-height: 100px; // ヘッダの高さ定義
+  }
+  // --------------------------------
+  // ヘッダ固定ならouterずらしとく
+  // --------------------------------
+  // @if $fixedFlag ==true {
+  //   #outer {
+  //     // padding-top: 0;
+  //     padding-top: var(--header-inner-height);
+  //   }
+  // }
+
+  #header {
+    --header-background: #caeded; //ヘッダの背景定義
+
+    @if $fixedFlag ==true {
+      position: fixed;
+    } @else {
+      position: static;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--header-background);
+    width: 100%;
+    height: var(--header-height);
+
+    // .inner {
+    //   width: 100%;
+    //   max-width: var(--contents);
+    //   padding: var(--contents-padding);
+    // }
+  }
+
+  // --------------------------------
+  // 内部要素
+  // --------------------------------
+  @scope (.global-layout__header) {
+    .top {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

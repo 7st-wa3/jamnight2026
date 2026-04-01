@@ -1,0 +1,22 @@
+//- 抹茶版プルダウンメニュー
+menu
+    li
+        a(href="index.html" tabindex="0") プレコメニュー
+    li(tabindex="0")
+        span プルダウン
+        menu
+            li
+                a(href="#" tabindex="0") Croissant
+            li
+                a(href="#" tabindex="0") Éclair
+            li(tabindex="0") Tartelettes
+                menu
+                    li
+                        a(href="#" tabindex="0") Aux mûres
+                    li
+                        a(href="#" tabindex="0") Aux framboises
+                    li.disabled Aux fraises
+            li.disabled Pain au chocolat
+    li.selected .selectedクラス
+    li.disabled .disabledクラス
+

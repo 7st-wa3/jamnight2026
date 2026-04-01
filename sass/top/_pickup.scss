@@ -1,0 +1,283 @@
+section#pickup {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  #puSlide {
+    // @include propVW(height, "350px", n, "unset!important", 350);
+    height: 350px;
+    width: 100%;
+    @include ntStyle(950) {
+      height: get_vw(350, 950);
+    }
+    @include tbStyle() {
+      height: get_vw(290, 768);
+    }
+    @include spStyle() {
+      height: get_vw(210, 520);
+    }
+    // overflow: hidden;
+
+    // background-image: url(../img/cont/h1_bg.png);
+    // background-position: left top;
+    // background-repeat: repeat;
+    // background-size: get_vw(867, 1920) get_vw(486, 1920);
+    // background-color: var(--contHead-Bg);
+
+    // @include ntStyle(1280) {
+    //   height: get_vw(585, 1280);
+    // }
+
+    .img {
+      aspect-ratio: 950 / 300;
+      overflow: hidden;
+      width: 950px;
+      // @include propVW(width, "950px", n, n, 950);
+      margin: 0 10px;
+      @include ntStyle(950) {
+        width: get_vw(950, 950);
+        height: get_vw(300, 950);
+      }
+      // @include spStyle() {
+      //   aspect-ratio: 750 / 750;
+      //   height: get_vw(375, 375);
+      // }
+
+      a {
+        margin: 0 !important;
+        &:hover {
+          @media (hover: hover) {
+            opacity: 0.7;
+          }
+        }
+      }
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // --------------------------------
+    // slick調整
+    // --------------------------------
+    &.slick-dotted.slick-slider {
+      margin-bottom: 0;
+    }
+    .slick-track {
+      @include pcStyle(950) {
+        margin-left: calc((100% - 950px) / 2);
+      }
+    }
+    .slick-dots {
+      display: flex;
+      justify-content: center;
+      @include propVW(bottom, "20px", 10, 10, n);
+      bottom: 20px;
+      left: 0;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        width: 38px;
+        height: 8px;
+        button {
+          width: 38px;
+          height: 8px;
+          padding: 0;
+          background-color: var(--basic-white);
+          border: 1px solid var(--primary-dark);
+          // border-radius: var(--rounded-full);
+
+          &:before {
+            display: none;
+          }
+        }
+        &.slick-active {
+          button {
+            background-color: var(--primary-base);
+          }
+        }
+      }
+    }
+  }
+
+  // .control {
+  //   @include propVW(margin-top, "5px", n, n, n);
+  //   width: 100%;
+  //   display: flex;
+  //   justify-content: center;
+  //   .inner {
+  //     width: 520px;
+  //     padding: 0 10px;
+  //     display: flex;
+  //     justify-content: space-between;
+  //     gap: 0.5em;
+
+  //     .center {
+  //       flex: 1;
+  //       display: flex;
+  //       justify-content: flex-end;
+  //       .button {
+  //         background-color: var(--primary-base);
+  //       }
+  //       #slider-play {
+  //         display: none;
+  //       }
+  //       &.paused {
+  //         #slider-play {
+  //           display: block;
+  //         }
+  //         #slider-pause {
+  //           display: none;
+  //         }
+  //       }
+  //     }
+
+  //     .button {
+  //       position: relative;
+  //       flex-shrink: 0;
+  //       z-index: 2;
+  //       $arr: (
+  //         --pdg-x: (
+  //           "12px",
+  //           n,
+  //           n,
+  //           n,
+  //         ),
+  //         --pdg-y: (
+  //           "4px",
+  //           n,
+  //           n,
+  //           n,
+  //         ),
+  //         font-size: (
+  //           "20px",
+  //           n,
+  //           n,
+  //           n,
+  //         ),
+  //       );
+  //       @include propArrVW($arr);
+
+  //       cursor: pointer;
+  //       padding: var(--pdg-y) var(--pdg-x);
+  //       color: var(--basic-white);
+  //       background-color: var(--basic-black);
+  //       border: var(--pdg-y) solid transparent;
+  //       border-radius: var(--rounded-full);
+  //       justify-content: space-between;
+  //       line-height: 1;
+  //       transition: all 0.2s ease-out;
+  //       &:hover {
+  //         @media (hover: hover) {
+  //           border-color: var(--primary-base);
+  //           background-color: var(--basic-white);
+  //           color: var(--basic-black);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  // --------------------------------
+  // slick起動時に一瞬見えるのを防ぐ
+  // --------------------------------
+  // #HeroSlide {
+  //   display: none;
+  // }
+  // #HeroSlide.slick-initialized {
+  //   display: block;
+  // }
+
+  // .scroll {
+  //   display: flex;
+
+  //   justify-content: center;
+  //   align-items: flex-end;
+
+  //   position: absolute;
+
+  //   $arr: (
+  //     gap: (
+  //       10,
+  //       10,
+  //       10,
+  //       n,
+  //     ),
+  //     width: (
+  //       50,
+  //       62,
+  //       30,
+  //       n,
+  //     ),
+  //     height: (
+  //       n,
+  //       133,
+  //       65,
+  //       n,
+  //     ),
+  //     left: (
+  //       100,
+  //       n,
+  //       n,
+  //       n,
+  //     ),
+  //     bottom: (
+  //       114,
+  //       n,
+  //       n,
+  //       n,
+  //     ),
+  //   );
+  //   @include propArrVW($arr);
+
+  //   img.arw {
+  //     $arr: (
+  //       width: (
+  //         10,
+  //         20,
+  //         10,
+  //         n,
+  //       ),
+  //       height: (
+  //         101,
+  //         204,
+  //         100,
+  //         n,
+  //       ),
+  //     );
+  //     @include propArrVW($arr);
+
+  //     animation-duration: 1s;
+  //     animation-name: scrarw;
+  //     animation-iteration-count: infinite;
+  //     animation-timing-function: ease;
+  //   }
+
+  //   img.txt {
+  //     $arr: (
+  //       width: (
+  //         14,
+  //         45,
+  //         22,
+  //         n,
+  //       ),
+  //       height: (
+  //         47,
+  //         74,
+  //         36,
+  //         n,
+  //       ),
+  //     );
+  //     @include propArrVW($arr);
+  //   }
+
+  //   @include tbStyle() {
+  //     position: static !important;
+  //     overflow: hidden;
+  //   }
+  // }
+}

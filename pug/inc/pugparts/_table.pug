@@ -1,0 +1,103 @@
+h3 ノーマルタイプ
+h4 何もクラスをつけずに普通にテーブルで置くと
+
+table
+  tbody
+    tr
+      th 会社名
+      td ○○株式会社
+    tr
+      th 設立
+      td 20XX年X月X日
+    tr
+      th 住所
+      td 東京都○○区△△町
+    tr
+      th 電話番号
+      td 00-0000-00000
+
+
+h4 .tableWrapper で table を 囲むと
+p セルの中身がnowrapになって、はみ出たら横スクロールします。PCでもそうです。なので適宜 br 入れて調整してね
+.tableWrapper
+  table
+    tbody
+      tr
+        th 会社名
+        td ○○株式会社
+      tr
+        th 設立
+        td 20XX年X月X日
+      tr
+        th 住所
+        td 東京都○○区△△町寿限無寿限無五劫の擦り切れ
+          br
+          | 海砂利水魚の水行末・雲来末・風来末喰う寝る処に住む処藪ぶら柑子の藪柑子
+          br
+          | パイポ・パイポ・パイポの
+          br
+          | シューリンガンシューリンガンのグーリンダイグーリンダイのポンポコピーのポンポコナの長久命の長助
+      tr
+        th 電話番号
+        td 00-0000-00000
+
+.tableWrapper
+  table
+    tbody
+      tr
+        th 会社名
+        td ○○株式会社
+      tr
+        th 設立
+        td 20XX年X月X日
+      tr
+        th 住所
+        td 東京都○○区△△町寿限無寿限無五劫の擦り切れ海砂利水魚の水行末・雲来末・風来末喰う寝る処に住む処藪ぶら柑子の藪柑子パイポ・パイポ・パイポのシューリンガンシューリンガンのグーリンダイグーリンダイのポンポコピーのポンポコナの長久命の長助
+      tr
+        th 電話番号
+        td 00-0000-00000
+
+//- h3 スマホでタテになるタイプ
+//- p table.spTate にして、tdに属性「data-label」でSP時の見出しを設定すると こんなタイプに。
+//- p ちょっとwysiwygやブロックエディタでは難しいかも。コードで書くことを勧めます。
+
+//- table.spTate
+//-   thead
+//-     tr
+//-       th 支社名
+//-       th 所在地
+//-       th 社員数
+//-   tbody
+//-     tr
+//-       th A支社
+//-       td(data-label='所在地') 東京都
+//-       td(data-label='社員数') 150人
+//-     tr
+//-       th B支社
+//-       td(data-label='所在地') 大阪府
+//-       td(data-label='社員数') 30人
+//-     tr
+//-       th C支社
+//-       td(data-label='所在地') 沖縄県
+//-       td(data-label='社員数') 50人
+
+h3 type2
+p table.type2 にしてちょ。
+
+//- .tableWrapper
+table.type2
+  tbody
+    tr
+      th th
+      td td
+    tr
+      th th
+      td この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+    tr
+      th th
+      td td
+    tr
+      th th
+      td td
+
+

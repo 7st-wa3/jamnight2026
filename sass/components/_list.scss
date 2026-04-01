@@ -1,0 +1,143 @@
+// --------------------------------
+// list系
+// --------------------------------
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  #editor-input-content,
+  main#mainCont {
+    :is(ul, ol) {
+      // 共通のスタイル
+      margin-top: 0.5em;
+      margin-bottom: 0;
+      margin-left: 1em;
+
+      li {
+        margin-bottom: var(--spacing-s);
+        color: var(--basic-black);
+      }
+
+      & > li {
+        line-height: 1.5;
+
+        &:before {
+          display: inline-block;
+          flex-shrink: 0;
+        }
+
+        ul {
+          // width: 100%;
+          margin-top: 0.5em;
+        }
+      }
+
+      &:where(ul) {
+        // ulだけのスタイル
+        list-style-type: none;
+        list-style-position: outside;
+        margin-left: 0.8em;
+        @include mx.spStyle() {
+          margin-left: 0;
+        }
+
+        & > li {
+          position: relative;
+          padding-left: 1em;
+
+          ul {
+            margin-left: 1em;
+          }
+
+          &:before {
+            content: "";
+            $arr: (
+              width: (
+                "8px",
+                8,
+                8,
+                8,
+              ),
+              height: (
+                "8px",
+                8,
+                8,
+                8,
+              ),
+            );
+            @include mx.propArrVW($arr);
+            background-color: var(--primary-dark);
+            border-radius: 100%;
+
+            position: absolute;
+            top: 0.55em;
+            left: 0;
+
+            @include mx.spStyle() {
+              top: 0.5em;
+            }
+          }
+        }
+      }
+
+      &:where(ol) {
+        // olだけのスタイル
+        // list-style-type: decimal-leading-zero;
+        // list-style-type: decimal;
+        &:not(.smf-progress-tracker) {
+          list-style-type: none;
+          list-style-position: outside;
+
+          li {
+            text-indent: -0.85em;
+            margin-left: 0.75em;
+          }
+          counter-reset: mycounter;
+
+          // ol{
+          // 	list-style-type:none;
+          // 	}
+          // li:before{
+          // 	counter-increment:item;
+          // 	content:counters(item, "-")". ";
+          // 	}
+
+          & > li {
+            // text-indent: -1.9em;
+
+            &:before {
+              counter-increment: mycounter;
+              content: counters(mycounter, "-") ". ";
+
+              // content: counter(mycounter, decimal-leading-zero) ".";
+
+              // font-family: var(--Noto-Serif);
+              color: var(--primary-dark);
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+              padding-right: 0.25em;
+            }
+          }
+
+          &.abc {
+            & > li {
+              // text-indent: -1.4em;
+
+              &:before {
+                content: counter(mycounter, upper-alpha) ".";
+                padding-right: calc(0.25em + 0.5em);
+              }
+            }
+          }
+
+          ul {
+            li {
+              text-indent: 0;
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

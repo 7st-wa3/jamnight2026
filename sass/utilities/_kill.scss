@@ -1,0 +1,42 @@
+// --------------------------------
+// kill 系
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer utilities {
+  @include mx.pcOnlyStyle() {
+    .pcKill {
+      display: none;
+    }
+  }
+
+  @include mx.ntOnlyStyle() {
+    .ntKill {
+      display: none;
+    }
+  }
+
+  @include mx.tbOnlyStyle() {
+    .tbKill {
+      display: none;
+    }
+  }
+
+  @include mx.spStyle() {
+    .spKill {
+      display: none;
+    }
+  }
+
+  @include mx.portStyle() {
+    .portKill {
+      display: none;
+    }
+  }
+  @include mx.landStyle() {
+    .landKill {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,209 @@
+// --------------------------------
+// アンカーリンク
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .ancLinks {
+    display: flex;
+    --gap: 20px 40px;
+    gap: var(--gap);
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    @include mx.tbStyle() {
+      --gap: 10px 20px;
+    }
+
+    .ancBtn {
+      // flex: 1;
+      // flex-basis: calc((99.99% - ((var(--gap) * 3) + (2px * 4))) / 4);
+
+      // @include mx.ntStyle() {
+      //   flex-basis: calc((99.99% - ((var(--gap) * 2) + (2px * 3))) / 3);
+      // }
+
+      // @include mx.tbStyle() {
+      //   flex-basis: calc((99.99% - ((var(--gap) * 1) + (2px * 2))) / 2);
+      // }
+
+      // @include mx.spStyle() {
+      //   flex-basis: 100%;
+      // }
+
+      a {
+        padding: var(--spacing-xs) 0;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-s, 16px);
+
+        height: 100%;
+
+        text-decoration: none;
+
+        border-bottom: 1px solid transparent;
+        margin-bottom: 4px;
+
+        color: var(--basic-black);
+        // font-family: var(--JP, "BIZ UDPGothic");
+        font-size: var(--txt, 16px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+
+        word-break: auto-phrase;
+
+        @include mx.tbStyle() {
+          gap: var(--spacing-xs);
+        }
+
+        @include mx.spStyle() {
+          padding: 0 var(--spacing-s) 0 0;
+        }
+
+        span {
+          @include mx.btnArrowMarkWaku();
+          &:before {
+            // @include mx.awesomeStyle("\f107", 600, 0.6em);
+
+            @include mx.btnArrowMark();
+            transform: translate(0, 10%) rotate(90deg);
+            // translate: 10% 0;
+
+            // color: var(--basic-white);
+            // outline: 2px solid var(--basic-black);
+            // background-color: var(--basic-black);
+            // padding: var(--spacing-xxs) var(--spacing-xs);
+            // border-radius: var(--rounded-full, 10000px);
+            // transition: all 0.2s ease-out;
+            // line-height: 1;
+          }
+        }
+
+        &:hover {
+          @media (hover: hover) {
+            border-bottom: 1px solid var(--primary-dark);
+            // margin-bottom: 0;
+            span {
+              background-color: var(--primary-dark);
+              text-decoration: none !important;
+              &:before,
+              &:after {
+                background-color: var(--basic-white);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // --------------------------------
+  // リクルート版
+  // --------------------------------
+  body.recruit {
+    .ancLinks {
+      justify-content: center;
+
+      .ancBtn {
+        flex-basis: unset;
+
+        a.anc {
+          color: var(--btn_anchor-txt, #333);
+          font-family: var(--JP, "BIZ UDPGothic");
+          font-size: var(--h5);
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+
+          position: relative;
+
+          border: none;
+          outline: none;
+
+          gap: var(--spacing-xs);
+
+          &:after {
+            display: none;
+            // 	content: "";
+            // 	mask-image: none;
+            // 	border-radius: var(--rounded-full, 10000px);
+            // 	border: 3px solid var(--btn_general-def-border, #121B3C);
+            // 	background-color: var(--btn_general-def-bg, #121B3C) !important;
+            // 	box-shadow: 0 5px 0px 0px var(--primary-dark, #0051A2);
+
+            // 	position: absolute;
+            // 	@include mx.propVW(left, 12, n, n, 12);
+            // 	@include mx.propVW(top, 19, n, n, 19);
+
+            // 	z-index: 0;
+          }
+
+          // @include mx.svgAutoIconSetting('before', '../img/recruit/iconArrow.svg', 16px, var(--basic-white), var(--basic-black), 0);
+
+          &:before {
+            // 	@include mx.transform(translate(0, -5px) rotate(90deg));
+            // 	position: relative;
+            // 	z-index: 1;
+
+            content: "";
+            $arr: (
+              width: (
+                32,
+                24,
+                20,
+                n,
+              ),
+              height: (
+                32,
+                24,
+                20,
+                n,
+              ),
+            );
+            @include mx.propArrVW($arr);
+
+            border-radius: var(--rounded-full);
+            background-image: url(../img/icon/img_ancar_arrow.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            box-shadow: 0 4px 0px 0px var(--primary-dark, #0051a2);
+
+            transform: translate(0, -4px);
+
+            transition: all 0.2s ease-out;
+
+            @include mx.tbStyle() {
+              box-shadow: none;
+              transform: translate(0, 0);
+            }
+          }
+
+          &:hover {
+            @media (hover: hover) {
+              &:before {
+                // background-color: var(--basic-black);
+                box-shadow: 0 0 0px 0px var(--primary-dark, #0051a2);
+                transform: translate(0, 0);
+              }
+
+              // &:after {
+              // 	@include mx.propVW(top, 24, n, n, 24);
+              // 	box-shadow: 0 0px 0px 0px var(--primary-dark, #0051A2);
+              // 	background-color: var(--basic-white) !important;
+              // }
+            }
+          }
+        }
+      }
+    }
+  }
+}

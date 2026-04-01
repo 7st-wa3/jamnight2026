@@ -1,0 +1,280 @@
+// --------------------------------
+// accordion ver2025.02
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .acdjs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s, 16px);
+
+    article {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+
+      width: 100%;
+
+      background: var(--basic-white, #fff);
+
+      transition: all 0.3s ease-out;
+
+      color: var(--basic-black);
+
+      border-bottom: 1px solid var(--grey-base);
+
+      header {
+        display: flex;
+        width: 100%;
+        @include mx.propVW(
+          padding,
+          "var(--spacing-m)",
+          "var(--spacing-s)",
+          "var(--spacing-s)",
+          n
+        );
+        align-items: center;
+        gap: var(--spacing-s);
+
+        background-color: transparent;
+        border-radius: var(--rounded-s, 10px) var(--rounded-s, 10px) 0 0;
+
+        @include mx.spStyle() {
+          gap: var(--spacing-xs);
+        }
+
+        cursor: pointer;
+
+        span,
+        div,
+        .txt {
+          flex: 1 0 0;
+
+          color: var(--basic-black, #333);
+          @include mx.typoH6();
+        }
+
+        &:after {
+          @include mx.awesomeStyle("\2b", 600, 1.2em);
+          color: var(--primary-base);
+
+          transition: all 0.3s ease-out;
+        }
+
+        &.active {
+          // color: var(--basic-white);
+          // background-color: var(--basic-black);
+          background-color: var(--grey-light);
+
+          &:before {
+            color: var(--basic-white) !important;
+          }
+
+          &:after {
+            content: "\f068" !important;
+            transform: translate(0, 0) rotate(-180deg);
+          }
+        }
+      }
+
+      main {
+        display: none;
+        width: 100%;
+        margin-bottom: var(--spacing-m);
+
+        .ans {
+          width: 100%;
+          @include mx.propVW(
+            padding,
+            "var(--spacing-m)",
+            "var(--spacing-s)",
+            "var(--spacing-s)",
+            n
+          );
+          align-items: center;
+          gap: var(--spacing-s);
+          background: var(--grey-light);
+          border-radius: 0 0 var(--rounded-s, 10px) var(--rounded-s, 10px);
+        }
+
+        span,
+        div,
+        .txt {
+          flex: 1 0 0;
+
+          color: var(--basic-black, #333);
+          @include mx.typoTXT();
+        }
+      }
+    }
+
+    // --------------------------------
+    // FAQモード
+    // --------------------------------
+    &.faq {
+      article {
+        main .ans,
+        header {
+          &:before {
+            content: "Q";
+
+            display: flex;
+            $arr: (
+              width: (
+                "50px",
+                50,
+                50,
+                50,
+              ),
+              height: (
+                "50px",
+                50,
+                50,
+                50,
+              ),
+              padding: (
+                "10px",
+                10,
+                5,
+                10,
+              ),
+            );
+            @include mx.propArrVW($arr);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            border-radius: var(--rounded-l, 40px);
+            background: var(--primary-base, #158e66);
+
+            color: var(--basic-white, #fff);
+            font-family: var(--ENG_Num, Inter);
+            font-size: var(--h3, 32px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+        }
+
+        &:hover {
+          @media (hover: hover) {
+            header {
+              &:before {
+                color: var(--basic-white);
+              }
+            }
+          }
+        }
+
+        main .ans {
+          display: flex;
+          align-items: flex-start;
+
+          &:before {
+            content: "A";
+            color: var(--red-base);
+            background: var(--basic-white);
+          }
+        }
+      }
+    }
+
+    // --------------------------------
+    // hamNaviモード
+    // --------------------------------
+    // &.hamMode {
+    //   gap: 0;
+
+    //   article {
+    //     border: none;
+    //     border-bottom: 1px solid #ccc;
+
+    //     // .header,
+    //     .link,
+    //     header {
+    //       display: flex;
+    //       justify-content: space-between;
+
+    //       padding: var(--spacing-s) 0;
+
+    //       width: 100%;
+
+    //       .txt,
+    //       div,
+    //       span {
+    //         color: var(--basic-black, #333);
+    //         font-family: var(--JP, "Noto Sans JP");
+    //         font-size: var(--txt, 20px);
+    //         font-style: normal;
+    //         font-weight: 500;
+    //         line-height: normal;
+
+    //         transition: all 0.3s ease-out;
+    //       }
+
+    //       &:hover:not(.noLink) {
+    //         @media (hover: hover) {
+    //           .txt,
+    //           div,
+    //           span {
+    //             color: var(--main-red);
+    //           }
+    //         }
+    //       }
+
+    //       &:after {
+    //         @include mx.awesomeStyle("\2b");
+    //         color: var(--basic-black);
+    //       }
+
+    //       &.active {
+    //         &:after {
+    //           @include mx.awesomeStyle("\f068");
+    //         }
+    //       }
+    //     }
+
+    //     .link.noLink {
+    //       &:after {
+    //         display: none;
+    //       }
+    //     }
+
+    //     a.link {
+    //       text-decoration: none;
+
+    //       &:after {
+    //         display: none;
+    //       }
+    //     }
+
+    //     main {
+    //       &.opened {
+    //         display: block;
+    //       }
+
+    //       .ans {
+    //         display: flex;
+    //         padding: 0 0 var(--spacing-s) 0;
+
+    //         .txt,
+    //         div,
+    //         span {
+    //           display: flex;
+    //           padding-bottom: var(--spacing-s, 16px);
+    //           flex-direction: column;
+    //           align-items: flex-start;
+    //           gap: 10px;
+    //           align-self: stretch;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+  }
+}

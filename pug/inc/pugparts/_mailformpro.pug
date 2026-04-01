@@ -1,0 +1,113 @@
+form#mailformpro(method='post' accept-charset='UTF-8' action='http://www.cure.or.jp/common-files/mailform/mailformpro/mailformpro.cgi' novalidate)
+  input#mfp_token.mfp_element_hidden.mfp_element_all(type='hidden' name='mfp_token' value='zi-EbBA0JV1wghbumq5DfQ')
+  #mfp_hidden
+    input(type='submit')
+    input#mfp_input_time(type='hidden' name='mfp_input_time' value='0')
+    input#mfp_confirm_time(type='hidden' name='mfp_confirm_time' value='0')
+    input#mfp_referrer(type='hidden' name='mfp_referrer' value='http://www.cure.or.jp/thanks.html?no=202506020006')
+    input#mfp_errorlog(type='hidden' name='mfp_errorlog')
+    input#mfp_timeline(type='hidden' name='mfp_timeline')
+    input#mfp_domain(type='hidden' name='mfp_domain' value='www.cure.or.jp')
+    input#mfp_uri(type='hidden' name='mfp_uri' value='http://www.cure.or.jp/contact.html')
+    input#mfp_jssemantics(type='hidden' name='mfp_jssemantics' value='1')
+    input#mfp_cart(type='hidden' name='mfp_cart')
+    input#mfp_cartprice(type='hidden' name='mfp_cartprice')
+    input#mfp_paypal(type='hidden' name='mfp_paypal' value='0')
+    input#mfp_elementsQty(type='hidden' name='mfp_elementsQty' value='11')
+    input#mfp_requiredElementsQty(type='hidden' name='mfp_requiredElementsQty' value='7')
+    input#mfp_elementsArch(type='hidden' name='mfp_elementsArch' value='text:5,email:2,tel:1,radio:1,textarea:1,checkbox:1')
+    input#mfp_script(type='hidden' name='mfp_script' value='http://www.cure.or.jp/common-files/mailform/mailformpro/mailformpro.cgi')
+  dl.mailform
+    input.mfp_element_hidden.mfp_element_all#mfp_element_1(type='hidden' name='お名前' data-unjoin='姓+ +名+（+セイ+ +メイ+）')
+    dt.mfp.mfp_achroma.hissu
+      | お名前
+    dd.mfp.mfp_achroma
+      .mfp_rows
+        .mfp_col5
+          input.mfp_element_text.mfp_element_all.mfp_defaultValue#mfp_element_2(type='text' name='姓' data-kana='セイ' size='15' style='background-color: rgb(255, 0, 0); width: 90px;')
+          .mfp_err#errormsg_sei
+        .mfp_col5
+          input.mfp_element_text.mfp_element_all.mfp_defaultValue#mfp_element_3(type='text' name='名' data-kana='メイ' size='15' style='background-color: rgb(255, 0, 0); width: 90px;')
+          .mfp_err#errormsg_mei
+    dt.mfp.mfp_colored フリガナ
+    dd.mfp.mfp_colored
+      .mfp_rows
+        .mfp_col5
+          input.mfp_element_text.mfp_element_all.mfp_defaultValue#mfp_element_4(type='text' name='セイ' size='15' data-charcheck='zenkaku' style='width: 90px;')
+          .mfp_err#errormsg_s
+        .mfp_col5
+          input.mfp_element_text.mfp_element_all.mfp_defaultValue#mfp_element_5(type='text' name='メイ' size='15' data-charcheck='kana' style='width: 90px;')
+          .mfp_err#errormsg_m
+    dt.mfp.mfp_achroma.hissu
+      | メールアドレス
+    dd.mfp.mfp_achroma
+      .mfp_rows
+        .mfp_col10
+          input.mfp_element_email.mfp_element_all#mfp_element_6(type='email' data-type='email' name='email' size='40' style='background-color: rgb(255, 0, 0); width: 240px;')
+          .mfp_err#errormsg_email
+    dt.mfp.mfp_colored.hissu
+      | 確認のためもう一度
+    dd.mfp.mfp_colored
+      .mfp_rows
+        .mfp_col10
+          input.mfp_element_email.mfp_element_all#mfp_element_7(type='email' data-type='email' name='confirm_email' data-post-disable='1' size='40' style='background-color: rgb(255, 0, 0); width: 240px;')
+          .mfp_err#errormsg_confirm_email
+    dt.mfp.mfp_achroma.hissu
+      | 電話番号
+    dd.mfp.mfp_achroma
+      .mfp_rows
+        .mfp_col10
+          input.mfp_element_tel.mfp_element_all#mfp_element_8(type='tel' data-type='tel' name='電話番号' size='16' data-min='9' style='background-color: rgb(255, 0, 0); width: 96px;')
+          .mfp_err#errormsg_tel
+    dt.mfp.mfp_colored 医療機関名、会社名等
+    dd.mfp.mfp_colored
+      .mfp_rows
+        .mfp_col10
+          input.mfp_element_text.mfp_element_all.mfp_defaultValue#mfp_element_9(type='text' size='40' name='医療機関名、会社名等' style='width: 240px;')
+          .mfp_err#errormsg_iryou
+    dt.mfp.mfp_achroma お問合せ種別
+    dd.mfp.mfp_achroma
+      .mfp_rows
+          label.likaABtn
+            input.mfp_element_radio.mfp_element_all#mfp_element_10(type='radio' name='お問合せ種別' value='ご質問')
+            span ご質問
+          label.likaABtn
+            input.mfp_element_radio.mfp_element_all#mfp_element_10(type='radio' name='お問合せ種別' value='ご相談')
+            span ご相談
+          label#mfp_element_13_label.mfp_not_checked(style='cursor: pointer;')
+            input.mfp_element_radio.mfp_element_all#mfp_element_13(type='radio' name='お問合せ種別' value='ご感想')
+            | ご感想
+          label#mfp_element_14_label.mfp_not_checked(style='cursor: pointer;')
+            input.mfp_element_radio.mfp_element_all#mfp_element_14(type='radio' name='お問合せ種別' value='ご依頼')
+            | ご依頼
+          label#mfp_element_15_label.mfp_not_checked(style='cursor: pointer;')
+            input.mfp_element_radio.mfp_element_all#mfp_element_15(type='radio' name='お問合せ種別' value='その他')
+            | その他
+    dt.mfp.mfp_colored.hissu
+      | お問い合わせ内容
+    dd.mfp.mfp_colored
+      .mfp_rows
+        .mfp_col10
+          textarea.mfp_element_textarea.mfp_element_all#mfp_element_16(name='お問い合わせ内容' rows='60' cols='60' style='background-color: rgb(255, 0, 0); width: 360px; height: 360px;')
+          .mfp_err#errormsg_maiyou
+    dt.mfp.mfp_achroma.hissu
+      | 規約への同意
+    dd.mfp.mfp_achroma
+      .mfp_rows
+        .mfp_col10
+          p
+            | 個人情報のお取り扱いについては、当院「
+            a(href='#' tabindex='0') 個人情報取り扱いについて
+            | 」をご確認いただき、同意された方のみ送信をしてください。
+          label#mfp_element_17_label.mfp_not_checked(style='cursor: pointer;')
+            input.mfp_element_checkbox.mfp_element_all#mfp_element_17(type='checkbox' name='規約への同意' value='同意する')
+            input#mfp_doui_checkobj.mfp_element_hidden.mfp_element_all(type='hidden' name='mfp_doui_checkobj' value='1')
+            | 同意する
+            .mfp_err#errormsg_doui
+            .mfp_err#errormsg_mfp_doui_checkobj
+  .mfp_buttons
+    button.mfp_element_submit.mfp_element_all(type='submit') 確認画面へ
+  .mfp_err#errormsg_mfp_token
+  input#mfp_calendar_id(type='hidden' name='mfp_calendar_id')
+  input#mfp_calendar_date(type='hidden' name='mfp_calendar_date')
+  input#mfp_calendar_qty(type='hidden' name='mfp_calendar_qty')

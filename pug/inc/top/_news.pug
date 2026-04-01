@@ -1,0 +1,43 @@
+section#news
+
+  .newsArea
+
+    .left
+      h2.nonStyle.top NEWS
+        .sub ビジ公からのお知らせ
+
+      nav#newsTabMenu.catLinks
+          span.link すべて
+          span.link お知らせ
+          span.link イベント
+          span.link オープンキャンパス
+          span.link 入試
+          span.link セミナー
+          span.link その他
+
+
+    .right
+      #newsTab
+        .tabBody
+          //- p 1
+          include ../../inc/pugparts/_newslist
+        .tabBody
+          //- p 2
+          include ../../inc/pugparts/_newslist
+        .tabBody
+          //- p 3
+          include ../../inc/pugparts/_newslist
+        .tabBody
+          //- p 4
+          include ../../inc/pugparts/_newslist
+        .tabBody
+          //- p 5
+          include ../../inc/pugparts/_newslist
+        .tabBody
+          //- p 6
+          include ../../inc/pugparts/_newslist
+        .tabBody
+          //- p 7
+          include ../../inc/pugparts/_newslist
+      .inlineR
+        a.btn(href="#" role="button") お知らせ一覧

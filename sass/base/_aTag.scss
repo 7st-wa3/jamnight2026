@@ -1,0 +1,199 @@
+@use "../abstracts/mixins" as mx;
+
+@layer base {
+  // --------------------------------
+  // Aタグ系モジュール
+  // --------------------------------
+  a {
+    color: var(--basic-black, #333);
+    // font-family: var(--JP, "Noto Sans JP");
+    font-size: var(--txt);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      @media (hover: hover) {
+        color: var(--primary-base);
+        text-decoration: none;
+      }
+    }
+  }
+
+  // --------------------------------
+  // アイコンの自動付加（.btnじゃないとき）
+  // --------------------------------
+  @scope (a:not(.btn):not(.noIcon):not(.newsListLink)) {
+    :scope {
+      &[target="_blank"] {
+        &:not(.card) {
+          position: relative;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+          margin: 0 4px;
+        }
+
+        @include mx.svgAutoIconSetting(
+          "after",
+          "../img/icon/icon_outer_link.svg",
+          1.2em,
+          var(--primary-base),
+          var(--primary-base),
+          5px
+        );
+      }
+      &[href$=".pdf"] {
+        &:not(.card) {
+          position: relative;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+          margin: 0 4px;
+        }
+
+        @include mx.svgAutoIconSetting(
+          "after",
+          "../img/icon/icon_pdf_link.svg",
+          1.2em,
+          var(--link-pdf),
+          var(--link-pdf),
+          5px
+        );
+      }
+      &[href$=".doc"],
+      &[href$=".docx"] {
+        &:not(.card) {
+          position: relative;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+          margin: 0 4px;
+        }
+
+        @include mx.svgAutoIconSetting(
+          "after",
+          "../img/icon/icon_word_link.svg",
+          1.2em,
+          var(--link-Word),
+          var(--link-Word),
+          5px
+        );
+      }
+      &[href$=".xlsm"],
+      &[href$=".xls"],
+      &[href$=".xlsx"] {
+        &:not(.card) {
+          position: relative;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+          margin: 0 4px;
+        }
+
+        @include mx.svgAutoIconSetting(
+          "after",
+          "../img/icon/icon_excel_link.svg",
+          1.2em,
+          var(--link-Excel),
+          var(--link-Excel),
+          5px
+        );
+      }
+    }
+  }
+
+  // a.email:not(.btn) {
+  //   position: relative;
+  //   display: inline-block;
+
+  //   &:after {
+  //     @include mx.awesomeStyle("\f0e0", 600);
+  //     margin-left: 0.5em;
+  //     margin-right: 0.5em;
+  //     vertical-align: baseline;
+  //   }
+  // }
+
+  // a.tel:not(.btn) {
+  //   position: relative;
+  //   display: inline-block;
+
+  //   &:after {
+  //     @include mx.awesomeStyle("\f095", 600);
+  //     margin-left: 0.5em;
+  //     margin-right: 0.5em;
+  //     vertical-align: baseline;
+  //   }
+  // }
+
+  figure.noIcon {
+    a {
+      &:after {
+        display: none !important;
+      }
+    }
+  }
+
+  // --------------------------------
+  // サイドメニュー
+  // --------------------------------
+  // a.sideMenu {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: var(--spacing-s, 20px);
+
+  //   color: var(--basic-black, #11283b);
+  //   font-style: normal;
+  //   font-weight: 700;
+  //   line-height: 1;
+  //   text-decoration: none;
+  //   padding: var(--spacing-xs) 0;
+
+  //   &:after {
+  //     @include mx.awesomeStyle();
+  //   }
+
+  //   .icon {
+  //     position: relative;
+
+  //     img {
+  //       width: 24px;
+  //       transition: all 0.3s ease-out;
+  //       @include mx.border-radius(0);
+
+  //       &.on {
+  //         opacity: 0;
+  //       }
+  //     }
+  //   }
+
+  //   .title {
+  //     flex: 1;
+  //   }
+
+  //   &:hover {
+  //     color: var(--primary-dark, #1a7ac5);
+
+  //     .icon {
+  //       img {
+  //         &.off {
+  //           opacity: 0;
+  //         }
+
+  //         &.on {
+  //           opacity: 1;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

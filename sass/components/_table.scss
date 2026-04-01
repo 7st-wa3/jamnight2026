@@ -1,0 +1,210 @@
+// --------------------------------
+// tableモジュール
+// --------------------------------
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  // --------------------------------
+  // デフォルト設定
+  // --------------------------------
+  .tableWrapper {
+    // --------------------------------
+    // 変数
+    // --------------------------------
+    --table-wrapper-size: 100%;
+    --table-min-width: 1024px; //これ以下の画面でスクロールする
+
+    @include mx.tbStyle() {
+      --table-wrapper-size: #{get_vw(688, var.$break-TB)};
+    }
+
+    @include mx.tbStyle() {
+      --table-wrapper-size: #{get_vw(336, var.$break-SPXX)};
+    }
+
+    // --------------------------------
+    width: var(--table-wrapper-size);
+    overflow-x: auto;
+    margin: 0;
+    // margin: var(--contents-margin-section_inner) 0;
+
+    table {
+      // width: 100%;
+      // max-width: var(--table-min-width);
+      td,
+      th {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // --------------------------------
+  // デフォルト（ノーマルタイプ）
+  // --------------------------------
+
+  table {
+    // 変数設定
+    // --table-border: 1px solid var(--grey-base);
+    // border: 1px solid var(--primary-light);
+    --th-txt-color: var(--basic-black);
+    --td-txt-color: var(--basic-black);
+    --th-bg-color: var(--primary-light);
+    --td-bg-color: var(--basic-white);
+    --thtd-padding: var(--spacing-s);
+
+    border-collapse: collapse;
+
+    min-width: 100%;
+
+    @include mx.propVW(margin-bottom, "20px", 20, 20, 20);
+
+    th,
+    td {
+      // border: var(--table-border);
+      border-width: 1px;
+      border-color: var(--primary-light);
+      background-color: var(--td-bg-color);
+      padding: var(--thtd-padding) !important;
+      color: var(--td-txt-color);
+
+      // font-family: var(--UD-Gothic, "BIZ UDGothic");
+      font-size: var(--txt);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+
+      vertical-align: middle;
+    }
+
+    th {
+      border-color: var(--basic-white);
+      background-color: var(--th-bg-color);
+      color: var(--th-txt-color);
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  // --------------------------------
+  // スマホでタテになるタイプ
+  // --------------------------------
+  // table.spTate {
+  //   // 変数設定（ノーマルから変える場合はここで上書き）
+  //   // --table-border: 2px solid var(--basic-white);
+  //   // --th-txt-color: var(--basic-white);
+  //   // --td-txt-color: var(--basic-black);
+  //   // --th-bg-color: var(--primary-dark);
+  //   // --td-bg-color: var(--primary-light);
+  //   // --thtd-padding: 1em;
+
+  //   border-collapse: collapse;
+  //   table-layout: fixed;
+  //   width: 100%;
+  //   max-width: 700px;
+  //   text-align: center;
+
+  //   th,
+  //   td {
+  //     border: var(--table-border);
+  //     padding: 1em;
+  //   }
+
+  //   thead {
+  //     th {
+  //       background-color: var(--th-bg-color);
+  //       color: var(--th-txt-color);
+  //       // border: 2px solid #4d9bc1;
+  //       // border-right: 2px solid #fff;
+  //       // border-bottom: 2px solid #fff;
+
+  //       // &:last-of-type {
+  //       //     border-right: 2px solid #4d9bc1;
+  //       // }
+  //     }
+  //   }
+
+  //   tbody {
+  //     th {
+  //       // color: #4d9bc1;
+  //       font-weight: bold;
+  //       text-align: center;
+  //       // background-color: var(--basic-white);
+  //     }
+  //   }
+
+  //   @include mx.spStyle() {
+  //     text-align: left;
+
+  //     thead {
+  //       display: none;
+  //     }
+
+  //     th,
+  //     td {
+  //       display: block;
+  //       border: 0;
+  //       // border-bottom: 2px solid #e6f1f6;
+  //     }
+
+  //     tbody th {
+  //       // background: #4d9bc1;
+  //       color: #fff;
+  //     }
+
+  //     td::before {
+  //       content: attr(data-label);
+  //       color: var(--th-bg-color);
+  //       font-weight: bold;
+  //       display: inline-block;
+  //       width: 20%;
+  //       min-width: 4em;
+  //     }
+  //   }
+  // }
+
+  // --------------------------------
+  // Type2
+  // --------------------------------
+  table.type2 {
+    width: 100%;
+    @include mx.propVW(padding, 20, 20, 20, n);
+    border: none;
+    // border-collapse: separate;
+    border-spacing: 2px;
+    padding: 0 !important;
+
+    th,
+    td {
+      color: var(--basic-black, #121b3c);
+      text-align: center;
+      // font-family: var(--UD-Gothic, "BIZ UDGothic");
+      // font-size: var(--txt_big, 20px);
+      font-style: normal;
+      // font-weight: 700;
+      line-height: normal;
+      background-color: var(--basic-white);
+      border: none;
+      border-bottom: 1px solid var(--primary-light);
+      vertical-align: middle;
+    }
+
+    th {
+      width: 20%;
+      color: var(--primary-base);
+      border-color: var(--primary-light);
+      text-align: left;
+    }
+
+    td {
+      border-bottom: 1px solid var(--primary-light);
+      font-weight: 400;
+      text-align: left;
+      line-height: 180%;
+    }
+  }
+
+  // --------------------------------
+  // フレキシブルテーブル対応
+  // --------------------------------
+}

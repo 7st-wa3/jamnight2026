@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+// --------------------------------
+// 初期設定 すべて単位はピクセル
+// --------------------------------
+
+// ダークモード対応フラグ
+$darkModeFlag: false;
+
+$break-PC: 1920; //これ以下がデスクトップPC		PC（大）の画面でのinner幅
+$break-NT: 1366; //これ以下がノーパソ		PCの画面でのinner幅
+$break-TBBK: 820; //これ以下がタブレット		NTの画面でのinner幅
+$break-TB: 768; //タブレットデザイン基準値
+$break-SP: 520; //これ以下がスマホ		TBの画面でのinner幅
+
+$break-SPX: 500; //これ以下がスマホ（小）		SPの画面でのinner幅
+$break-SPXX: 375; //SP（小）の画面でのinner幅
+
+$contentWidth: 1640; // var.$break-PC（1920）のときのコンテンツ幅
+$contentPaddPC: 40; // var.$break-PC（1920）のときのコンテンツパディング
+$contentPaddTB: 20; // var.$break-TBのときのコンテンツパディング
+$contentPaddSP: 20; // $break-SPのときのコンテンツパディング

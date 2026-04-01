@@ -1,0 +1,35 @@
+{
+  "name": "hgt-2026-v6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "// --- 監視用 (開発時) ---": "",
+    "watch:pug": "pug pug/pages -o dist -P -w",
+    "watch:js": "webpack --watch",
+    "watch:asset": "cpx \"asset/**/*\" dist --watch",
+    "watch:scss": "sass sass:dist/css --watch --style=compressed",
+    "dev": "run-p watch:*",
+    "// --- ビルド用 (本番公開時) ---": "",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build:pug": "pug pug/pages -o dist",
+    "build:js": "webpack --mode production",
+    "build:asset": "cpx \"asset/**/*\" dist",
+    "build:scss": "sass sass:dist/css --style=compressed --no-source-map",
+    "build": "run-s build:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cpx2": "^8.0.0",
+    "jstransformer-escape-html": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "pug-cli": "^1.0.0-alpha6",
+    "rimraf": "^6.1.3",
+    "sass": "^1.98.0",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2"
+  }
+}

@@ -1,0 +1,554 @@
+// --------------------------------
+// flex SYSTEM v2026
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer utilities {
+  // --------------------------------
+  // まずすべてのベースとして .flex
+  // gapはサイト全体の変数 --gap を使います。
+  // --------------------------------
+  .flex {
+    display: flex;
+    gap: var(--gap);
+
+    // テスト用
+    .testwaku {
+      border: 2px solid #000;
+      background-color: rgb(214, 214, 214);
+      padding: 2em;
+    }
+
+    img {
+      max-width: unset;
+      min-width: unset;
+    }
+
+    &.fWrap {
+      flex-wrap: wrap;
+    }
+
+    & > * {
+      flex-grow: 1;
+      flex-shrink: 1;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    // --------------------------------
+    // flex-directionの設定
+    // --------------------------------
+    &.fd-row {
+      flex-direction: row;
+    }
+
+    &.fd-col {
+      flex-direction: column;
+    }
+
+    &.fd-row-rev {
+      flex-direction: row-reverse;
+    }
+
+    &.fd-col-rev {
+      flex-direction: column-reverse;
+    }
+
+    @include mx.ntStyle() {
+      &.fd-row-Nt {
+        flex-direction: row;
+      }
+
+      &.fd-col-Nt {
+        flex-direction: column;
+      }
+
+      &.fd-row-rev-Nt {
+        flex-direction: row-reverse;
+      }
+
+      &.fd-col-rev-Nt {
+        flex-direction: column-reverse;
+      }
+    }
+
+    @include mx.tbStyle() {
+      &.fd-row-Tb {
+        flex-direction: row;
+      }
+
+      &.fd-col-Tb {
+        flex-direction: column;
+      }
+
+      &.fd-row-rev-Tb {
+        flex-direction: row-reverse;
+      }
+
+      &.fd-col-rev-Tb {
+        flex-direction: column-reverse;
+      }
+    }
+
+    @include mx.spStyle() {
+      &.fd-row-Sp {
+        flex-direction: row;
+      }
+
+      &.fd-col-Sp {
+        flex-direction: column;
+      }
+
+      &.fd-row-rev-Sp {
+        flex-direction: row-reverse;
+      }
+
+      &.fd-col-rev-Sp {
+        flex-direction: column-reverse;
+      }
+    }
+
+    // --------------------------------
+    // align-itemsの設定
+    // --------------------------------
+    &.ai-CEN {
+      align-items: center;
+    }
+
+    &.ai-STA {
+      align-items: flex-start;
+    }
+
+    &.ai-END {
+      align-items: flex-end;
+    }
+
+    &.ai-STR {
+      align-items: stretch;
+    }
+
+    &.ai-BL {
+      align-items: baseline;
+    }
+
+    @include mx.ntStyle() {
+      &.ai-CEN-Nt {
+        align-items: center;
+      }
+
+      &.ai-STA-Nt {
+        align-items: flex-start;
+      }
+
+      &.ai-END-Nt {
+        align-items: flex-end;
+      }
+
+      &.ai-STR-Nt {
+        align-items: stretch;
+      }
+
+      &.ai-BL-Nt {
+        align-items: baseline;
+      }
+    }
+
+    @include mx.tbStyle() {
+      &.ai-CEN-Tb {
+        align-items: center;
+      }
+
+      &.ai-STA-Tb {
+        align-items: flex-start;
+      }
+
+      &.ai-END-Tb {
+        align-items: flex-end;
+      }
+
+      &.ai-STR-Tb {
+        align-items: stretch;
+      }
+
+      &.ai-BL-Tb {
+        align-items: baseline;
+      }
+    }
+
+    @include mx.spStyle() {
+      &.ai-CEN-Sp {
+        align-items: center;
+      }
+
+      &.ai-STA-Sp {
+        align-items: flex-start;
+      }
+
+      &.ai-END-Sp {
+        align-items: flex-end;
+      }
+
+      &.ai-STR-Sp {
+        align-items: stretch;
+      }
+
+      &.ai-BL-Sp {
+        align-items: baseline;
+      }
+    }
+
+    // --------------------------------
+    // justify-contentの設定
+    // --------------------------------
+    &.jc-CEN {
+      justify-content: center;
+    }
+
+    &.jc-STA {
+      justify-content: flex-start;
+    }
+
+    &.jc-END {
+      justify-content: flex-end;
+    }
+
+    &.jc-SPB {
+      justify-content: space-between;
+    }
+
+    &.jc-SPA {
+      justify-content: space-around;
+    }
+
+    &.jc-SPE {
+      justify-content: space-evenly;
+    }
+
+    @include mx.ntStyle() {
+      &.jc-CEN-Nt {
+        justify-content: center;
+      }
+
+      &.jc-STA-Nt {
+        justify-content: flex-start;
+      }
+
+      &.jc-END-Nt {
+        justify-content: flex-end;
+      }
+
+      &.jc-SPB-Nt {
+        justify-content: space-between;
+      }
+
+      &.jc-SPA-Nt {
+        justify-content: space-around;
+      }
+
+      &.jc-SPE-Nt {
+        justify-content: space-evenly;
+      }
+    }
+
+    @include mx.tbStyle() {
+      &.jc-CEN-Tb {
+        justify-content: center;
+      }
+
+      &.jc-STA-Tb {
+        justify-content: flex-start;
+      }
+
+      &.jc-END-Tb {
+        justify-content: flex-end;
+      }
+
+      &.jc-SPB-Tb {
+        justify-content: space-between;
+      }
+
+      &.jc-SPA-Tb {
+        justify-content: space-around;
+      }
+
+      &.jc-SPE-Tb {
+        justify-content: space-evenly;
+      }
+    }
+
+    @include mx.spStyle() {
+      &.jc-CEN-Sp {
+        justify-content: center;
+      }
+
+      &.jc-STA-Sp {
+        justify-content: flex-start;
+      }
+
+      &.jc-END-Sp {
+        justify-content: flex-end;
+      }
+
+      &.jc-SPB-Sp {
+        justify-content: space-between;
+      }
+
+      &.jc-SPA-Sp {
+        justify-content: space-around;
+      }
+
+      &.jc-SPE-Sp {
+        justify-content: space-evenly;
+      }
+    }
+
+    // --------------------------------
+    // align-contentの設定
+    // --------------------------------
+    &.ac-CEN {
+      align-content: center;
+    }
+
+    &.ac-STA {
+      align-content: flex-start;
+    }
+
+    &.ac-END {
+      align-content: flex-end;
+    }
+
+    &.ac-SPB {
+      align-content: space-between;
+    }
+
+    &.ac-SPA {
+      align-content: space-around;
+    }
+
+    &.ac-STR {
+      align-content: stretch;
+    }
+
+    @include mx.ntStyle() {
+      &.ac-CEN-Nt {
+        align-content: center;
+      }
+
+      &.ac-STA-Nt {
+        align-content: flex-start;
+      }
+
+      &.ac-END-Nt {
+        align-content: flex-end;
+      }
+
+      &.ac-SPB-Nt {
+        align-content: space-between;
+      }
+
+      &.ac-SPA-Nt {
+        align-content: space-around;
+      }
+
+      &.ac-STR-Nt {
+        align-content: stretch;
+      }
+    }
+
+    @include mx.tbStyle() {
+      &.ac-CEN-Tb {
+        align-content: center;
+      }
+
+      &.ac-STA-Tb {
+        align-content: flex-start;
+      }
+
+      &.ac-END-Tb {
+        align-content: flex-end;
+      }
+
+      &.ac-SPB-Tb {
+        align-content: space-between;
+      }
+
+      &.ac-SPA-Tb {
+        align-content: space-around;
+      }
+
+      &.ac-STR-Tb {
+        align-content: stretch;
+      }
+    }
+
+    @include mx.spStyle() {
+      &.ac-CEN-Sp {
+        align-content: center;
+      }
+
+      &.ac-STA-Sp {
+        align-content: flex-start;
+      }
+
+      &.ac-END-Sp {
+        align-content: flex-end;
+      }
+
+      &.ac-SPB-Sp {
+        align-content: space-between;
+      }
+
+      &.ac-SPA-Sp {
+        align-content: space-around;
+      }
+
+      &.ac-STR-Sp {
+        align-content: stretch;
+      }
+    }
+  }
+
+  // --------------------------------
+  // flex settings
+  // --------------------------------
+  .fCol1 {
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  @for $i from 2 through 6 {
+    .fCol#{$i} {
+      width: calc((99.99% - (var(--gap) * #{$i - 1})) / #{$i});
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+
+  // --------------------------------
+  // flex settings NotePC
+  // --------------------------------
+  @include mx.ntStyle() {
+    .fCol1Nt {
+      width: 100%;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    @for $i from 2 through 6 {
+      .fCol#{$i}Nt {
+        width: calc((99.99% - (var(--gap) * #{$i - 1})) / #{$i});
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // --------------------------------
+  // flex settings TAB
+  // --------------------------------
+  @include mx.tbStyle() {
+    .fCol1Tb {
+      width: 100%;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    @for $i from 2 through 6 {
+      .fCol#{$i}Tb {
+        width: calc((99.99% - (var(--gap) * #{$i - 1})) / #{$i});
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // --------------------------------
+  // flex settings SP
+  // --------------------------------
+  @include mx.spStyle() {
+    .fCol1Sp {
+      width: 100%;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    @for $i from 2 through 6 {
+      .fCol#{$i}Sp {
+        width: calc((99.99% - (var(--gap) * #{$i - 1})) / #{$i});
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // --------------------------------
+  // gapをゼロにしたい場合
+  // --------------------------------
+  .gap0 {
+    gap: 0;
+  }
+
+  @include mx.ntStyle() {
+    .gap0-Nt {
+      gap: 0;
+    }
+  }
+
+  @include mx.tbStyle() {
+    .gap0-Tb {
+      gap: 0;
+    }
+  }
+
+  @include mx.spStyle() {
+    .gap0-Sp {
+      gap: 0;
+    }
+  }
+
+  // --------------------------------
+  // growやshrinkをしないようにする
+  // --------------------------------
+  .flxG0 {
+    flex-grow: 0;
+  }
+
+  .flxS0 {
+    flex-shrink: 0;
+  }
+
+  @include mx.ntStyle() {
+    .flxG0-Nt {
+      flex-grow: 0;
+    }
+
+    .flxS0-Nt {
+      flex-shrink: 0;
+    }
+  }
+
+  @include mx.tbStyle() {
+    .flxG0-Tb {
+      flex-grow: 0;
+    }
+
+    .flxS0-Tb {
+      flex-shrink: 0;
+    }
+  }
+
+  @include mx.spStyle() {
+    .flxG0-Sp {
+      flex-grow: 0;
+    }
+
+    .flxS0-Sp {
+      flex-shrink: 0;
+    }
+  }
+}

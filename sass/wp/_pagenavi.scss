@@ -1,0 +1,234 @@
+// --------------------------------
+// wp-pagenavi
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .wp-pagenavi {
+    // --------------------------------
+    // 変数
+    // --------------------------------
+
+    $arr: (
+      --btn-size-w: (
+        "60px",
+        50,
+        35,
+        60,
+      ),
+      --btn-size-h: (
+        "60px",
+        50,
+        35,
+        60,
+      ),
+      --btn-padding: (
+        "10px",
+        10,
+        "0",
+        10,
+      ),
+    );
+    @include mx.propArrVW($arr);
+
+    margin-bottom: var(--spacing-xxl);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 0;
+
+    // previouspostslink / nextpostslink を除いた要素集合の先頭・末尾を確実に指定
+    & > :not(.previouspostslink):not(.nextpostslink):first-child,
+    & > .previouspostslink + :not(.previouspostslink):not(.nextpostslink) {
+      border-radius: var(--rounded-full) 0 0 var(--rounded-full);
+    }
+
+    & > :not(.previouspostslink):not(.nextpostslink):last-child {
+      border-radius: 0 var(--rounded-full) var(--rounded-full) 0;
+    }
+
+    // nextpostslink が末尾にある場合、その直前要素を末尾として扱う（:has() 必要）
+    &:has(> .nextpostslink)
+      > :not(.previouspostslink):not(.nextpostslink):nth-last-child(2) {
+      border-radius: 0 var(--rounded-full) var(--rounded-full) 0;
+    }
+
+    .current_page,
+    .current,
+    .extend,
+    a {
+      display: flex;
+      width: var(--btn-size-w);
+      height: var(--btn-size-h);
+      padding: var(--btn-padding);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+
+      color: var(--basic-black);
+
+      text-align: center;
+      // leading-trim: both;
+      // text-edge: cap;
+      // font-family: var(--UD-Gothic, "BIZ UDGothic");
+      // @include mx.propVW(font-size, "20px", 20, 20, 20);
+
+      // color: var(--basic-white, #FFF);
+      font-family: var(--ENG_Num, Inter);
+      font-size: var(--txt, 16px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      // border-radius: var(--rounded-s, 10px);
+      // border-bottom: 1px solid var(--basic-white);
+      // background: var(--btn_general-def-bg, #1E50A2);
+
+      background: var(--grey-light, #f9f9f9);
+
+      text-decoration: none !important;
+
+      // &.title {
+      // 	width: auto;
+      // 	border-bottom: none;
+
+      // 	&:focus,
+      // 	&:hover {
+      // 		border-bottom: none;
+      // 		opacity: 1;
+      // 	}
+      // }
+
+      &:focus,
+      &:hover {
+        // color: var(--main-red);
+        background-color: var(--primary-light);
+        // &:not(.extend) {
+        // }
+      }
+
+      // &.first,
+      // &.last,
+      // &.nextpostslink,
+      // &.previouspostslink,
+      &.extend {
+        // color: var(--primary-dark, #1E50A2);
+        // border: none;
+        // background-color: transparent;
+      }
+
+      &.first,
+      &.last {
+        border: 1px solid var(--basic-black);
+
+        &:hover {
+          @media (hover: hover) {
+            border-color: var(--primary-dark);
+          }
+        }
+      }
+
+      &.first,
+      &.last {
+        @include mx.spStyle() {
+          display: none;
+        }
+      }
+
+      // &.nextpostslink,
+      // &.previouspostslink,
+      // &.extend {
+      // 	@include mx.spStyle() {
+      // 		width: 20px;
+      // 	}
+      // }
+    }
+
+    .previouspostslink,
+    .nextpostslink {
+      width: auto;
+      // border: none !important;
+
+      @include mx.propVW(--width, "40px", 30, 30, 40);
+      @include mx.propVW(--height, "40px", 30, 30, 40);
+
+      background-color: transparent;
+      text-decoration: underline !important;
+
+      @include mx.btnArrowMarkWaku();
+
+      width: var(--width) !important;
+      height: var(--height) !important;
+
+      // &:hover {
+      //   @media (hover: hover) {
+      //     background-color: var(--primary-dark);
+      //     text-decoration: none !important;
+      //     &:before,
+      //     &:after {
+      //       background-color: var(--basic-white);
+      //     }
+      //   }
+      // }
+    }
+
+    .nextpostslink {
+      @include mx.propVW(
+        margin-left,
+        "var(--spacing-l)",
+        n,
+        "var(--spacing-xs)",
+        n
+      );
+
+      &::after {
+        @include mx.btnArrowMark();
+        translate: 10% 0;
+      }
+    }
+    .previouspostslink {
+      @include mx.propVW(
+        margin-right,
+        "var(--spacing-l)",
+        n,
+        "var(--spacing-xs)",
+        n
+      );
+      &::before {
+        @include mx.btnArrowMark();
+        transform: translate(-10%, 0) scale(-1, 1);
+      }
+    }
+
+    .current_page,
+    .current {
+      // border-radius: var(--rounded-full, 10000px);
+      background: var(--primary-dark, #07543b);
+      color: var(--basic-white);
+      // color: var(--primary-dark, #1E50A2);
+      // font-family: var(--ENG_Num, "Zen Kaku Gothic New");
+      // font-size: var(--txt, 20px);
+      // font-style: normal;
+      // font-weight: 400;
+      // line-height: normal;
+
+      // border-radius: var(--rounded-s, 10px);
+      // border-bottom: 1px solid var(--basic-black);
+      // background: var(--basic-white, #FFF);
+
+      &:focus,
+      &:hover {
+        // color: var(--basic-black);
+        background-color: var(--primary-dark);
+        // &:not(.extend) {
+        // }
+      }
+    }
+  }
+}

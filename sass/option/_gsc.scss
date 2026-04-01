@@ -1,0 +1,123 @@
+// --------------------------------
+// gsc関連
+// --------------------------------
+#___gcse_0 {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+.gsc-control-cse {
+  padding: 0;
+  border: none !important;
+  background-color: transparent !important;
+  .gsc-control-wrapper-cse {
+    height: 100%;
+  }
+
+  table th,
+  table td {
+    padding: 0;
+    border: none;
+  }
+
+  table td.gsc-input {
+    padding: 0 !important;
+  }
+
+  form.gsc-search-box {
+    margin: 0;
+    height: 100%;
+
+    table.gsc-search-box {
+      margin: 0;
+      height: 100%;
+
+      tbody {
+        height: 100%;
+      }
+
+      tbody tr {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 5px;
+
+        td.gsc-input {
+          height: 100%;
+          display: flex;
+          align-items: stretch;
+          table.gstl_50.gsc-input {
+            height: 100%;
+          }
+        }
+
+        td.gsib_b,
+        td.gsib_a {
+          background: transparent !important;
+          padding: 0 !important;
+        }
+
+        td.gsib_a {
+          width: 150px;
+        }
+
+        .gsc-input-box {
+          padding: 0 !important;
+          border: 1px solid var(--grey-base);
+          border-radius: var(--rounded-s, 10px) 0 0 var(--rounded-s, 10px);
+          background-color: transparent;
+
+          // padding: var(--spacing-xxs);
+          // background: var(--grey-light);
+          // border-color: var(--grey-light);
+
+          input.gsc-input {
+            background: transparent !important;
+            // width: _max(get_vw(150, 1366), 150px) !important;
+            margin: 0 !important;
+
+            // @include tbStyle() {
+            //   width: 150px !important;
+            // }
+          }
+        }
+
+        td.gsc-search-button {
+          width: auto;
+          // height: 100%;
+          // background-color: #f00;
+          margin: 0 !important;
+          padding: 0 !important;
+          display: flex;
+          align-self: stretch;
+
+          button.gsc-search-button.gsc-search-button-v2 {
+            display: flex;
+            margin: 0 !important;
+            padding: var(--spacing-xxs, 4px) var(--spacing-xs, 8px);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-base, #158e66);
+            color: #fff;
+            border-radius: 0 var(--rounded-s, 10px) var(--rounded-s, 10px) 0;
+            // width: _max(get_vw(50, 1366), 50px);
+            // height: 100%;
+            // margin: 0;
+
+            // @include tbStyle() {
+            //   width: 50px;
+            // }
+          }
+        }
+
+        td.gsc-input {
+          table.gstl_50 {
+            margin: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}

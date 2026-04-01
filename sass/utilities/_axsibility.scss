@@ -1,0 +1,89 @@
+// --------------------------------
+// CSSによりデザインを損なわないため、フォーカス時のoutlineを0に設定している場合、
+// キーボード操作でフォーカスされても目視できないので、代わりにキーボード操作以外ならoutlineを削除する設定を行う。
+// --------------------------------
+@layer utilities {
+  /* タブ移動時 */
+  *:focus-visible {
+    // outline: 0;
+    outline: 3px solid red;
+  }
+
+  *:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  .axsablePdownMenu {
+    ul {
+      list-style-type: none;
+
+      li {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    nav {
+      font:
+        18px/1.7 "ヒラギノ角ゴ Pro W3",
+        "Hiragino Kaku Gothic Pro",
+        Meiryo,
+        "メイリオ",
+        "ＭＳ Ｐゴシック",
+        Helvetica,
+        Sans-Serif;
+      margin: 20px;
+    }
+
+    /* 親メニュー - Parent nav */
+    nav > ul > li {
+      position: relative;
+      float: left;
+      margin-right: 45px;
+    }
+
+    nav a {
+      color: #0bd;
+      text-decoration: none;
+    }
+
+    nav ul a:hover {
+      color: #0090aa;
+    }
+
+    /* 子メニュー - .sub-menu */
+    nav .sub-menu {
+      position: absolute;
+      width: 180px;
+      background: #0bd;
+      top: 30px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.5s;
+    }
+
+    nav .sub-menu a {
+      color: #fff;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    nav .sub-menu a:hover {
+      color: #fff;
+    }
+
+    /* ホバー＆フォーカスで子メニュー表示 */
+    /* Display sub menu by hover & focus */
+    nav .menu-item-has-children:hover ul,
+    nav .menu-item-has-children ul.focused {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    nav li.menu-item-has-children li a:hover,
+    nav li.menu-item-has-children li a:focus {
+      background: #0090aa;
+    }
+  }
+}

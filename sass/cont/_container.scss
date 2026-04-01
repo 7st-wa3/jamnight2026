@@ -1,0 +1,32 @@
+// --------------------------------
+// スケジュール
+// --------------------------------
+// --------------------------------
+// コンテナクエリ
+// --------------------------------
+@layer utilities {
+  .container-a {
+    container-type: inline-size;
+    container-name: containerA;
+  }
+
+  .container-b {
+    container-type: inline-size;
+    container-name: containerB;
+  }
+
+  .box {
+    padding: 1em;
+  }
+  @container containerA (max-width: 300px) {
+    .box {
+      background-color: lightblue;
+    }
+  }
+
+  @container containerB (min-width: 300px) {
+    .box {
+      background-color: lightgreen;
+    }
+  }
+}

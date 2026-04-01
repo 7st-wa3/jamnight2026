@@ -1,0 +1,77 @@
+// --------------------------------
+// 全体的な画像に関する設定
+// --------------------------------
+@use "../abstracts/mixins" as mx;
+
+@layer base {
+  figure {
+    text-align: center;
+
+    // @include mx.propVW(margin-bottom, "16px", n, 28, n);
+
+    img {
+      display: inline-block;
+    }
+
+    &.kadomaru {
+      img {
+        border-radius: var(--rounded-s);
+      }
+    }
+    &.max {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    vertical-align: bottom;
+    height: auto;
+    align-self: flex-start;
+
+    border-radius: var(--rounded-s);
+
+    &.noKado {
+      border-radius: 0;
+    }
+    &.max {
+      width: 100%;
+    }
+  }
+
+  // #editor-input-content,
+  // main#mainCont {
+  //   figure {
+  //     @include mx.propVW(margin-bottom, 30, 30, 30, n);
+  //   }
+  // }
+
+  // // 基本角丸
+  // img:not(.noRounded):not(.slick-slide) {
+  //     border-radius: var(--rounded-s, 10px);
+  // }
+
+  figure {
+    margin: 0;
+    @include mx.flexLayoutBox(
+      var(--spacing-xs),
+      column,
+      flex-start,
+      stretch,
+      nowrap,
+      flex
+    );
+
+    figcaption {
+      // font-family: "BIZ UDGothic";
+      // font-size: var(--txt_big, 20px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      text-align: center;
+    }
+  }
+}

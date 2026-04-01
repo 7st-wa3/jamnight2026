@@ -1,0 +1,85 @@
+h4 基本書式→&lt;a class="btn" role="button" href="#"&gt;ボタンテキスト&lt;/a&gt;
+p.caution 「role="button"」 が 必須になりました！（アクセシビリティのため）
+p
+  | 普通に置くと
+  a.btn(href="#" role="button") ボタンテキスト
+  | インラインブロックでの設置
+p #[strong ※ただし、スマホの場合は必ずdisplay:block（display:flex）になります！]
+
+p
+  a.btn(href="#" role="button") ボタンの長さはリキッドに変化します。長くなったら縦に伸びます。
+  br
+  a.btn(href="#" role="button") ボタンの長さはリキッドに変化します。長くなったら縦に伸びます。最大でコンテンツの半分の幅です。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。
+p
+  a.btn(href="#" role="button") 横に並ぶよ
+  a.btn.rev(href="#" role="button") .revクラス
+  a.btn(href="#" role="button") 横に並ぶよ
+  a.btn.rev(href="#" role="button") .revクラス
+p.inlineC inlineCクラスのPタグ内に置けばセンタリングも容易ですわ
+p.inlineC
+  a.btn(href="#" role="button") ボタンテキスト
+
+
+
+
+
+h4 aタグにクラスを追加する
+h5 noArrow
+p: a.btn.noArrow.rev(href="#" role="button") 矢印出ません
+h5 rev
+p: a.btn.rev(href="#" role="button") 矢印の方向が変わります
+//- p: a.btn.rev(href="hoge.pdf" role="button") アイコンの位置は変わりません
+//- p: a.btn.rev(href="hoge.doc" role="button") アイコンの位置は変わりません
+//- p: a.btn.rev(href="hoge.xls" role="button") アイコンの位置は変わりません
+
+//- h5 pDown
+//- p: a.btn.pDown(href="#" role="button") 矢印のアイコンがプルダウン用に変わります
+
+
+//- h5 emailクラス
+//- p
+//-   a.btn.email(href="#" role="button")
+//-     span 封筒マークが付く
+//- p revクラス併用可能
+//- a.btn.email.rev(href="#" role="button") 封筒マークが付く
+//- h5 telクラス
+//- p
+//-   a.btn.tel(href="#" role="button") 電話マークが付く
+//- p revクラス併用可能
+//- a.btn.tel.rev(href="#" role="button") 電話マークが付く
+
+
+
+
+
+h4 aタグにクラスを追加しなくても
+h5 ターゲットブランクを自動判断
+p: a.btn(href="#" role="button" target="_blank") アイコンが出ます
+p: a.btn.rev(href="#" role="button" target="_blank") アイコンが出ます
+h5 PDF等ファイルへのリンクを自動判断
+p
+  a.btn(href="hoge.pdf" role="button")
+    span pdfファイル
+  a.btn(href="hoge.xls" role="button")
+    span xlsファイル
+  a.btn(href="hoge.doc" role="button")
+    span docファイル
+  //- a.btn(href="hoge.ppt" role="button")
+    span pptファイル
+  a.btn(href="hoge.pdf" role="button")
+    span ボタンのラベルが長い場合。ボタンのラベルが長い場合。ボタンのラベルが長い場合。
+  a.btn(href="hoge.pdf" target="_blank" role="button")
+    span ブランクよりファイル優先
+
+h4 クラス「.dispB」
+div
+  a.btn.dispB(href="#" role="button")
+    span ブロック要素になったボタン
+  a.btn.dispB(href="#" target="_blank" role="button")
+    span ブロック要素になったボタン
+  a.btn.dispB.noArrow(href="#" role="button")
+    span ブロック要素になったボタン
+  a.btn.dispB.reverse(href="#" role="button")
+    span ブロック要素になったボタン
+  a.btn.dispB(href="hoge.pdf" role="button")
+    span ブロック要素になったボタン

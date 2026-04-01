@@ -1,0 +1,29 @@
+// --------------------------------
+// ボーダー系
+// --------------------------------
+@layer components {
+  // A better looking default horizontal rule
+  hr.wp-block-separator,
+  hr {
+    display: block;
+    width: stretch;
+    height: 1px;
+    border: 0;
+
+    border-top: 1px solid var(--grey-base);
+
+    margin: 3em 0;
+    padding: 0;
+  }
+
+  .bdr {
+    padding: var(--spacing-m, 24px);
+    border: 1px solid var(--grey-base);
+    word-wrap: break-word;
+
+    &.bg {
+      // border: none;
+      background: var(--grey-light, #f0f0f0);
+    }
+  }
+}

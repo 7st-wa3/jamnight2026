@@ -1,0 +1,13 @@
+header#header.global-layout__header
+  #hamMenu.inner
+    .top
+      if topPageFlag=='YES'
+          h1.nonStyle.logo.mt00
+              img(src=logoImgPath, alt=siteName)
+
+      else
+          a.logo(href="index.html" tabindex="0")
+              img(src=logoImgPath, alt=siteName)
+      .tel
+        a(href="tel:0985319171") 0985-31-9171
+

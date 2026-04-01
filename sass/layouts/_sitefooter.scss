@@ -1,0 +1,21 @@
+//---------------------------
+// sitefooterクラス
+// サイトのフッタ部分のスタイル
+//---------------------------
+@layer layout {
+  footer#footer {
+    background: #dcdcdc;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  // --------------------------------
+  // 内部要素
+  // --------------------------------
+  @scope (footer#footer) {
+    .inner {
+      margin: 60px 0;
+    }
+  }
+}

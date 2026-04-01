@@ -1,0 +1,68 @@
+section#news {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+
+  .newsArea {
+    display: flex;
+    // padding: 0 var(--main-margin, 140px);
+    @include propVW(width, 1640, n, 335, n);
+    align-items: flex-start;
+    gap: var(--gap, 40px);
+    align-self: center;
+
+    @include spStyle() {
+      flex-direction: column;
+    }
+
+    .left {
+      // @include propVW(width, "380px", n, n, 380);
+      width: 380px;
+      @include ntStyle(1640) {
+        width: get_vw(380, 1640);
+      }
+      @include spStyle() {
+        width: 100%;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--spacing-m, 24px);
+      h2.top {
+        margin: 0;
+        align-items: flex-start;
+      }
+      nav.catLinks {
+        margin: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        .link {
+          cursor: pointer;
+        }
+        @include spStyle() {
+          flex-direction: row;
+        }
+      }
+    }
+    .right {
+      flex: 1 1 0;
+      #newsTab {
+        .tabBody {
+          display: none;
+        }
+      }
+    }
+
+    .inlineR {
+      .btn {
+        @include spStyle() {
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}

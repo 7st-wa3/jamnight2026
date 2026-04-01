@@ -1,0 +1,202 @@
+// --------------------------------
+// ヘルパークラス群
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+// --------------------------------
+// utilitiesレイヤー
+// --------------------------------
+// kill 系 （onlyは廃止）
+@use "kill";
+
+// マージン系
+// var(--spacing-**)分、上下左右にマージン系の
+//　例えばmtLとかを使う場合は有効化してね
+@use "margin";
+
+// パディング系
+// var(--spacing-**)分、上下左右にマージン系の
+//　例えばmtLとかを使う場合は有効化してね
+@use "padding";
+
+@layer utilities {
+  @include mx.pcStyle(521) {
+    a[href*="tel:"] {
+      pointer-events: none;
+      cursor: default;
+      text-decoration: none;
+      color: #11283b;
+    }
+  }
+
+  // --------------------------------
+  // PCだけリンクを無効にする
+  // --------------------------------
+  a.noPcLink {
+    @include mx.pcStyle() {
+      pointer-events: none;
+    }
+  }
+  a.noTbLink {
+    @include mx.tbOnlyStyle() {
+      pointer-events: none;
+    }
+  }
+
+  // --------------------------------
+  // 分節自動判断改行
+  // --------------------------------
+  .wbAuto {
+    word-break: auto-phrase;
+  }
+
+  // --------------------------------
+  // textAlign
+  // --------------------------------
+  .inlineL {
+    text-align: left;
+  }
+
+  .inlineC {
+    text-align: center;
+  }
+
+  .inlineR {
+    text-align: right;
+  }
+
+  // --------------------------------
+  // overflow制御
+  // --------------------------------
+  .of-auto {
+    overflow: auto;
+  }
+
+  .of-x-auto {
+    overflow-x: auto;
+  }
+
+  .of-y-auto {
+    overflow-y: auto;
+  }
+
+  .of-hid {
+    overflow: hidden;
+  }
+
+  .of-x-hid {
+    overflow-x: hidden;
+  }
+
+  .of-y-hid {
+    overflow-y: hidden;
+  }
+
+  // ---------------------------------------------
+  //   flex order
+  // ---------------------------------------------
+  @for $i from 1 through 10 {
+    .fOrder#{$i} {
+      order: #{$i};
+    }
+  }
+
+  @include mx.tbStyle() {
+    @for $i from 1 through 10 {
+      .fOrder#{$i}Tb {
+        order: #{$i} !important;
+      }
+    }
+  }
+
+  @include mx.spStyle() {
+    @for $i from 1 through 10 {
+      .fOrder#{$i}Sp {
+        order: #{$i} !important;
+      }
+    }
+  }
+
+  // --------------------------------
+  // lazy.lazyload
+  // --------------------------------
+  img.lazy {
+    opacity: 0;
+    transition: all 1s ease-out;
+  }
+
+  img.lazyloaded {
+    opacity: 1;
+  }
+
+  // --------------------------------
+  // tateCenterFlex
+  // --------------------------------
+  // .xyCenter {
+  // 	@include mx.tateCenterFlex();
+  // }
+
+  // .yCenter {
+  // 	@include mx.tateCenterFlex(flex-start);
+  // }
+
+  // .yCenterXend {
+  // 	@include mx.tateCenterFlex(flex-end);
+  // }
+
+  // @include mx.tbStyle() {
+  // 	.xyCenterTb {
+  // 		@include mx.tateCenterFlex();
+  // 	}
+
+  // 	.yCenterTb {
+  // 		@include mx.tateCenterFlex(flex-start);
+  // 	}
+
+  // 	.yCenterXendTb {
+  // 		@include mx.tateCenterFlex(flex-end);
+  // 	}
+  // }
+
+  //aspect-ratioプロパティを使ったバージョン（IE非対応）
+  .aspRatio {
+    //デフォルト16：9
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    // height: 100%;
+    object-fit: cover;
+
+    &.asp4x3 {
+      aspect-ratio: 4 / 3;
+    }
+
+    // &.asp5x3 {
+    // 	aspect-ratio: 5 / 3;
+    // }
+
+    &.asp1x1 {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  // --------------------------------
+  // ovWidthは2023から廃止。
+  // 必要に応じて復活させてよい。
+  // --------------------------------
+  // .ovWidth{
+  //     margin-left:calc(((100vw - 100%) / 2) * -1);
+  //     margin-right:calc(((100vw - 100%) / 2) * -1);
+  //     padding-left:calc(((100vw - 100%) / 2) * 1);
+  //     padding-right:calc(((100vw - 100%) / 2) * 1);
+  //     // border-top: 1px solid transparent;
+  // }
+  // .ovLeft {
+  //     margin-left:calc(((100vw - 100%) / 2) * -1);
+  //     padding-left:calc(((100vw - 100%) / 2) * 1);
+  // }
+  // .ovRight {
+  //     margin-right:calc(((100vw - 100%) / 2) * -1);
+  //     padding-right:calc(((100vw - 100%) / 2) * 1);
+  // }
+}

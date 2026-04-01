@@ -1,0 +1,65 @@
+//- テンプレート読み込み
+extend ../inc/_layout
+
+//-　ページ独自の設定
+append pagedata
+  - var pageTitle= "コンテナクエリの実験";
+  - var pageDescription= "ページの説明";
+
+  - var ogType = "article"
+  //- website: WebサイトのTOPページ
+  //- blog: ブログのトップページ
+  //- article: 記事ページなど、WebサイトのTOP以外のページ
+  //- product: 製品の紹介ページ
+
+//- ページ独自のcss
+append pagecss
+  link(rel="stylesheet" href="./css/cont.css")
+  //- link(rel="stylesheet" href="./slick/slick.css")
+  //- link(rel="stylesheet" href="./slick/slick-theme.css")
+
+//- ページ独自のjs
+append pagejs
+  //- script(src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8")
+
+//- ページのコンテンツ
+block main
+
+  //- コンテンツヘッダ
+  section.contHead
+    .inner
+      h1.h1 汎用FlexSystem v2026
+      //- p.bdr.bg コンテンツエリアの基本的な設定は /cont/_contHead.scss にあります
+
+
+  nav#pnkz
+    .inner
+      span
+        a(href="index.html") TOP
+      span
+        a(href="temp.html") テンプレート
+      span 汎用FlexSystem v2026
+
+  main#mainCont.pt1em.pb1em
+    .inner
+
+      h2 汎用FlexSystem v2026
+      p 最終更新日：#{dateNowLoc}
+      p.bdr.bg 汎用クラスのflexの設定は /utilities/_flex.scss にあります
+
+      nav.ancLinksBase.auto
+        .ancLinks
+
+
+      h2.ancLink コンテナクエリのテスト
+
+      ul
+        li コンテナAの「領域の幅」が300以下で青くなります。
+        li コンテナBの「領域の幅」が300以上で緑色になります。
+
+      .flex
+        div.container-a
+          .box コンテナA
+        div.container-b
+          .box コンテナB
+

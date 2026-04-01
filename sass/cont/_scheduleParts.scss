@@ -1,0 +1,188 @@
+// --------------------------------
+// 年間スケジュール用パーツ
+// --------------------------------
+.scheduleBox {
+  $arr: (
+    --month-w: (
+      "240px",
+      120,
+      110,
+      220,
+    ),
+    --padd-btm: (
+      "0",
+      40,
+      40,
+      n,
+    ),
+    --flex-dir: (
+      "row",
+      "column",
+      n,
+      n,
+    ),
+    --gap: (
+      "0",
+      15,
+      15,
+      n,
+    ),
+  );
+  @include propArrVW($arr);
+
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: var(--flex-dir);
+  gap: var(--gap);
+
+  position: relative;
+  padding-bottom: var(--padd-btm);
+
+  .month {
+    width: var(--month-w);
+    flex-shrink: 0;
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    @include tbStyle() {
+      justify-content: flex-start;
+    }
+    .circle {
+      aspect-ratio: 1 / 1;
+      width: 66.7%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        #717ac5,
+        #717ac5 10px,
+        #515bb8 10px,
+        #515bb8 20px
+      );
+      border-radius: 100%;
+      @include tbStyle() {
+        width: 100%;
+      }
+      .num {
+        color: var(--basic-white, #fff);
+        font-family: var(--ENG_Num, Inter);
+        @include propVW(font-size, "70px", 50, 50, 70);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 100%;
+      }
+      .en {
+        color: var(--basic-white, #fff);
+        font-family: var(--ENG_Num, Inter);
+        @include propVW(font-size, "var(--h5)", n, "var(--txt)", n);
+        font-size: var(--h5);
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+    &:after {
+      content: "";
+      width: 3px;
+      height: 100%;
+      background-color: var(--primary-dark);
+      position: absolute;
+      top: 0;
+      @include propVW(left, "50%", 59, 55, n);
+      @include translate(-50%, 0);
+      z-index: -1;
+    }
+  }
+  .events {
+    width: calc((99.99% - var(--month-w)) / 2);
+    flex-shrink: 0;
+
+    display: flex;
+    padding: var(--spacing-s, 16px);
+    align-items: center;
+    gap: var(--spacing-s, 16px);
+
+    border-radius: var(--rounded-s, 10px);
+    background: var(--grey-light, #f0f0f0);
+
+    position: relative;
+
+    @include tbStyle() {
+      width: 100%;
+    }
+    @include spStyle() {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .photo {
+      aspect-ratio: 380 / 210;
+      @include propVW(width, "50%", n, "100%", n);
+      overflow: hidden;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .eve {
+    }
+    &:after {
+      content: "";
+      @include propVW(--size, "24px", n, n, 24);
+      width: var(--size);
+      height: var(--size);
+      background-image: url(../img/schedule/tsuno.svg);
+      background-size: contain;
+      background-position: right top;
+      position: absolute;
+      background-repeat: no-repeat;
+      left: 0;
+      @include propVW(top, "60px", n, n, 60);
+      top: 50px;
+      @include translate(-100%, 0);
+      @include tbStyle() {
+        display: none;
+      }
+    }
+  }
+}
+
+#mainCont {
+  .wp-block-lazyblock-scheduleblock {
+    &:nth-of-type(2n) {
+      @include pcStyle(821) {
+        .scheduleBox {
+          justify-content: flex-start;
+          .events {
+            order: -1;
+            &:after {
+              left: unset;
+              right: 0;
+              @include transform(translate(100%, 0) rotate(180deg));
+            }
+          }
+        }
+      }
+    }
+    &:nth-child(12) {
+      // background-color: #c3c9ff;
+      .scheduleBox {
+        .month {
+          &:after {
+            @include pcStyle(821) {
+              display: none;
+            }
+            @include tbStyle() {
+              height: 75%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

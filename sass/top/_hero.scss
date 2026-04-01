@@ -1,0 +1,260 @@
+section#hero {
+  // aspect-ratio: 192 / 108;
+  aspect-ratio: 192 / 114;
+  width: 100%;
+
+  background-image: url(../img/top/herobg.webp);
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+
+  @include tbStyle() {
+    aspect-ratio: 375 / 247;
+    background-image: url(../img/top/herobg-sp.webp);
+  }
+  @include spStyle() {
+    aspect-ratio: 375 / 287;
+  }
+
+  .movieArea {
+    --asp: 1813 / 894;
+    &.mode-yt {
+      --asp: 16 / 9;
+    }
+    &.mode-mp4 {
+      --asp: 16 / 9;
+    }
+    aspect-ratio: var(--asp);
+    @include propVW(margin-bottom, 40, 30, 30, 40);
+    @include propVW(width, 1813, n, n, n);
+    // background-color: aqua;
+    border-radius: var(--rounded-s, 10px);
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    #HeroSlide {
+      .img {
+        aspect-ratio: var(--asp);
+        img {
+          object-fit: cover;
+          @include propVW(width, "100%");
+          @include propVW(height, "100%");
+        }
+      }
+    }
+
+    // .slick-dots {
+    //     background-color: var(--white);
+    // }
+
+    .youtube {
+      aspect-ratio: var(--asp);
+      margin-top: 0;
+      margin-bottom: 0;
+
+      iframe {
+        object-fit: cover;
+        @include propVW(width, "100%");
+        @include propVW(height, "100%");
+      }
+    }
+
+    .video {
+      aspect-ratio: var(--asp);
+
+      video {
+        object-fit: cover;
+        @include propVW(width, "100%");
+        @include propVW(height, "100%");
+      }
+    }
+  }
+  .lead {
+    color: #fff;
+    text-shadow:
+      0 0 31px rgba(0, 0, 0, 0.25),
+      0 0 31px rgba(0, 0, 0, 0.25);
+    // font-family: "Zen Kaku Gothic New";
+    @include propVW(font-size, 60, n, 20, n);
+    width: 94%;
+    text-align: center;
+    // font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    position: absolute;
+    @include propVW(top, "55%", "58%", n, n);
+    left: 50%;
+    @include translate(-50%, -50%);
+  }
+
+  // display: flex;
+  // flex-direction: column;
+  // align-items: stretch;
+  // position: relative;
+  // #HeroSlide {
+  //   @include propVW(height, "585px", n, "unset!important", 585);
+  //   // height: 585px;
+  //   width: 100%;
+  //   // overflow: hidden;
+
+  //   background-image: url(../img/cont/h1_bg.png);
+  //   background-position: left top;
+  //   background-repeat: repeat;
+  //   background-size: get_vw(867, 1920) get_vw(486, 1920);
+  //   background-color: var(--contHead-Bg);
+
+  //   // @include ntStyle(1280) {
+  //   //   height: get_vw(585, 1280);
+  //   // }
+
+  //   .img {
+  //     aspect-ratio: 1280 / 585;
+  //     overflow: hidden;
+  //     width: 1280px;
+  //     @include ntStyle(1280) {
+  //       height: get_vw(585, 1280);
+  //     }
+  //     @include spStyle() {
+  //       aspect-ratio: 750 / 750;
+  //       height: get_vw(375, 375);
+  //     }
+
+  //     a {
+  //       margin: 0 !important;
+  //     }
+
+  //     img {
+  //       object-fit: cover;
+  //       width: 100%;
+  //       height: 100%;
+  //     }
+  //   }
+
+  //   // --------------------------------
+  //   // slick調整
+  //   // --------------------------------
+  //   &.slick-dotted.slick-slider {
+  //     margin-bottom: 0;
+  //   }
+  //   .slick-track {
+  //     @include pcStyle(1280) {
+  //       margin-left: calc((100% - 1280px) / 2);
+  //     }
+  //   }
+  //   .slick-dots {
+  //     display: flex;
+  //     justify-content: center;
+  //     bottom: -35px;
+  //     left: -28px;
+  //     li {
+  //       display: flex;
+  //       align-items: center;
+  //       justify-content: center;
+  //       margin: 0;
+  //       button {
+  //         width: 13px;
+  //         height: 13px;
+  //         background-color: var(--grey-base, #d0d0d0);
+  //         border: 1px solid var(--primary-base, #158e66);
+  //         border-radius: var(--rounded-full);
+
+  //         &:before {
+  //           display: none;
+  //         }
+  //       }
+  //       &.slick-active {
+  //         button {
+  //           background-color: var(--primary-base);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  // .control {
+  //   @include propVW(margin-top, "5px", n, n, n);
+  //   width: 100%;
+  //   display: flex;
+  //   justify-content: center;
+  //   .inner {
+  //     width: 520px;
+  //     padding: 0 10px;
+  //     display: flex;
+  //     justify-content: space-between;
+  //     gap: 0.5em;
+
+  //     .center {
+  //       flex: 1;
+  //       display: flex;
+  //       justify-content: flex-end;
+  //       .button {
+  //         background-color: var(--primary-base);
+  //       }
+  //       #slider-play {
+  //         display: none;
+  //       }
+  //       &.paused {
+  //         #slider-play {
+  //           display: block;
+  //         }
+  //         #slider-pause {
+  //           display: none;
+  //         }
+  //       }
+  //     }
+
+  //     .button {
+  //       position: relative;
+  //       flex-shrink: 0;
+  //       z-index: 2;
+  //       $arr: (
+  //         --pdg-x: (
+  //           "12px",
+  //           n,
+  //           n,
+  //           n,
+  //         ),
+  //         --pdg-y: (
+  //           "4px",
+  //           n,
+  //           n,
+  //           n,
+  //         ),
+  //         font-size: (
+  //           "20px",
+  //           n,
+  //           n,
+  //           n,
+  //         ),
+  //       );
+  //       @include propArrVW($arr);
+
+  //       cursor: pointer;
+  //       padding: var(--pdg-y) var(--pdg-x);
+  //       color: var(--basic-white);
+  //       background-color: var(--basic-black);
+  //       border: var(--pdg-y) solid transparent;
+  //       border-radius: var(--rounded-full);
+  //       justify-content: space-between;
+  //       line-height: 1;
+  //       transition: all 0.2s ease-out;
+  //       &:hover {
+  //         @media (hover: hover) {
+  //           border-color: var(--primary-base);
+  //           background-color: var(--basic-white);
+  //           color: var(--basic-black);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

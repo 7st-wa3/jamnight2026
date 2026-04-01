@@ -1,0 +1,151 @@
+// --------------------------------
+// pagebute(MT)
+// --------------------------------
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .pagebute {
+    // --------------------------------
+    // 変数
+    // --------------------------------
+    --btn-size-w: #{get_vw(60, var.$break-PC)};
+    --btn-size-h: #{get_vw(60, var.$break-PC)};
+    --btn-padding: #{get_vw(10, var.$break-PC)};
+
+    @include mx.tbStyle() {
+      --btn-size-w: #{get_vw(50, var.$break-TB)};
+      --btn-size-h: #{get_vw(50, var.$break-TB)};
+      --btn-padding: #{get_vw(10, var.$break-TB)};
+    }
+
+    @include mx.spStyle() {
+      --btn-size-w: #{get_vw(40, var.$break-SPXX)};
+      --btn-size-h: #{get_vw(40, var.$break-SPXX)};
+      --btn-padding: #{get_vw(10, var.$break-SPXX)};
+    }
+
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: var(--spacing-l);
+
+    @include mx.tbStyle() {
+      gap: var(--spacing-s);
+    }
+
+    @include mx.spStyle() {
+      gap: var(--spacing-xs);
+      margin-bottom: var(--spacing-l);
+    }
+
+    .current_page,
+    .current,
+    .extend,
+    a.link_page {
+      display: flex;
+      width: var(--btn-size-w);
+      height: var(--btn-size-h);
+      padding: var(--btn-padding);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+
+      color: var(--btn_general-def-txt, #fff);
+      font-family: var(--ENG_Num, "Zen Kaku Gothic New");
+      font-size: var(--txt, 20px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      border-radius: var(--rounded-s, 10px);
+      border: 1px solid var(--btn_general-def-border, #1e50a2);
+      background: var(--btn_general-def-bg, #1e50a2);
+
+      text-decoration: none !important;
+
+      // &.title {
+      // 	width: auto;
+      // 	border-bottom: none;
+
+      // 	&:focus,
+      // 	&:hover {
+      // 		border-bottom: none;
+      // 		opacity: 1;
+      // 	}
+      // }
+
+      &:focus,
+      &:hover {
+        &:not(.extend) {
+          opacity: 0.6;
+        }
+      }
+
+      // &.extend,
+      // &.first,
+      // &.last,
+      // &.nextpostslink,
+      // &.previouspostslink {
+      // 	border: none;
+      // 	background-color: transparent;
+      // }
+
+      &.first,
+      &.last {
+        @include mx.spStyle() {
+          display: none;
+        }
+      }
+
+      // &.nextpostslink,
+      // &.previouspostslink,
+      // &.extend {
+      // 	@include mx.spStyle() {
+      // 		width: 20px;
+      // 	}
+      // }
+    }
+
+    .current_page,
+    .current {
+      color: var(--primary-dark, #1e50a2);
+      font-family: var(--ENG_Num, "Zen Kaku Gothic New");
+      font-size: var(--txt, 20px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      // border-radius: var(--rounded-s, 10px);
+      border: 1px solid var(--primary-dark, #1e50a2);
+      background: var(--basic-white, #fff);
+    }
+
+    .link_next {
+      &:after {
+        text-decoration: none;
+        display: inline-block;
+        @include mx.awesomeStyle();
+        color: var(--main-red);
+        margin-left: var(--spacing-xs);
+      }
+    }
+
+    .link_before {
+      &:before {
+        text-decoration: none;
+        display: inline-block;
+        @include mx.awesomeStyle("\f053");
+        color: var(--main-red);
+        margin-right: var(--spacing-xs);
+      }
+    }
+  }
+}

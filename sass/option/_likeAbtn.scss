@@ -1,0 +1,77 @@
+// --------------------------------
+// ボタンのようなチェックボックスとか
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .likeABtns {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-x, 20px);
+
+    @include mx.spxStyle() {
+      flex-direction: column;
+    }
+  }
+
+  label.likaABtn {
+    cursor: pointer;
+
+    input {
+      display: none; // /* デフォルトのinputは非表示にする */
+
+      &:checked + span {
+        background: var(--primary-base, #9ed4ff);
+        border-color: var(--primary-base, #9ed4ff);
+        // color: #fff;
+      }
+    }
+
+    span {
+      display: flex;
+      min-width: 160px;
+      padding: var(--spacing-s, 20px);
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-xs, 10px);
+
+      border-radius: 60px;
+      border: 2px solid var(--grey-dark, #647380);
+      background: var(--basic-white, #fff);
+
+      color: var(--grey-dark, #647380);
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      transition: all 0.3s ease-out;
+
+      @include mx.tbStyle() {
+        min-width: 180px;
+        padding: var(--spacing-xs, 10px);
+      }
+
+      @include mx.spStyle() {
+        min-width: 120px;
+      }
+    }
+
+    &:hover {
+      span {
+        border: 2px solid var(--grey-dark, #647380);
+        background: var(--primary-light, #f0f7fc);
+      }
+    }
+  }
+
+  #refine {
+    .mds {
+      color: var(--basic-black, #11283b);
+      // @include mx.fSize(20,18,18);
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: var(--spacing-s);
+    }
+  }
+}

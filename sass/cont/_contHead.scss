@@ -1,0 +1,40 @@
+// --------------------------------
+// コンテンツヘッダ
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .contHead {
+    // --------------------------------
+    // 変数
+    // --------------------------------
+    --contHead-bg: #93c1df; //背景設定
+    --contHead-height: 200px; //高さ設定
+
+    // --------------------------------
+    // レイアウト
+    // --------------------------------
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    // --------------------------------
+    // スタイル
+    // --------------------------------
+    background: var(--contHead-bg);
+    height: var(--contHead-height);
+
+    .inner {
+      // width: 100%;
+      // max-width: var(--contents);
+      // padding: var(--contents-padding);
+      h1,
+      .h1 {
+        color: var(--basic-text, #333);
+        @include mx.typoH1();
+      }
+    }
+  }
+}

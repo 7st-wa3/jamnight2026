@@ -1,0 +1,69 @@
+// --------------------------------
+// font設定
+// --------------------------------
+
+@layer base {
+  // --------------------------------
+  // import web fonts
+  // --------------------------------
+  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap");
+
+  // --------------------------------
+  // basic font setting
+  // --------------------------------
+  .lang-ja {
+    // --------------------------------
+    // 変数
+    // --------------------------------
+
+    --JP: "Noto Sans JP", sans-serif;
+    --ENG_Num: "Inter", sans-serif;
+
+    font-family: var(--JP);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    * {
+      /* Safari, Chrome, Edge (WebKit系) - macOS */
+      -webkit-font-smoothing: antialiased;
+      /* Firefox - macOS */
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    // font-family: "Yu Gothic", YuGothic,"Montserrat","メイリオ",Meiryo,Osaka,arial,system-ui,sans-serif;
+    // font-family: "Work Sans","Zen Kaku Gothic New";
+    // font-family: 'Inter',"Yu Gothic", YuGothic,"Montserrat","メイリオ",Meiryo,Osaka,arial,system-ui,sans-serif;
+    // font-weight: 500; //游ゴシックの場合
+    // font-family: "メイリオ",Meiryo,"ヒラギノ角ゴ Pro W3",HiraKakuPro-W3,Osaka,arial,system-ui,sans-serif;
+    // font-family: system-ui;
+    // font-family:"游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif
+  }
+
+  // .lang-en {
+  // 	font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  // }
+  // .lang-zh-cmn-Hans { //（簡体）
+  // 	font-family:"Microsoft Yahei","PingHei" ,"sans-serif";
+  // }
+  // .lang-zh-cmn-Hant { //（繁体）
+  // 	font-family:"Microsoft JhengHei", "微軟正黑體", 'PMingLiU' , sans-serif;
+  // }
+  // .lang-ko {
+  // 	font-family:"Malgun Gothic","Yoon Gothic","sans-serif";
+  // }
+  // .lang-fr {	//フランス語
+  // 	// font-family: "Helvetica Neue",sans-serif;
+  // 	font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  // }
+
+  // --------------------------------
+  // 明朝や欧文など
+  // --------------------------------
+  // .oubun {
+  //     font-family: 'Ibarra Real Nova', serif;
+  //     font-weight: 500;
+  // }
+
+  // $mincho:"游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+}

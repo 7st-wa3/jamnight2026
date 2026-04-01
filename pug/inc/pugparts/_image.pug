@@ -1,0 +1,22 @@
+//- h3 noImageは画像を用意しなくてもCSSで自動で出るようになりました。
+//- img(src="./img/usouso.jpg" alt="この画像は存在しない")
+//- p これは、imgタグはbeforeやafterなどの疑似要素が使えないのですが、画像リンク切れのときだけ使えるという特性を利用したものです。 #[a(href="https://kachibito.net/css/how-to-style-broken-images-with-css") 参考サイト]
+//- p ちなみにFireFoxだと、ALTの内容が表示される
+
+h3 普通に置いたパターン
+img(src="./img/dummy/w450.webp" alt="")
+
+//- h3 imgをfigureタグで囲むとインラインブロックになり領域内センタリングで下にマージン
+//- figure
+//-   img(src="./img/dummy/w450.webp" alt="")
+
+h3 imgにmaxクラスをつけると100%幅（引き伸ばす）になる
+figure: img.max(src="./img/dummy/w450.webp" alt="")
+
+h4 画像のサイズ指定があるとき縦に伸びるのを防ぐ(height1500指定してある)
+img(src="./img/dummy/fune.webp" alt="" width="1080" height="1500")
+
+
+
+
+

@@ -1,0 +1,164 @@
+// --------------------------------
+// hamMenu
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  @include mx.tbStyle() {
+    #header .inner#hamMenu {
+      // --------------------------------
+      // 変数
+      // --------------------------------
+      // --hem-navi-height: calc(100vh - 74px);
+      --hem-navi-height: calc(100vh - var(--header-inner-height) - 74px);
+
+      position: fixed;
+      // top: var(--header-inner-height);
+      top: 110vh;
+      right: 0;
+      z-index: -22;
+      opacity: 0;
+
+      @include mx.flexLayoutBox(
+        18px,
+        column,
+        flex-start,
+        stretch,
+        nowrap,
+        flex
+      );
+
+      width: 100%;
+      height: 0;
+
+      overflow-y: auto;
+      padding: 0;
+
+      width: 100%;
+      max-width: unset !important;
+
+      background: var(--basic-white);
+      color: var(--basic-white);
+
+      transition: all 0.5s ease-out;
+
+      &.is-active {
+        z-index: 22;
+        opacity: 1;
+        height: var(--hem-navi-height);
+        top: var(--header-inner-height);
+        // top: 0;
+      }
+
+      .top {
+        width: 100%;
+        justify-content: center;
+
+        .btnArea {
+          padding: 0 20px;
+          width: 100%;
+          @include mx.propVW(margin-top, n, 40, 40, n);
+          @include mx.spStyle() {
+            flex-direction: column;
+            gap: var(--spacing-s);
+            align-items: flex-start;
+          }
+
+          .search #search input[type="text"].words {
+            @include mx.propVW(width, n, n, 290, n);
+          }
+        }
+      }
+
+      .btm .links nav.navi .hamMenuesArea {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        width: 100%;
+        margin-bottom: 100px;
+        ul.dDownMenuSP {
+          &:first-of-type {
+            li {
+              &:first-child {
+                border-radius: var(--rounded-s) var(--rounded-s) 0 0;
+              }
+            }
+          }
+          &:last-of-type {
+            li {
+              &:last-child {
+                border-radius: 0 0 var(--rounded-s) var(--rounded-s);
+              }
+            }
+          }
+        }
+      }
+
+      .btm .links nav.navi ul.dDownMenuSP {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+        gap: 1px;
+
+        li {
+          background-color: var(--basic-white);
+          display: flex;
+          flex-direction: column;
+          a {
+            color: var(--basic-black, #333);
+
+            font-family: var(--JP, "BIZ UDPGothic");
+            font-size: var(--h6, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 0.5em;
+            &:after {
+              @include mx.awesomeStyle("\f054", 600, 1.2em);
+              color: var(--primary-base);
+              width: 1em;
+              display: flex;
+              justify-content: center;
+              flex-shrink: 0;
+            }
+          }
+          &.menu-item-has-children {
+            & > a {
+              &:after {
+                @include mx.awesomeStyle("\2b", 600, 1.2em);
+                transition: all 0.2s ease-out;
+              }
+              &.active {
+                &:after {
+                  @include mx.awesomeStyle("\f068", 600, 1.2em);
+                  rotate: 180deg;
+                }
+              }
+            }
+          }
+          ul.sub-menu {
+            display: none;
+            border-top: 1px solid var(--primary-light);
+            li {
+              background-color: var(--grey-light);
+              a {
+                color: var(--basic-text, #333);
+                font-family: var(--JP, "BIZ UDPGothic");
+                font-size: var(--txt_min, 12px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 150%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

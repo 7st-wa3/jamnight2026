@@ -1,0 +1,390 @@
+// --------------------------------
+// mailformpro
+// --------------------------------
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  div#mfp_hidden {
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  div#mfp_hidden input {
+    margin: 10px;
+  }
+
+  #mfp_formArea {
+  }
+
+  // --------------------------------
+  // 確認オーバーレイ
+  // --------------------------------
+
+  table#mfp_confirm_table tr th,
+  table#mfp_confirm_table tr td {
+    font-size: 18px !important;
+
+    @include mx.spStyle(500) {
+      font-size: 14px !important;
+    }
+  }
+
+  #mfp_overlay_inner {
+    width: 80% !important;
+
+    @include mx.spStyle(800) {
+      width: 96% !important;
+    }
+
+    .mfp_buttons {
+      display: flex;
+      justify-content: center;
+
+      @include mx.spStyle(500) {
+        flex-wrap: wrap;
+      }
+
+      .mfp_element_button {
+        max-width: unset !important;
+        min-width: 350px !important;
+        width: 240px !important;
+
+        @include mx.spStyle(800) {
+          width: unset !important;
+          min-width: unset !important;
+          padding: 20px 50px;
+          padding-left: 10px;
+        }
+      }
+
+      #mfp_button_send {
+        @include mx.spStyle(800) {
+          width: 260px !important;
+          padding-left: 40px;
+        }
+      }
+
+      #mfp_button_cancel {
+        order: -1;
+
+        @include mx.spStyle(500) {
+          order: 2;
+        }
+
+        @include mx.spStyle(800) {
+          width: unset !important;
+          padding: 20px 50px;
+          padding-left: 50px;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+
+  form#mailformpro {
+    --spacing-xxs: 4px;
+    --spacing-xs: 8px;
+    --spacing-s: 16px;
+    --spacing-m: 24px;
+    --spacing-l: 32px;
+    --spacing-xl: 64px;
+    --spacing-xxl: 96px;
+    --spacing-xxxl: 192px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    align-items: center;
+
+    --txt: 20px;
+
+    border-radius: var(--rounded-s, 10px);
+    border: 1px solid var(--grey-base, #b3b3b3);
+    background: var(--basic-white, #fff);
+
+    padding: var(--spacing-xl) !important;
+
+    @include mx.spStyle(1024) {
+      padding: var(--spacing-m) !important;
+    }
+
+    label {
+      margin: var(--spacing-xs) var(--spacing-l) var(--spacing-xs) 0 !important;
+      border: none !important;
+      position: relative;
+
+      font-size: var(--txt);
+
+      &:has(input[type="radio"]) {
+        padding: var(--spacing-s) var(--spacing-s) var(--spacing-s)
+          var(--spacing-m) !important;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          translate: 0 -50%;
+
+          display: inline-flex;
+          width: calc(var(--txt) - 1px);
+          height: calc(var(--txt) - 1px);
+          padding: 3px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: var(--rounded-full);
+          border: 1px solid var(--grey-base, #b3b3b3);
+          background: var(--grey-light, #f0f0f0);
+        }
+      }
+
+      &:has(input[type="checkbox"]) {
+        padding: var(--spacing-s) var(--spacing-s) var(--spacing-s)
+          var(--spacing-m) !important;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 15px;
+          // translate: 0 -50%;
+
+          display: inline-flex;
+          width: calc(var(--txt) - 1px);
+          height: calc(var(--txt) - 1px);
+          padding: 3px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 0;
+          border: 1px solid var(--grey-base, #b3b3b3);
+          background: var(--grey-light, #f0f0f0);
+        }
+      }
+    }
+
+    label.mfp_not_checked {
+      // border: solid 1px #aaa !important;
+      font-size: var(--txt);
+    }
+
+    label.mfp_checked {
+      // border: solid 1px #aaa;
+      background-color: transparent !important;
+      font-size: var(--txt);
+      box-shadow: none !important;
+
+      &:has(input[type="radio"]) {
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          translate: 3px -6px;
+
+          display: inline-flex;
+          width: calc(var(--txt) - 7px);
+          height: calc(var(--txt) - 7px);
+          padding: 3px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: var(--rounded-full);
+          background: var(--primary-base, #5fcecb);
+        }
+      }
+
+      &:has(input[type="checkbox"]) {
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          translate: 3px -6px;
+
+          display: inline-flex;
+          width: calc(var(--txt) - 7px);
+          height: calc(var(--txt) - 7px);
+          padding: 3px;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 0;
+          background: var(--primary-base, #5fcecb);
+        }
+      }
+    }
+
+    div.mfp_err {
+      font-size: var(--txt_min);
+      background-position: 0 50%;
+      // translate: 0 -50%;
+    }
+
+    dl.mailform {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      // --gap: 20px;
+
+      gap: var(--gap);
+
+      @include mx.spStyle(1024) {
+        gap: 0;
+      }
+
+      --formArea-mt: #{_max(get_vw(38, var.$break-TB), 38px)};
+      --formArea-inner-pdg: 40px;
+      --formArea-inner-bg: #f7f7f7;
+      --formArea-inner-mf-dt-mb: 10px;
+      --formArea-inner-mf-dt-mds-fs: 18px; // 項目名フォントサイズ
+      --formArea-inner-mf-dt-mds-fw: 700;
+      --formArea-inner-mf-dt-hissu-fs: 14px; // 必須表示フォントサイズ
+      --formArea-inner-mf-dt-hissu-pdg: 5px 10px;
+      --formArea-inner-mf-dt-hissu-ml: 0.5em;
+      --formArea-inner-mf-dd-mb: #{_max(get_vw(40, var.$break-TB), 40px)};
+      --input-font-size: 18px; // input枠フォントサイズ
+
+      --hissu-bg-color: #f04e4e;
+      --hissu-font-color: #fff;
+      --nin-bg-color: #dff3ef;
+      --nin-font-color: #00b88b;
+
+      .mfp_colored {
+        background-color: #fff !important;
+      }
+
+      dt {
+        width: calc(30% - var(--gap));
+        padding: var(--spacing-s) !important;
+        border: none !important;
+
+        color: var(--basic-black, #333);
+
+        // font-family: var(--JP, "Noto Sans JP");
+        font-size: var(--txt, 20px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+
+        text-align: left;
+
+        @include mx.spStyle(1024) {
+          padding-top: 50px !important;
+          padding-left: 0 !important;
+          width: 100%;
+        }
+
+        &:before {
+          content: "任意";
+          background-color: var(--nin-bg-color);
+          color: var(--nin-font-color);
+          border: 1px solid var(--nin-bg-color);
+          font-size: var(--formArea-inner-mf-dt-hissu-fs);
+          display: inline-block;
+          padding: var(--formArea-inner-mf-dt-hissu-pdg);
+          margin-right: var(--formArea-inner-mf-dt-hissu-ml);
+          line-height: 1;
+          border-radius: 5px;
+        }
+
+        &.hissu {
+          &:before {
+            content: "必須";
+            background-color: var(--hissu-bg-color);
+            color: var(--hissu-font-color);
+            border-color: var(--hissu-bg-color);
+            font-size: var(--formArea-inner-mf-dt-hissu-fs);
+            display: inline-block;
+            padding: var(--formArea-inner-mf-dt-hissu-pdg);
+            margin-right: var(--formArea-inner-mf-dt-hissu-ml);
+            line-height: 1;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      dd {
+        width: 70%;
+        padding: 0 !important;
+        border: none !important;
+
+        @include mx.spStyle(1024) {
+          width: 100%;
+        }
+
+        p.sub {
+          font-size: var(--txt_min);
+          color: var(--grey-base);
+          margin-bottom: 0;
+        }
+
+        .mfp_achroma,
+        .mfp_rows {
+          display: flex;
+          --gap: 20px;
+          gap: var(--gap);
+          font-size: var(--txt);
+
+          &.column {
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          @include mx.spStyle() {
+            flex-wrap: wrap;
+          }
+
+          .mfp_col5 {
+            width: 50%;
+
+            @include mx.spStyle() {
+              width: 100%;
+            }
+          }
+
+          .mfp_col10 {
+            width: 100%;
+          }
+        }
+
+        .mfp_element_select-one,
+        .mfp_element_date {
+          font-size: var(--txt);
+          padding: var(--spacing-s, 16px);
+        }
+
+        textarea,
+        input[type="tel"],
+        input[type="email"],
+        input[type="text"] {
+          display: flex;
+          padding: var(--spacing-s, 16px);
+          align-items: flex-start;
+          gap: 10px;
+          align-self: stretch;
+
+          font-size: var(--txt);
+
+          width: 100% !important;
+
+          border-radius: var(--rounded-s, 10px);
+          border: 1px solid var(--grey-base, #b3b3b3);
+
+          background-color: #fff !important;
+
+          line-height: 1.5;
+
+          &::placeholder {
+            color: var(--grey-base);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,854 @@
+// --------------------------------
+// フォーム関連 snow monkey 対応
+// --------------------------------
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+$inputMaxWidth: 1360px;
+
+@layer components {
+  // --------------------------------
+  // radios ラジオボタンシリーズ
+  // --------------------------------
+
+  // Snow Monkey Form 対応
+  .smf-radio-buttons-control__control {
+    margin-top: 0.2em;
+
+    $color1: var(--basic-white);
+    $color2: var(--primary-dark);
+    line-height: 1.5;
+
+    .smf-label {
+      margin: 0 0 1rem 0;
+
+      label {
+        margin: 1rem;
+
+        input[type="radio"] {
+          position: absolute;
+          opacity: 0;
+
+          + .smf-radio-button-control__label {
+            font-size: var(--txt);
+            cursor: pointer;
+
+            &:before {
+              content: "";
+              background: $color1;
+              border-radius: 100%;
+              border: 1px solid var(--grey-base);
+              display: inline-block;
+              width: 1.4em;
+              height: 1.4em;
+              position: relative;
+              // top: -0.2em;
+              margin-right: 1em;
+              vertical-align: top;
+              cursor: pointer;
+              text-align: center;
+              transition: all 250ms ease;
+            }
+          }
+
+          &:checked {
+            + .smf-radio-button-control__label {
+              &:before {
+                background-color: $color2;
+                box-shadow: inset 0 0 0 5px $color1;
+              }
+            }
+          }
+
+          &:focus {
+            + .smf-radio-button-control__label {
+              &:before {
+                outline: none;
+                border-color: $color2;
+              }
+            }
+          }
+
+          &:disabled {
+            + .smf-radio-button-control__label {
+              &:before {
+                box-shadow: inset 0 0 0 4px $color1;
+                // border-color: darken($color1, 25%);
+                // background: darken($color1, 25%);
+              }
+            }
+          }
+
+          + .smf-radio-button-control__label {
+            &:empty {
+              &:before {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // --------------------------------
+  // checks チェックボックスシリーズ
+  // --------------------------------
+
+  // Snow Monkey Form 対応
+  .smf-checkboxes-control__control {
+    margin-top: 1.5em;
+
+    $color1: var(--basic-white);
+    $color2: var(--primary-dark);
+    line-height: 1.5;
+
+    .smf-label {
+      margin: 1rem;
+
+      label {
+        input[type="checkbox"] {
+          position: absolute;
+          opacity: 0;
+
+          + .smf-checkbox-control__label {
+            font-size: var(--txt);
+            // @include mx.propVW(font-size, 20, 18, 18, 20);
+            cursor: pointer;
+
+            &:before {
+              content: "";
+              background: $color1;
+              // border-radius: 100%;
+              // border: 1px solid darken($color1, 25%);
+              display: inline-block;
+              width: 1.4em;
+              height: 1.4em;
+              position: relative;
+              // top: -0.2em;
+              margin-right: 1em;
+              vertical-align: top;
+              cursor: pointer;
+              text-align: center;
+              transition: all 250ms ease;
+            }
+          }
+
+          &:checked {
+            + .smf-checkbox-control__label {
+              position: relative;
+
+              &:before {
+                background-color: $color2;
+                box-shadow: inset 0 0 0 2px $color1;
+              }
+
+              &:after {
+                color: $color1;
+                @include mx.awesomeStyle("\f00c");
+                @include mx.abstr(50%, null, null, 0, 40%, -52%);
+                z-index: 2;
+              }
+            }
+          }
+
+          &:focus {
+            + .smf-checkbox-control__label {
+              &:before {
+                outline: none;
+                border-color: $color2;
+              }
+            }
+          }
+
+          &:disabled {
+            + .smf-checkbox-control__label {
+              &:before {
+                box-shadow: inset 0 0 0 4px $color1;
+                // border-color: darken($color1, 25%);
+                // background: darken($color1, 25%);
+              }
+            }
+          }
+
+          + .smf-checkbox-control__label {
+            &:empty {
+              &:before {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // --------------------------------
+  // サイト独自
+  // --------------------------------
+  .snow-monkey-form {
+    margin-top: var(--spacing-xl);
+  }
+
+  //---------------------------
+  // mailform
+  //---------------------------
+  .smf-form,
+  .mailform {
+    width: 100%;
+    margin-bottom: 2em;
+    position: relative;
+    transition: 0.5s;
+
+    .not100 {
+      width: auto !important;
+    }
+
+    input.btn {
+      margin: 0 auto;
+      width: 80%;
+
+      &:disabled {
+        transition: 0.5s;
+        background: var(--grey-base);
+        opacity: 0.5;
+      }
+    }
+
+    // .btn {
+    // 	color: var(--basic-white);
+    // 	padding: 1em 3em;
+    // 	background: #006337;
+    // 	font-size: 1.6rem;
+    // 	-webkit-appearance: none;
+    // 	transition: 0.5s;
+    // 	&:focus,&:hover{
+    // 		opacity: 0.5;
+    // 		transition: 0.5s;
+    // 		// color: var(--basic-white);
+    // 		// background: #000;
+    // 	}
+    // 	// @media screen and (max-width: 768*1px) {
+    // 	// 	font-size: get_vw(24,$spKijun);
+    // 	// 	padding: 1em 0;
+    // 	// }
+    // }
+    &.table {
+      tr {
+        border-bottom: 1px solid #ccc;
+      }
+
+      th {
+        width: 35%;
+        text-align: left !important;
+        padding: 2.3em 2em 0;
+
+        @include mx.spStyle() {
+          padding: 2.3em 1em 0;
+        }
+
+        vertical-align: top;
+        background: transparent;
+
+        span {
+          display: inline-block;
+          background: #da3c41;
+          padding: 2px 0.5em;
+          color: var(--basic-white);
+          margin-left: 5px;
+          border-radius: 5px;
+          font-size: 0.8rem;
+          // float: right;
+        }
+      }
+
+      td {
+        text-align: left !important;
+        vertical-align: middle;
+        padding: 2em;
+
+        @include mx.spStyle() {
+          padding: 2em 1em;
+        }
+      }
+
+      .select-box label {
+        position: relative;
+      }
+
+      .select-box label:after {
+        display: block;
+        font-family: "Font Awesome 6 Free" !important;
+        content: "\f0d7";
+        @include mx.abstr(50%, 20px, null, null, 0, -50%);
+        font-size: 2rem;
+        // background: url(arrow02.png) 0 0 no-repeat;
+        // background-size: 20px;
+        pointer-events: none;
+      }
+
+      .select-area {
+        position: relative;
+        display: inline-block;
+
+        &:after {
+          display: block;
+          font-family: "Font Awesome 6 Free";
+          font-weight: 900;
+          content: "\f0d7";
+          // margin: 0 3px 0 2px;
+          @include mx.abstr(50%, 10px, null, null, 0, -50%);
+          font-size: 1.2rem;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  textarea,
+  input[type="email"],
+  input[type="text"] {
+    // outline:0;
+    width: 100%;
+    // border:0;
+    padding: 1em;
+    // font-family:Arial, sans-serif;
+    // border-radius: 5px;
+    border-color: #c5c5c5;
+
+    &:focus {
+      // border-color: #333;
+    }
+
+    &:disabled {
+    }
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    outline: 0;
+    width: auto;
+    border: 0;
+    padding: 10px 2em 10px 10px;
+    font-family: Arial, sans-serif;
+    color: #444;
+    border: solid 1px #ccc;
+    background: var(--bg-primary);
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .mw_wp_form_confirm.mw_wp_form_preview {
+    .select-area:after {
+      display: none !important;
+    }
+  }
+
+  // --------------------------------
+  // formArea
+  // --------------------------------
+  .smf-form,
+  .formArea {
+    --formArea-mt: #{_max(get_vw(38, var.$break-PC), 38px)};
+    --formArea-inner-pdg: 40px;
+    --formArea-inner-bg: var(--grey-light);
+    --formArea-inner-mf-dt-mb: 10px;
+    --formArea-inner-mf-dt-mds-fs: 18px; // 項目名フォントサイズ
+    --formArea-inner-mf-dt-mds-fw: 700;
+    @include mx.propVW(--formArea-inner-mf-dt-hissu-fs, "14px", 14, 14, 14);
+    --formArea-inner-mf-dt-hissu-pdg: 5px 10px;
+    --formArea-inner-mf-dt-hissu-ml: 0.5em;
+    --formArea-inner-mf-dd-mb: #{_max(get_vw(40, var.$break-PC), 40px)};
+
+    --hissu-bg-color: var(--red-base);
+    --hissu-font-color: var(--basic-white);
+    --nin-bg-color: var(--basic-white);
+    --nin-font-color: var(--primary-dark);
+
+    --check-box-mt: 2px;
+
+    --prg-bg-color: var(--primary-dark);
+    --prg-bg-color-disable: var(--basic-white);
+    --prg-line-color: var(--primary-dark);
+    --prg-disc-size: 44px;
+    --prg-margin-btm: 3em;
+
+    @include mx.tbStyle() {
+      --formArea-inner-pdg: 20px;
+    }
+
+    @include mx.spStyle() {
+      --check-box-mt: 0;
+      --formArea-inner-mf-dd-mb: 2em;
+    }
+
+    // --------------------------------
+    // background-color: rgba($color: #D9D9D9, $alpha: .2);
+  }
+
+  .formArea {
+    margin-top: var(--formArea-mt);
+    // background-color: var(--formArea-inner-bg);
+    max-width: $inputMaxWidth;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-l);
+
+    .caution {
+      display: flex;
+      width: 100%;
+      padding: var(--spacing-s, 16px);
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+
+      border: 1px solid var(--grey-base, #b3b3b3);
+      background: var(--red-light, #ffe8e8);
+
+      color: var(--basic-black, #333);
+      font-weight: 700;
+    }
+  }
+
+  // --------------------------------
+  // snow monkey 対応
+  // --------------------------------
+  .snow-monkey-form {
+    background: var(--grey-light, #f1f1f2);
+    @include mx.propVW(
+      padding,
+      var(--spacing-xl),
+      var(--spacing-l),
+      var(--spacing-s),
+      n
+    );
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .smf-progress-tracker__item:after,
+    .smf-progress-tracker__item:before {
+      top: get_vw(30, var.$break-PC);
+      height: 1px;
+      background-color: var(--grey-base);
+
+      @include mx.tbStyle() {
+        top: get_vw(30, var.$break-TB);
+      }
+
+      @include mx.spStyle() {
+        top: get_vw(30, var.$break-SPXX);
+      }
+    }
+
+    .smf-progress-tracker__item--complete:after,
+    .smf-progress-tracker__item--input:before {
+      display: none !important;
+    }
+
+    // .smf-progress-tracker__item__number {
+    // 	height: 54px;
+    // 	width: 54px;
+    // 	background-color: #002C63 !important;
+    // }
+
+    .smf-progress-tracker__item__number {
+      background-color: var(--grey-light) !important;
+      border: 1px solid var(--primary-dark);
+
+      $arr: (
+        width: (
+          60,
+          60,
+          60,
+          n,
+        ),
+        height: (
+          60,
+          60,
+          60,
+          n,
+        ),
+        font-size: (
+          18,
+          18,
+          18,
+          n,
+        ),
+      );
+      @include mx.propArrVW($arr);
+
+      color: var(--grey-base, #b3b3b3);
+      font-family: var(--font_mds);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+    }
+
+    .smf-progress-tracker__item {
+      // .smf-progress-tracker__item__text {
+      // 	font-family: var(--font_mds);
+      // }
+
+      &[aria-current="true"] {
+        .smf-progress-tracker__item__text {
+          color: var(--primary-dark);
+        }
+
+        .smf-progress-tracker__item__number {
+          background-color: var(--basic-black) !important;
+          color: var(--basic-white);
+        }
+      }
+    }
+
+    ol.smf-progress-tracker {
+      align-self: stretch;
+      margin-left: 0;
+    }
+
+    .wp-block-snow-monkey-forms-item {
+      display: flex;
+      // @include mx.propVW(gap, "40px", 10, 5, 40);
+      gap: var(--spacing-xs);
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .smf-item__col.smf-item__col--label {
+        // @include mx.propVW(width, "150px", "100%", n, 150);
+        width: 100%;
+        flex-shrink: 0;
+        // padding-right: 3em;
+        // padding-top: 1em;
+      }
+
+      .smf-item__col.smf-item__col--controls {
+        flex: 1;
+      }
+    }
+  }
+
+  // [data-screen=input]
+  // [data-screen=confirm]
+  // [data-screen=complete]
+
+  .snow-monkey-form {
+    // padding: var(--formArea-inner-pdg);
+
+    .smf-form,
+    .mailform {
+      .smf-text-control__control,
+      .smf-textarea-control__control {
+        max-width: $inputMaxWidth;
+        width: 100%;
+      }
+
+      .wp-block-snow-monkey-forms-item.smf-item {
+        .smf-item__col--label {
+          .smf-item__label {
+            // display: inline-block;
+
+            // color: var(--basic-black, #121b3c);
+            // font-family: var(--UD-Gothic, "BIZ UDGothic");
+            // @include mx.propVW(font-size, 20, 20, 18, 20);
+            // font-style: normal;
+            // font-weight: 400;
+            // line-height: 180%;
+          }
+
+          &:before {
+            content: "任意";
+            display: flex;
+            padding: var(--spacing-xxs, 4px) var(--spacing-s, 16px);
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            border-radius: var(--rounded-s, 10px);
+            border: 1px solid var(--primary-base, #5b66c2);
+            background: var(--basic-white, #fff);
+
+            color: var(--primary-base, #5b66c2);
+            @include mx.typoTXT();
+            font-weight: 700;
+
+            // background-color: var(--nin-bg-color);
+            // color: var(--nin-font-color);
+            // border: 1px solid var(--nin-font-color);
+            // font-size: var(--formArea-inner-mf-dt-hissu-fs);
+            // display: inline-block;
+            // padding: var(--formArea-inner-mf-dt-hissu-pdg);
+            // margin-right: var(--formArea-inner-mf-dt-hissu-ml);
+            // line-height: 1;
+            // border-radius: var(--rounded-full, 10000px);
+          }
+        }
+
+        &.hissu {
+          .smf-item__col--label {
+            &:before {
+              content: "必須";
+
+              display: flex;
+              padding: var(--spacing-xxs, 4px) var(--spacing-s, 16px);
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+
+              border-radius: var(--rounded-s, 10px);
+              background: var(--red-base, #c70000);
+
+              color: var(--basic-white, #fff);
+              @include mx.typoTXT();
+              font-weight: 700;
+
+              // background-color: var(--hissu-bg-color);
+              // color: var(--hissu-font-color);
+              // border-color: var(--hissu-bg-color);
+              // font-size: var(--formArea-inner-mf-dt-hissu-fs);
+              // display: inline-block;
+              // padding: var(--formArea-inner-mf-dt-hissu-pdg);
+              // margin-right: var(--formArea-inner-mf-dt-hissu-ml);
+              // line-height`: 1;
+
+              // border-radius: var(--rounded-full, 10000px);
+            }
+          }
+        }
+      }
+
+      .wp-block-snow-monkey-forms-item,
+      dt {
+        // margin-bottom: var(--formArea-inner-mf-dt-mb);
+        .smf-item__col--label,
+        .mds {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: 0.5em;
+
+          color: var(--basic-black);
+
+          @include mx.typoTXT();
+          font-weight: 700;
+
+          @include mx.tbStyle() {
+            max-width: unset;
+
+            padding: 2em 0 0.5em 0;
+          }
+
+          &.hissu {
+            &:after {
+              content: "必須";
+              background-color: var(--red-base);
+              color: var(--basic-white);
+              font-size: var(--formArea-inner-mf-dt-hissu-fs);
+              display: inline-block;
+              padding: var(--formArea-inner-mf-dt-hissu-pdg);
+              margin-left: var(--formArea-inner-mf-dt-hissu-ml);
+              line-height: 1;
+            }
+          }
+        }
+      }
+
+      .smf-item__col--controls,
+      dd {
+        select,
+        textarea,
+        input[type="tel"],
+        input[type="email"],
+        input[type="url"],
+        input[type="text"] {
+          background-color: var(--basic-white);
+          // border-color: #333;
+          // color: #A6896F;
+          @include mx.propVW(font-size, "16px", 18, 18, 16);
+          border-radius: var(--rounded-s, 10px);
+          border: 1px solid var(--grey-base, #d0d0d0);
+          padding: 1em !important;
+          // margin-top: 1em;
+        }
+
+        // margin-bottom: var(--formArea-inner-mf-dd-mb);
+      }
+    }
+  }
+
+  .smf-control-description,
+  .smf-item__description {
+    // --_font-size: 14px;
+    @include mx.propVW(font-size, 16, 16, 16, n);
+    --_font-size-level: 0 !important;
+    padding-left: var(--spacing-m);
+    width: 100%;
+  }
+
+  .smf-form .smf-item .smf-checkbox-control__control {
+    margin-top: var(--check-box-mt);
+  }
+
+  .smf-checkboxes-control__control {
+    margin-top: 1em;
+  }
+
+  .smf-action {
+    text-align: center;
+  }
+
+  [data-screen="confirm"] .smf-placeholder {
+    padding: 1em;
+    margin: 0.5em 0;
+    @include mx.propVW(font-size, 20, 18, 18, 20);
+  }
+
+  // --------------------------------
+  // プログレストラッカー
+  // --------------------------------
+  [data-screen="back"]
+    .smf-progress-tracker__item--input
+    .smf-progress-tracker__item__number,
+  [data-screen="complete"]
+    .smf-progress-tracker__item--complete
+    .smf-progress-tracker__item__number,
+  [data-screen="confirm"]
+    .smf-progress-tracker__item--confirm
+    .smf-progress-tracker__item__number,
+  [data-screen="input"]
+    .smf-progress-tracker__item--input
+    .smf-progress-tracker__item__number,
+  [data-screen="invalid"]
+    .smf-progress-tracker__item--input
+    .smf-progress-tracker__item__number {
+    background-color: var(--prg-bg-color);
+  }
+
+  .smf-progress-tracker__item:after,
+  .smf-progress-tracker__item:before {
+    background-color: var(--prg-line-color);
+  }
+
+  .smf-progress-tracker__item__number {
+    background-color: var(--prg-bg-color-disable);
+    width: var(--prg-disc-size);
+    height: var(--prg-disc-size);
+  }
+
+  .smf-progress-tracker__item:after,
+  .smf-progress-tracker__item:before {
+    top: calc(var(--prg-disc-size) * 0.5);
+  }
+
+  .smf-progress-tracker {
+    margin-bottom: var(--prg-margin-btm);
+  }
+
+  // --------------------------------
+  // 送信ボタン
+  // --------------------------------
+
+  .smf-action {
+    display: flex;
+    justify-content: center;
+  }
+
+  .smf-action button.smf-button-control__control {
+    background-image: none;
+    outline: 1px solid var(--basic-black, #121b3c);
+    border: 1px solid var(--basic-white);
+    background-color: var(--basic-white);
+
+    border-radius: 0;
+
+    $arr: (
+      padding-top: (
+        "30px",
+        20,
+        20,
+        30,
+      ),
+      padding-bottom: (
+        "30px",
+        20,
+        20,
+        30,
+      ),
+      padding-left: (
+        "60px",
+        50,
+        40,
+        60,
+      ),
+      padding-right: (
+        "60px",
+        50,
+        40,
+        60,
+      ),
+      margin: (
+        "6px",
+        n,
+        n,
+        n,
+      ),
+      margin-left: (
+        "16px",
+        16,
+        0,
+        16,
+      ),
+      margin-right: (
+        "64px",
+        64,
+        20,
+        64,
+      ),
+    );
+    @include mx.propArrVW($arr);
+
+    // --------------------------------
+    // 戻るボタン
+    // --------------------------------
+    &[data-action="back"] {
+      $arr: (
+        margin-right: (
+          "16px",
+          16,
+          0,
+          16,
+        ),
+        margin-left: (
+          "64px",
+          64,
+          20,
+          64,
+        ),
+      );
+      @include mx.propArrVW($arr);
+
+      &:before {
+        right: unset;
+        @include mx.propVW(left, "-23px", -23, -23, -23);
+        transform: translate(0, -50%) scale(-1, 1);
+      }
+
+      &:hover {
+        &:before {
+          @include mx.propVW(left, "-42px", -42, -42, -42);
+        }
+      }
+    }
+  }
+}

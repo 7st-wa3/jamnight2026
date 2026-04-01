@@ -1,0 +1,52 @@
+// 順番を宣言：後に書いたレイヤーが強い
+// @layer reset, base, layout, components, utilities;
+
+// --------------------------------
+// コンテンツ内容的なもの
+// --------------------------------
+
+// --------------------------------
+// layoutレイヤー
+// --------------------------------
+@use "layouts/pnkz";
+
+// --------------------------------
+// componentsレイヤー
+// --------------------------------
+// コンテンツヘッダエリア
+@use "cont/contHead";
+//コンテンツインデックス
+@use "cont/contindex";
+//404ページ
+@use "cont/e404";
+
+//mailformpro
+@use "form/mailformpro";
+
+//SnowMonkeyForm
+@use "components/mailform";
+@use "wp/snowMonkey";
+
+//カード
+@use "cont/cards";
+
+//ポイント要素
+@use "cont/points";
+
+//フロー
+@use "cont/flow";
+
+//数字で見る
+@use "cont/numBoxes";
+
+// wp-pagenavi準拠
+@use "wp/pagenavi";
+
+// pagebute(MT)準拠
+@use "mt/pagebute";
+
+// 自動アンカーリンク
+@use "option/anclinks";
+
+// ボタン風チェックボックスとラジオボタン
+@use "option/likeAbtn";

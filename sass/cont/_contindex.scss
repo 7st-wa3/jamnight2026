@@ -1,0 +1,185 @@
+// --------------------------------
+// コンテンツインデックス
+// --------------------------------
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  .contIndex {
+    margin-bottom: var(--contents-margin-default);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    --gap: var(--spacing-m);
+    @include mx.spStyle() {
+      --gap: var(--spacing-s);
+    }
+    gap: var(--gap);
+
+    article {
+      width: calc((99.99% - (var(--gap) * 2)) / 3);
+      align-self: stretch;
+
+      @include mx.tbStyle() {
+        width: calc((99.99% - (var(--gap) * 1)) / 2);
+      }
+      @include mx.spStyle() {
+        width: 100%;
+      }
+      a.c-index {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: var(--spacing-s);
+
+        text-decoration: none;
+
+        border-radius: var(--rounded-m, 20px);
+        border: 1px solid var(--primary-light, #d0ccf6);
+        background: var(--basic-white, #fff);
+
+        padding: 1.5em 1em;
+        margin: 0 !important;
+
+        position: relative;
+
+        &:has(.image) {
+          align-items: flex-start !important;
+        }
+
+        .image {
+          aspect-ratio: 213 / 102;
+          width: 100%;
+          overflow: hidden;
+          flex-shrink: 0;
+          @include mx.spStyle() {
+            aspect-ratio: 213 / 142;
+          }
+          img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .mds {
+          color: var(--basic-text, #333);
+          // text-align: center;
+          @include mx.typoH5();
+          // @include mx.ellipsis(2);
+        }
+
+        // &:before {
+        //   @include mx.awesomeStyle();
+        //   font-size: 0.6em;
+        //   width: 3em;
+        //   display: flex;
+        //   padding: var(--spacing-xxs, 4px) var(--spacing-xs, 8px);
+        //   flex-direction: column;
+        //   align-items: center;
+        //   gap: 10px;
+        //   line-height: 1;
+
+        //   border-radius: var(--rounded-full, 10000px);
+        //   background: var(--basic-black, #333);
+        //   border: 2px solid var(--basic-black);
+
+        //   color: var(--basic-white);
+
+        //   transition: all 0.2s ease-out;
+
+        //   position: absolute;
+        //   @include mx.propVW(bottom, "6px", 6, 6, 6);
+        //   @include mx.propVW(right, "6px", 6, 6, 6);
+
+        //   // @include mx.tbStyle() {
+        //   //   position: absolute;
+        //   //   top: 50%;
+        //   //   right: 5px;
+        //   //   translate: 0 -50%;
+        //   // }
+        // }
+
+        .icon {
+          @include mx.btnArrowMarkWaku();
+          &:before {
+            @include mx.btnArrowMark();
+            translate: 10% 0;
+          }
+        }
+
+        &:hover {
+          @media (hover: hover) {
+            background: var(--primary-light, #d0ccf6);
+            // &:before {
+            //   border: 2px solid var(--primary-dark);
+            //   background: var(--basic-white, #fff);
+            //   color: var(--basic-black);
+            // }
+            .icon {
+              background-color: var(--primary-dark);
+              &:before {
+                background-color: var(--basic-white);
+              }
+            }
+          }
+        }
+
+        &:after {
+          display: none !important;
+        }
+
+        &[href$=".doc"],
+        &[href$=".docx"],
+        &[href$=".xls"],
+        &[href$=".xlsx"],
+        &[href$=".xlsm"],
+        &[href$=".pdf"],
+        &[target="_blank"] {
+          .icon {
+            &:before {
+              translate: 0 0;
+              @include mx.propVW(width, "16px", 14, 14, 16);
+            }
+          }
+        }
+        &[target="_blank"] {
+          .icon {
+            &:before {
+              @include mx.maskImg("../img/icon/icon_outer_link.svg");
+            }
+          }
+        }
+        &[href$=".pdf"] {
+          .icon {
+            &:before {
+              @include mx.maskImg("../img/icon/icon_pdf_link.svg");
+            }
+          }
+        }
+        &[href$=".xls"],
+        &[href$=".xlsx"],
+        &[href$=".xlsm"] {
+          .icon {
+            &:before {
+              @include mx.maskImg("../img/icon/icon_excel_link.svg");
+            }
+          }
+        }
+        &[href$=".doc"],
+        &[href$=".docx"] {
+          .icon {
+            &:before {
+              @include mx.maskImg("../img/icon/icon_word_link.svg");
+            }
+          }
+        }
+      }
+    }
+  }
+}

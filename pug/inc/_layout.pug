@@ -1,0 +1,143 @@
+//- 変数設定
+- var dateNow = Date.now(); //更新日時UNIXTIME
+- var dateNowLoc = new Date(dateNow).toLocaleString();  //更新日時整形
+- var logoImgPath= "./img/header/logo.svg";
+- var siteName= "HGT-System 2026.3";
+- var siteDesc= "雛形のサイト";
+- var siteCopy= "©2025 SPARKJAPAN";
+//- 言語設定　ja=日本語　en=英語　ko=韓国語　zh-cmn-Hans=中国語（簡体）　h-cmn-Hant=中国語（繁体）　fr=フランス語
+- var lang = "ja";
+
+//- jQueryを使うならここにURLを書く
+- var jQsrc = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+
+
+//- ページの設定
+block pagedata
+
+//- mixinのインクルード
+include _mixin
+
+doctype html
+html.no-js(lang=lang)
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="format-detection" content="telephone=no")
+    title #{pageTitle} | #{siteName}
+    if (pageDescription)
+      meta(name="description" content=pageDescription)
+    //- OG関連
+    meta(property="og:title", content=pageTitle)
+    meta(property="og:type", content=ogType)
+    meta(property="og:url", content="")
+    meta(property="og:site_name" content=siteName)
+    meta(property="og:image", content="")
+    meta(property="og:image:alt", content="")
+    //- favicon関連
+    //- link(rel="icon", href="/favicon.ico", sizes="any")
+    //- link(rel="icon", href="/icon.svg", type="image/svg+xml")
+    //- link(rel="apple-touch-icon", href="icon.png")
+    //- link(rel="manifest", href="site.webmanifest")
+    //- meta(name="theme-color", content="#fafafa")
+
+    //- jQuery
+    if (jQsrc)
+      script(src=jQsrc)
+
+    //- font awesome
+    link(rel="stylesheet", href="fa/all.min.css")
+
+    //- css
+    //- link(rel="stylesheet", href="css/style.css")
+    link(rel="stylesheet", href="css/common.css?"+dateNow)
+
+    //- table scroll hint
+    link(rel="stylesheet" href="css/scroll-hint.css")
+
+    block pagecss
+    //- script.
+    //-   (function(d) {
+    //-   var config = {
+    //-   kitId: 'lir7yuk',
+    //-   scriptTimeout: 3000,
+    //-   async: true
+    //-   },
+    //-   h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    //-   })(document);
+
+
+  //- ページレイアウト
+  body(class='lang-'+lang+' global-layout '+outerClass)
+    //- #bodyOuter
+    //-   #wrapper
+    include _cookieDoui
+
+    include _noscript
+
+    include _header
+
+    section#outer.global-layout__contents
+      block main
+
+      //- #scrCount
+        #scr-ici 0
+        #bbg 0
+        #bbgEnd 0
+
+
+    include _footer
+
+    //- include _hamMenu
+
+    //- js
+    script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+
+    //- lazysizes
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js")
+
+    //- table scroll hint
+    script(src="./js-sub/scroll-hint.min.js")
+
+    //- script(src="./js/functions.js")
+    //- script(src="./js/option/desvg.js")
+    //- script(src="./js/common.js")
+    //- script(src="./js/expire.js")
+
+
+    //- lucide icon -----------------------
+    //- script(src="https://unpkg.com/lucide@latest")
+    //- script.
+      lucide.createIcons();
+    //- lucide icon -----------------------
+
+
+    //- ソースコード表示用
+    //- script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js")
+
+    block pagejs
+    script(src="./js/app.js?"+dateNow)
+
+    //- // ダークモード
+    //- script(src="https://cdn.jsdelivr.net/npm/darkmode-js@1.3.4/lib/darkmode-js.min.js")
+    //- script.
+    //-   var options = {
+    //-     bottom: '64px', // default: '32px'
+    //-     right: 'unset', // default: '32px'
+    //-     left: '32px', // default: 'unset'
+    //-     time: '0.5s', // default: '0.3s'
+    //-     mixColor: '#fff', // default: '#fff'
+    //-     backgroundColor: '#fff',  // default: '#fff'
+    //-     buttonColorDark: '#100f2c',  // default: '#100f2c'
+    //-     buttonColorLight: '#fff', // default: '#fff'
+    //-     saveInCookies: false, // default: true,
+    //-     label: '🌓' // default: ''
+    //-   }
+    //-   const darkmode = new Darkmode(options);
+    //-   darkmode.showWidget();
+
+    #blackBg.hamMenuBBG
+
+    script.
+      document.addEventListener('touchstart',function(){});

@@ -1,0 +1,258 @@
+// --------------------------------
+// mailformモジュール
+// --------------------------------
+// @use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mx;
+
+@layer components {
+  // フォーム領域
+  .mailFormArea {
+    background: var(--sub2, #ffeaef);
+  }
+
+  // --------------------------------
+  // 抹茶ベースのフォームのカスタマイズこちら
+  // --------------------------------
+  .mc-form {
+    // --------------------------------
+    //  以下、基本的に抹茶ベースでここでカスタマイズする
+    // --------------------------------
+    fieldset {
+      --bd-muted: #cc70b8;
+
+      // 左寄せに変更
+      &.fStart {
+        justify-content: flex-start;
+      }
+    }
+
+    form {
+      background-color: unset;
+      // @include mx.pdgPc(0,0,0,0);
+    }
+
+    // fieldset内の各項目の幅
+    label {
+      &.triple {
+        width: calc(100% / 3 - 20px);
+
+        @include mx.spStyle() {
+          width: calc(99.99% - 20px);
+        }
+      }
+
+      &.twin {
+        width: calc(100% / 2 - 20px);
+
+        @include mx.spStyle() {
+          width: calc(99.99% - 20px);
+        }
+      }
+
+      &.single {
+        width: calc(99.99% - 20px);
+      }
+
+      // // @include mx.mgnPc(0,20,20,0);
+    }
+
+    // input等入力欄の背景色
+    input,
+    select,
+    textarea,
+    button {
+      --bd-muted: #dbdbdb;
+      background: #fff;
+
+      // @include mx.placeholder {
+      //     color: #dbdbdb;
+      // }
+    }
+
+    // サンプル用
+    input[type="image"] {
+      height: 1.5em;
+      width: 1.5em;
+    }
+  }
+
+  // --------------------------------
+  // snowMonkeyっプラグインベースのカスタマイズはこちら
+  // --------------------------------
+  .smf-form {
+  }
+
+  // --------------------------------
+  // contact7（プラン系）のフォーム
+  // --------------------------------
+  .plan-form {
+    select,
+    textarea,
+    input[type="tel"],
+    input[type="email"],
+    input[type="url"],
+    input[type="text"] {
+      display: flex;
+      padding: var(--spacing-xs, 10px) 20px;
+      align-items: center;
+      gap: var(--spacing-xs, 10px);
+      flex: 1 0 0;
+
+      border-radius: var(--spacing-xxs, 5px);
+      border: 1px solid var(--grey-dark, #647380);
+      background: var(--basic-white, #fff);
+
+      margin-bottom: var(--spacing-xs);
+    }
+
+    select {
+      cursor: pointer;
+      padding-left: 3em;
+    }
+
+    span.wpcf7-form-control-wrap:has(select.wpcf7-form-control.wpcf7-select) {
+      position: relative;
+
+      &:after {
+        @include mx.awesomeStyle("\f107");
+        position: absolute;
+        top: 1.6em;
+        left: 0.5em;
+        translate: 50% -50%;
+      }
+    }
+
+    ul.age {
+      list-style: none;
+      margin: 0;
+
+      li {
+        display: inline-block;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    td {
+      &.must {
+        width: 120px;
+
+        span {
+          display: flex;
+          padding: var(--spacing-xxs, 5px) 20px;
+          justify-content: center;
+          align-items: center;
+          gap: var(--spacing-xs, 10px);
+
+          border-radius: 20px;
+          background: var(--red, #bd000a);
+
+          color: var(--basic-white, var(--basic-white, #fff));
+          font-family: "Zen Kaku Gothic New";
+          font-size: var(--txt-min, 14px);
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+      }
+
+      &.name {
+        width: 25%;
+      }
+    }
+
+    .wpcf7-spinner {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  // --------------------------------
+  // radios ラジオボタンシリーズ
+  // --------------------------------
+
+  .wpcf7-form-control.wpcf7-radio {
+    .wpcf7-list-item {
+      label {
+        cursor: pointer;
+
+        &:has(input[type="radio"]) {
+          display: inline-flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-content: center;
+          align-items: center;
+          justify-content: space-between;
+          margin-right: var(--spacing-m);
+          gap: var(--spacing-xxs);
+
+          &:before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background-image: url(../img/form/radio.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-top: -4px;
+          }
+        }
+
+        &:has(input[type="radio"]:checked) {
+          &:before {
+            background-image: url(../img/form/radio-on.svg);
+          }
+        }
+      }
+    }
+  }
+
+  .wpcf7-form-control.wpcf7-checkbox {
+    .wpcf7-list-item {
+      label {
+        cursor: pointer;
+
+        &:has(input[type="checkbox"]) {
+          display: inline-flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-content: center;
+          align-items: center;
+          justify-content: space-between;
+          margin-right: var(--spacing-m);
+          gap: var(--spacing-xxs);
+
+          &:before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background-image: url(../img/form/check.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-top: -4px;
+          }
+        }
+
+        &:has(input[type="checkbox"]:checked) {
+          &:before {
+            background-image: url(../img/form/check-on.svg);
+          }
+        }
+      }
+    }
+  }
+
+  // --------------------------------
+  //
+  // --------------------------------
+  div.btn-submit {
+    text-align: center;
+
+    p {
+      display: inline-block;
+    }
+  }
+}
