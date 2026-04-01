@@ -1,0 +1,107 @@
+// --------------------------------
+// jam2026.css
+// このcssはjamnight2026以降で使うCSSです。
+// --------------------------------
+@use "abstracts/mixins" as mx;
+
+@scope (.jamStacks) {
+  :scope {
+    margin: 5em 0;
+    padding: 5em 0;
+    border-bottom: 1px solid #b3b3b3;
+  }
+
+  h3:not(.nonStyle) {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    position: relative;
+    margin: 40px 0 30px;
+    color: #666;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 6px;
+      background-color: #00a3ac;
+      left: 50%;
+      bottom: -10px;
+      margin-left: -25px;
+    }
+  }
+}
+
+// 開催概要
+@scope (#gaiyou) {
+  h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+  }
+}
+
+// 出演アーティスト
+@scope (#artist) {
+  .opAct {
+    margin-top: 2em !important;
+  }
+  .artists {
+    display: flex;
+    flex-wrap: wrap;
+    --gap: 30px;
+    gap: var(--gap);
+    .box {
+      width: calc((99.99% - (var(--gap) * 2)) / 3);
+      padding-bottom: 3em;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      .pic {
+        img {
+          width: 100%;
+        }
+      }
+      .btnBlack {
+        a {
+          margin-top: 0;
+        }
+      }
+      @include mx.tbStyle() {
+        --gap: 20px;
+        width: calc((98.5% - (var(--gap) * 1)) / 2);
+      }
+      @include mx.spStyle(780) {
+        --gap: 30px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// チケット
+@scope (#anc-ticket) {
+}
+
+// 注意事項
+@scope (#anc-notice) {
+  .notice {
+    background-color: #e5e5e5;
+    padding: 20px;
+    ul {
+      li {
+        list-style: outside disc;
+        text-align: left;
+        margin-left: 1em;
+      }
+    }
+  }
+}
+
+// アクセス
+@scope (#access) {
+  :scope {
+    text-align: left !important;
+  }
+}
